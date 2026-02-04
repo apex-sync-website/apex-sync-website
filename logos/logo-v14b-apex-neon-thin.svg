@@ -1,0 +1,19 @@
+<svg viewBox="0 0 100 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon14b" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <g filter="url(#neon14b)">
+    <text x="50" y="70" font-family="Helvetica Neue, Arial, sans-serif" font-size="58" font-weight="200" fill="#60a5fa" text-anchor="middle">A</text>
+    <text x="50" y="140" font-family="Helvetica Neue, Arial, sans-serif" font-size="58" font-weight="200" fill="#8b5cf6" text-anchor="middle">P</text>
+    <text x="50" y="210" font-family="Helvetica Neue, Arial, sans-serif" font-size="58" font-weight="200" fill="#a855f7" text-anchor="middle">E</text>
+    <text x="50" y="280" font-family="Helvetica Neue, Arial, sans-serif" font-size="58" font-weight="200" fill="#ec4899" text-anchor="middle">X</text>
+  </g>
+</svg>

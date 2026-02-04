@@ -1,0 +1,57 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10j" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smoke10j" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rocket A -->
+  <path d="M 60 10
+           L 28 88
+           L 15 112
+           L 42 100
+           L 42 110
+           L 60 124
+           L 78 110
+           L 78 100
+           L 105 112
+           L 92 88
+           L 60 10
+           Z"
+        fill="url(#grad10j)"/>
+  
+  <!-- A crossbar -->
+  <rect x="40" y="62" width="40" height="12" rx="2" fill="#0a0a0a"/>
+  
+  <!-- "pex" next to rocket -->
+  <text x="115" y="95" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="70" 
+        font-weight="700" 
+        fill="white">pex</text>
+  
+  <!-- S smoke: RIGHT → LEFT → RIGHT -->
+  <path d="M 60 124
+           C 75 145, 130 155, 175 165
+           C 220 175, 225 205, 180 225
+           C 135 245, 70 255, 40 278
+           C 10 300, 30 325, 85 320
+           C 125 316, 155 300, 175 280"
+        fill="none" 
+        stroke="url(#smoke10j)" 
+        stroke-width="22" 
+        stroke-linecap="round"/>
+  
+  <!-- "ync" after the S -->
+  <text x="178" y="305" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="70" 
+        font-weight="700" 
+        fill="white">ync</text>
+</svg>

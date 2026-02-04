@@ -1,0 +1,77 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smoke11" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="30%" style="stop-color:#8080cc"/>
+      <stop offset="60%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#4080dd"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rocket A -->
+  <path d="M 50 10
+           L 22 82
+           L 10 105
+           L 35 94
+           L 35 102
+           L 50 115
+           L 65 102
+           L 65 94
+           L 90 105
+           L 78 82
+           L 50 10
+           Z"
+        fill="url(#grad11)"/>
+  
+  <!-- A crossbar -->
+  <rect x="32" y="58" width="36" height="12" rx="2" fill="#0a0a0a"/>
+  
+  <!-- CONTINUOUS SMOKE TRAIL forming "pex" then "Sync" -->
+  
+  <!-- From rocket exhaust → forms "p" -->
+  <path d="M 50 115
+           C 60 125, 85 125, 95 115
+           C 110 100, 130 95, 140 105
+           C 155 120, 150 145, 130 150
+           C 110 155, 95 145, 95 130
+           L 95 160"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- → forms "e" -->
+  <path d="M 140 140
+           C 155 135, 175 135, 185 145
+           C 195 155, 195 170, 180 175
+           C 165 180, 150 175, 150 160
+           L 185 160"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- → forms "x" -->
+  <path d="M 200 130 L 240 175 M 240 130 L 200 175"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- Smoke continues down → forms "S" -->
+  <path d="M 220 175
+           C 200 190, 180 195, 150 200
+           C 100 210, 60 220, 80 250
+           C 100 280, 160 275, 200 260"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- → forms "y" -->
+  <path d="M 200 210 L 220 240 L 240 210 M 220 240 L 220 275"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- → forms "n" -->
+  <path d="M 250 275 L 250 235 C 250 220, 270 220, 285 235 L 285 275"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+  
+  <!-- → forms "c" -->
+  <path d="M 330 235
+           C 315 225, 300 230, 300 250
+           C 300 270, 315 280, 335 275"
+        fill="none" stroke="url(#smoke11)" stroke-width="14" stroke-linecap="round"/>
+</svg>

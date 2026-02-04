@@ -1,0 +1,76 @@
+<svg viewBox="0 0 280 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smoke10d" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- APEX row -->
+  <g>
+    <!-- Rocket A - filled -->
+    <path d="M 50 10
+             L 22 75
+             L 10 95
+             L 35 84
+             L 35 92
+             L 50 105
+             L 65 92
+             L 65 84
+             L 90 95
+             L 78 75
+             L 50 10
+             Z"
+          fill="url(#grad10d)"/>
+    
+    <!-- A crossbar cutout -->
+    <path d="M 35 58 L 65 58 L 62 70 L 38 70 Z" fill="#0a0a0a"/>
+    
+    <!-- "pex" -->
+    <text x="100" y="78" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="62" 
+          font-weight="700" 
+          fill="white">pex</text>
+  </g>
+  
+  <!-- CLEAR S-SHAPED SMOKE -->
+  <!-- Top curve of S going RIGHT -->
+  <path d="M 50 105
+           C 50 115, 55 125, 80 130
+           C 110 136, 125 140, 125 155"
+        fill="none" 
+        stroke="url(#smoke10d)" 
+        stroke-width="18" 
+        stroke-linecap="round"/>
+  
+  <!-- Middle of S going LEFT -->
+  <path d="M 125 155
+           C 125 175, 100 185, 60 190
+           C 25 195, 10 205, 15 225"
+        fill="none" 
+        stroke="url(#smoke10d)" 
+        stroke-width="18" 
+        stroke-linecap="round"/>
+  
+  <!-- Bottom curve of S going RIGHT -->
+  <path d="M 15 225
+           C 20 245, 50 255, 90 250
+           C 120 246, 135 238, 145 225"
+        fill="none" 
+        stroke="url(#smoke10d)" 
+        stroke-width="18" 
+        stroke-linecap="round"/>
+  
+  <!-- "ync" positioned after the S -->
+  <text x="145" y="248" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="62" 
+        font-weight="700" 
+        fill="white">ync</text>
+</svg>

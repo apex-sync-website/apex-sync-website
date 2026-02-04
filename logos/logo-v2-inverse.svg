@@ -1,0 +1,45 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- S shape wrapping around - white outline -->
+  <path d="M 150 45 
+           C 180 45, 185 70, 175 90
+           C 165 110, 130 115, 100 115
+           C 70 115, 35 120, 25 145
+           C 15 170, 40 190, 80 190
+           C 100 190, 125 185, 145 175
+           L 145 155
+           C 125 165, 100 170, 80 170
+           C 55 170, 45 160, 50 145
+           C 55 130, 80 125, 110 125
+           C 140 125, 175 115, 185 85
+           C 195 55, 170 25, 130 25
+           C 100 25, 75 35, 55 50
+           L 55 70
+           C 75 55, 100 45, 130 45
+           C 145 45, 150 45, 150 45
+           Z" 
+        fill="none" stroke="white" stroke-width="4"/>
+  
+  <!-- A shape nested inside - gradient fill -->
+  <path d="M 100 55
+           L 65 155
+           L 85 155
+           L 92 135
+           L 132 135
+           L 139 155
+           L 159 155
+           L 124 55
+           Z
+           M 97 120
+           L 112 80
+           L 127 120
+           Z"
+        fill="url(#grad2)"/>
+</svg>

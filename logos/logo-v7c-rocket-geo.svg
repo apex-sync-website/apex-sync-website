@@ -1,0 +1,62 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+  <defs>
+    <linearGradient id="sleekGrad7c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="sleekFlame7c" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sleek rocket silhouette -->
+  <path d="M 100 5
+           C 140 20, 155 60, 155 100
+           L 155 190
+           L 175 220
+           L 155 210
+           L 155 230
+           L 100 250
+           L 45 230
+           L 45 210
+           L 25 220
+           L 45 190
+           L 45 100
+           C 45 60, 60 20, 100 5
+           Z"
+        fill="url(#sleekGrad7c)"/>
+  
+  <!-- Dark body panel -->
+  <path d="M 100 25
+           C 125 35, 135 60, 135 90
+           L 135 200
+           L 100 215
+           L 65 200
+           L 65 90
+           C 65 60, 75 35, 100 25
+           Z"
+        fill="#0a0a0a"/>
+  
+  <!-- GEOMETRIC/ANGULAR AS -->
+  <g transform="translate(100, 118) scale(0.6)">
+    <!-- Geometric S - two arcs -->
+    <path d="M 45 -50
+             L 45 -35
+             Q 45 -20, 25 -15
+             L -25 0
+             Q -45 5, -45 25
+             L -45 45
+             Q -45 60, -25 60
+             L 25 55"
+          fill="none" stroke="url(#sleekGrad7c)" stroke-width="10" stroke-linecap="square"/>
+    <!-- Angular A -->
+    <polygon points="0,-55 -38,60 -20,60 -12,32 18,32 26,60 44,60 12,-55" fill="white"/>
+    <polygon points="0,-20 -8,24 14,24" fill="#0a0a0a"/>
+  </g>
+  
+  <!-- Exhaust trail -->
+  <ellipse cx="100" cy="280" rx="30" ry="15" fill="url(#sleekFlame7c)"/>
+  <ellipse cx="100" cy="265" rx="20" ry="10" fill="#a855f7" opacity="0.5"/>
+</svg>

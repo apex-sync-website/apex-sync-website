@@ -1,0 +1,80 @@
+<svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+  <defs>
+    <linearGradient id="rocketGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="50%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#fbbf24"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rocket body -->
+  <path d="M 100 10
+           C 130 10, 150 40, 150 80
+           L 150 180
+           L 130 180
+           L 130 200
+           L 150 230
+           L 100 210
+           L 50 230
+           L 70 200
+           L 70 180
+           L 50 180
+           L 50 80
+           C 50 40, 70 10, 100 10
+           Z"
+        fill="#1a1a2e" stroke="url(#rocketGrad)" stroke-width="3"/>
+  
+  <!-- Rocket nose cone -->
+  <path d="M 100 10
+           C 120 10, 135 30, 140 55
+           L 100 45
+           L 60 55
+           C 65 30, 80 10, 100 10
+           Z"
+        fill="url(#rocketGrad)"/>
+  
+  <!-- Left fin -->
+  <path d="M 50 150 L 25 200 L 50 180 Z" fill="url(#rocketGrad)"/>
+  
+  <!-- Right fin -->
+  <path d="M 150 150 L 175 200 L 150 180 Z" fill="url(#rocketGrad)"/>
+  
+  <!-- Window/porthole with AS inside -->
+  <circle cx="100" cy="110" r="35" fill="#0a0a0a" stroke="url(#rocketGrad)" stroke-width="2"/>
+  
+  <!-- AS monogram inside window -->
+  <g transform="translate(100, 110) scale(0.35)">
+    <!-- S curve -->
+    <path d="M 40 -50 
+             Q 70 -50, 70 -25
+             Q 70 0, 0 10
+             Q -70 20, -70 45
+             Q -70 70, -30 70
+             Q 0 70, 30 55"
+          fill="none" stroke="url(#rocketGrad)" stroke-width="14" stroke-linecap="round"/>
+    <!-- A -->
+    <polygon points="0,-55 -30,55 -15,55 -8,35 22,35 29,55 44,55 14,-55" fill="white"/>
+    <polygon points="0,-25 -5,25 15,25" fill="#0a0a0a"/>
+  </g>
+  
+  <!-- Flame -->
+  <path d="M 80 210
+           Q 85 240, 100 270
+           Q 115 240, 120 210
+           Q 110 225, 100 250
+           Q 90 225, 80 210
+           Z"
+        fill="url(#flameGrad)" opacity="0.9"/>
+  
+  <!-- Inner flame -->
+  <path d="M 90 215
+           Q 95 235, 100 255
+           Q 105 235, 110 215
+           Z"
+        fill="#fef3c7"/>
+</svg>

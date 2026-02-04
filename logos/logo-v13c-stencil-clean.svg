@@ -1,0 +1,30 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+  <defs>
+    <linearGradient id="grad13c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rocket body -->
+  <path d="M 100 5 C 140 20, 155 60, 155 100 L 155 190 L 175 220 L 155 210 L 155 230 L 100 250 L 45 230 L 45 210 L 25 220 L 45 190 L 45 100 C 45 60, 60 20, 100 5 Z" fill="url(#grad13c)"/>
+  <path d="M 100 25 C 125 35, 135 60, 135 90 L 135 200 L 100 215 L 65 200 L 65 90 C 65 60, 75 35, 100 25 Z" fill="#0a0a0a"/>
+  
+  <!-- Clean Stencil AS -->
+  <g transform="translate(100, 115) scale(-1,1)">
+    <!-- Stencil A - outline with stencil breaks -->
+    <path d="M 0,-40 L -20,35 L -10,35 L -6,20 L 6,20 L 10,35 L 20,35 L 0,-40 Z M 0,-15 L -4,14 L 4,14 Z" 
+          fill="none" stroke="white" stroke-width="2.5"/>
+    <!-- Stencil break lines -->
+    <line x1="-15" y1="-5" x2="15" y2="-5" stroke="#0a0a0a" stroke-width="5"/>
+    
+    <!-- Stencil S - outline with stencil breaks -->
+    <path d="M 15,48 C 15,42 0,40 -8,44 C -16,48 -16,56 -8,60 L 8,66 C 16,70 16,82 8,86 C 0,90 -15,88 -15,80"
+          fill="none" stroke="url(#grad13c)" stroke-width="2.5"/>
+    <!-- Stencil break -->
+    <line x1="-12" y1="65" x2="12" y2="65" stroke="#0a0a0a" stroke-width="5"/>
+  </g>
+  
+  <ellipse cx="100" cy="270" rx="25" ry="12" fill="#a855f7" opacity="0.5"/>
+</svg>

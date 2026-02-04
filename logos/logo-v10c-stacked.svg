@@ -1,0 +1,71 @@
+<svg viewBox="0 0 280 240" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smoke10c" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- APEX row -->
+  <g>
+    <!-- Rocket A - filled -->
+    <path d="M 50 10
+             L 22 75
+             L 10 95
+             L 35 84
+             L 35 92
+             L 50 105
+             L 65 92
+             L 65 84
+             L 90 95
+             L 78 75
+             L 50 10
+             Z"
+          fill="url(#grad10c)"/>
+    
+    <!-- A window/crossbar cutout -->
+    <path d="M 35 58 L 65 58 L 62 70 L 38 70 Z" fill="#0a0a0a"/>
+    
+    <!-- "pex" -->
+    <text x="100" y="78" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="62" 
+          font-weight="700" 
+          fill="white">pex</text>
+  </g>
+  
+  <!-- Smoke/exhaust from rocket that forms the S -->
+  <path d="M 50 105
+           Q 70 120, 65 140
+           Q 58 165, 30 175
+           Q 5 185, 15 210
+           Q 25 235, 65 230
+           Q 95 225, 115 205"
+        fill="none" 
+        stroke="url(#smoke10c)" 
+        stroke-width="16" 
+        stroke-linecap="round"/>
+  
+  <!-- Inner smoke highlight -->
+  <path d="M 50 110
+           Q 62 122, 58 138
+           Q 52 158, 32 168"
+        fill="none" 
+        stroke="white" 
+        stroke-width="5" 
+        stroke-linecap="round"
+        opacity="0.3"/>
+  
+  <!-- "ync" -->
+  <text x="115" y="220" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="62" 
+        font-weight="700" 
+        fill="white">ync</text>
+</svg>

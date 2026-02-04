@@ -1,0 +1,71 @@
+<svg viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10e" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smoke10e" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.7"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- APEX row -->
+  <g>
+    <!-- Rocket A -->
+    <path d="M 55 10
+             L 25 80
+             L 12 100
+             L 38 88
+             L 38 96
+             L 55 110
+             L 72 96
+             L 72 88
+             L 98 100
+             L 85 80
+             L 55 10
+             Z"
+          fill="url(#grad10e)"/>
+    
+    <!-- A crossbar cutout -->
+    <path d="M 38 60 L 72 60 L 68 74 L 42 74 Z" fill="#0a0a0a"/>
+    
+    <!-- "pex" -->
+    <text x="110" y="82" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="65" 
+          font-weight="700" 
+          fill="white">pex</text>
+  </g>
+  
+  <!-- BIG OBVIOUS S made of smoke -->
+  <!-- This is a proper S letterform -->
+  <path d="M 55 110
+           C 55 115, 60 120, 90 125
+           L 130 132
+           C 165 138, 175 150, 170 170
+           C 165 190, 140 200, 100 205
+           L 55 212
+           C 20 218, 5 235, 15 255
+           C 25 275, 60 280, 100 275
+           L 150 268"
+        fill="none" 
+        stroke="url(#smoke10e)" 
+        stroke-width="22" 
+        stroke-linecap="round"
+        stroke-linejoin="round"/>
+  
+  <!-- Smoke wisp details -->
+  <path d="M 60 118 C 75 122, 95 126, 115 130" 
+        fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+  <path d="M 70 205 C 45 210, 30 225, 35 245" 
+        fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.25"/>
+  
+  <!-- "ync" -->
+  <text x="155" y="272" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="65" 
+        font-weight="700" 
+        fill="white">ync</text>
+</svg>

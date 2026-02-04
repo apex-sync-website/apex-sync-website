@@ -1,0 +1,59 @@
+<svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Row 1: Rocket-A + "pex" -->
+  <g transform="translate(20, 15)">
+    <!-- Rocket outline = A -->
+    <path d="M 40 0
+             L 15 60
+             L 5 78
+             L 28 68
+             L 28 75
+             L 40 85
+             L 52 75
+             L 52 68
+             L 75 78
+             L 65 60
+             L 40 0
+             Z"
+          fill="none"
+          stroke="url(#grad10b)" 
+          stroke-width="4"
+          stroke-linejoin="round"/>
+    
+    <!-- A crossbar -->
+    <line x1="25" y1="48" x2="55" y2="48" stroke="url(#grad10b)" stroke-width="4"/>
+    
+    <!-- "pex" -->
+    <text x="85" y="62" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="56" 
+          font-weight="600" 
+          fill="white">pex</text>
+  </g>
+  
+  <!-- Smoke trail connecting A to S -->
+  <path d="M 60 100
+           C 75 115, 85 130, 78 150
+           C 68 175, 35 180, 25 195
+           C 15 210, 25 225, 55 225
+           C 80 225, 110 215, 130 200"
+        fill="none" 
+        stroke="url(#grad10b)" 
+        stroke-width="10" 
+        stroke-linecap="round"
+        opacity="0.9"/>
+  
+  <!-- Row 2: "ync" (S is the smoke) -->
+  <text x="130" y="210" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="56" 
+        font-weight="600" 
+        fill="white">ync</text>
+</svg>

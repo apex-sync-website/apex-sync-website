@@ -1,0 +1,56 @@
+<svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="rocketGrad9h" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="smokeGrad9h" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.6"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- THE "A" - Rocket pointing up-right -->
+  <g transform="translate(20, 10)">
+    <path d="M 50 5
+             L 25 75
+             L 15 90
+             L 35 82
+             L 35 88
+             L 50 95
+             L 65 88
+             L 65 82
+             L 85 90
+             L 75 75
+             L 50 5
+             Z"
+          fill="url(#rocketGrad9h)"/>
+    
+    <!-- A crossbar / window -->
+    <path d="M 38 58 L 62 58 L 60 67 L 40 67 Z" fill="#0a0a0a"/>
+  </g>
+  
+  <!-- THE "S" - Smoke trail flowing right -->
+  <path d="M 70 95
+           C 95 105, 115 115, 130 105
+           C 150 92, 140 70, 115 65
+           C 90 60, 85 45, 110 40
+           C 130 36, 155 45, 170 55"
+        fill="none" 
+        stroke="url(#smokeGrad9h)" 
+        stroke-width="14" 
+        stroke-linecap="round"/>
+  
+  <!-- "pex Sync" text -->
+  <text x="185" y="82" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="58" 
+        font-weight="700" 
+        fill="white">pex</text>
+  <text x="310" y="82" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="58" 
+        font-weight="700" 
+        fill="url(#rocketGrad9h)">Sync</text>
+</svg>

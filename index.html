@@ -1,0 +1,3247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Sync | Performance Marketing - Results, Not Retainers</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="AI-powered creator marketing that delivers results. Performance-based influencer campaigns, UGC at scale, and celebrity partnerships. You only pay when it works.">
+  <meta name="keywords" content="influencer marketing, creator campaigns, UGC, performance marketing, AI outreach, creator partnerships, brand deals">
+  <meta name="author" content="Apex Sync">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph (Facebook, LinkedIn, Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apexsync.biz">
+  <meta property="og:title" content="Apex Sync | Results, Not Retainers">
+  <meta property="og:description" content="AI-powered creator marketing. Performance-based campaigns. You only pay when it works.">
+  <meta property="og:image" content="https://apexsync.biz/og-image.png">
+  <meta property="og:site_name" content="Apex Sync">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Apex Sync | Results, Not Retainers">
+  <meta name="twitter:description" content="AI-powered creator marketing. Performance-based campaigns. You only pay when it works.">
+  <meta name="twitter:image" content="https://apexsync.biz/og-image.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="canonical" href="https://apexsync.biz">
+
+  <!-- External Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    /* Base Settings */
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #000000;
+      color: #e5e5e5;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ============================================ */
+    /* LOADING SCREEN - DRAMATIC INTRO             */
+    /* ============================================ */
+    .loader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .loader.loaded {
+      animation: loaderExit 1.2s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+    }
+    /* CSS fallback - auto-hide after 2.5s */
+    .loader {
+      animation: loaderAutoHide 0s 2.5s forwards;
+    }
+    @keyframes loaderAutoHide {
+      to { opacity: 0; pointer-events: none; visibility: hidden; }
+    }
+    @keyframes loaderExit {
+      0% { clip-path: inset(0 0 0 0); }
+      100% { clip-path: inset(0 0 100% 0); }
+    }
+    .loader-logo {
+      width: 120px;
+      height: auto;
+      animation: loaderPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.3)); }
+      50% { transform: scale(1.1); filter: drop-shadow(0 0 40px rgba(34, 211, 238, 0.8)); }
+    }
+    .loader-text {
+      margin-top: 30px;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #666;
+      overflow: hidden;
+    }
+    .loader-text span {
+      display: inline-block;
+      animation: loaderTextReveal 0.5s ease forwards;
+      opacity: 0;
+      transform: translateY(100%);
+    }
+
+    /* ============================================ */
+    /* CUSTOM CURSOR - MAGNETIC TRAIL              */
+    /* ============================================ */
+    /* Custom Cursor */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99998;
+      mix-blend-mode: difference;
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+    .cursor.hovering {
+      width: 60px;
+      height: 60px;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.5);
+      mix-blend-mode: normal;
+    }
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      background: #a855f7;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99997;
+    }
+    #trail1 { opacity: 0.6; background: #a855f7; }
+    #trail2 { width: 6px; height: 6px; opacity: 0.5; background: #ec4899; }
+    #trail3 { width: 5px; height: 5px; opacity: 0.4; background: #60a5fa; }
+    #trail4 { width: 4px; height: 4px; opacity: 0.3; background: #a855f7; }
+    #trail5 { width: 3px; height: 3px; opacity: 0.2; background: #ec4899; }
+    #trail6 { width: 2px; height: 2px; opacity: 0.1; background: #60a5fa; }
+    
+    @media (pointer: coarse) {
+      .cursor, .cursor-trail { display: none !important; }
+    }
+    @media (hover: none) {
+      .cursor, .cursor-trail { display: none !important; }
+    }
+
+    /* ============================================ */
+    /* TEXT DISTORTION - WARP ON SCROLL            */
+    /* ============================================ */
+    .distort-text {
+      display: inline-block;
+      transition: transform 0.1s ease;
+    }
+    .warp-container {
+      perspective: 1000px;
+      transform-style: preserve-3d;
+    }
+    .warp-text {
+      display: inline-block;
+      transform-origin: center center;
+      will-change: transform;
+    }
+    
+    /* Glitch text effect */
+    .glitch-text {
+      position: relative;
+    }
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+    .glitch-text.active::before {
+      animation: glitch1 0.3s ease;
+      color: #60a5fa;
+      opacity: 0.8;
+    }
+    .glitch-text.active::after {
+      animation: glitch2 0.3s ease;
+      color: #ec4899;
+      opacity: 0.8;
+    }
+    @keyframes glitch1 {
+      0%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-5px, 2px); }
+      40% { clip-path: inset(40% 0 30% 0); transform: translate(5px, -2px); }
+      60% { clip-path: inset(60% 0 10% 0); transform: translate(-3px, 1px); }
+      80% { clip-path: inset(10% 0 80% 0); transform: translate(3px, -1px); }
+    }
+    @keyframes glitch2 {
+      0%, 100% { clip-path: inset(100% 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(60% 0 20% 0); transform: translate(5px, -2px); }
+      40% { clip-path: inset(30% 0 40% 0); transform: translate(-5px, 2px); }
+      60% { clip-path: inset(10% 0 60% 0); transform: translate(3px, -1px); }
+      80% { clip-path: inset(80% 0 10% 0); transform: translate(-3px, 1px); }
+    }
+
+    /* Velocity-based text stretch */
+    .velocity-text {
+      transition: transform 0.05s linear;
+    }
+
+    /* Reveal text character by character */
+    .char-reveal span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(100px) rotateX(-90deg);
+      transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .char-reveal.revealed span {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    /* Horizontal scroll text */
+    .marquee-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-content {
+      display: inline-block;
+      animation: marquee 20s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Scale on scroll */
+    .scale-reveal {
+      font-size: clamp(80px, 20vw, 300px);
+      line-height: 0.85;
+      font-weight: 900;
+      opacity: 0.1;
+      transform: scale(1.5);
+      transition: all 0.1s linear;
+    }
+    .scale-reveal.in-view {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @keyframes loaderTextReveal {
+      0% { opacity: 0; transform: translateY(100%); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Giant scrolling text banner */
+    .mega-marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 40px 0;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.05), transparent);
+    }
+    .mega-marquee-content {
+      display: inline-flex;
+      animation: megaMarquee 30s linear infinite;
+    }
+    .mega-marquee-text {
+      font-size: clamp(60px, 12vw, 150px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.15);
+      padding: 0 40px;
+      white-space: nowrap;
+    }
+    .mega-marquee-text.filled {
+      -webkit-text-stroke: none;
+      background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    @keyframes megaMarquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Perspective tilt on scroll */
+    .perspective-section {
+      perspective: 1500px;
+      transform-style: preserve-3d;
+    }
+    .perspective-content {
+      transform-origin: center top;
+      transition: transform 0.1s ease;
+    }
+
+    /* Magnetic button EXTREME */
+    .magnetic-extreme {
+      transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Stagger reveal for cards */
+    .stagger-reveal > * {
+      opacity: 0;
+      transform: translateY(60px) rotateX(-15deg);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stagger-reveal.revealed > *:nth-child(1) { transition-delay: 0s; }
+    .stagger-reveal.revealed > *:nth-child(2) { transition-delay: 0.1s; }
+    .stagger-reveal.revealed > *:nth-child(3) { transition-delay: 0.2s; }
+    .stagger-reveal.revealed > *:nth-child(4) { transition-delay: 0.3s; }
+    .stagger-reveal.revealed > * {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+
+    /* Noise overlay intensified */
+    .noise-intense::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.08;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Split text reveal */
+    .split-reveal {
+      overflow: hidden;
+    }
+    .split-reveal-inner {
+      display: block;
+      transform: translateY(110%);
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .split-reveal.revealed .split-reveal-inner {
+      transform: translateY(0);
+    }
+
+    /* ============================================ */
+    /* LOCOMOTIVE STYLE - HOVER IMAGE REVEAL       */
+    /* ============================================ */
+    .hover-image-reveal {
+      position: fixed;
+      width: 300px;
+      height: 200px;
+      pointer-events: none;
+      z-index: 9990;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.8);
+    }
+    .hover-image-reveal.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .hover-image-reveal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Giant stacked project list */
+    .giant-link {
+      display: block;
+      font-size: clamp(40px, 10vw, 120px);
+      font-weight: 800;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      position: relative;
+    }
+    .giant-link:hover {
+      -webkit-text-stroke: none;
+      color: white;
+      transform: translateX(20px);
+    }
+    .giant-link::after {
+      content: '→';
+      position: absolute;
+      right: 0;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease;
+    }
+    .giant-link:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Arrow links - Locomotive style */
+    .arrow-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #888;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .arrow-link:hover {
+      color: white;
+      gap: 12px;
+    }
+    .arrow-link::after {
+      content: '→';
+      transition: transform 0.3s ease;
+    }
+    .arrow-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* Service card with image reveal */
+    .service-card {
+      position: relative;
+      padding: 40px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+    }
+    .service-card:hover {
+      border-color: rgba(255,255,255,0.3);
+    }
+    .service-title {
+      font-size: clamp(32px, 6vw, 72px);
+      font-weight: 700;
+      color: white;
+      transition: all 0.4s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .service-card:hover .service-title {
+      transform: translateX(20px);
+    }
+    .service-number {
+      font-size: 14px;
+      color: #666;
+      font-weight: 400;
+    }
+
+    /* Credibility marker */
+    .credibility-marker {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .credibility-marker strong {
+      color: #999;
+      font-weight: 600;
+    }
+
+    /* ============================================ */
+    /* FILM GRAIN / NOISE TEXTURE                  */
+    /* ============================================ */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    /* ============================================ */
+    /* PRISMATIC LIGHT TRAILS                      */
+    /* ============================================ */
+    .prismatic-trail {
+      position: absolute;
+      width: 300px;
+      height: 600px;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 0, 128, 0.15) 0%,
+        rgba(255, 128, 0, 0.1) 20%,
+        rgba(255, 255, 0, 0.1) 40%,
+        rgba(0, 255, 128, 0.1) 60%,
+        rgba(0, 128, 255, 0.15) 80%,
+        rgba(128, 0, 255, 0.1) 100%
+      );
+      filter: blur(60px);
+      opacity: 0.5;
+      pointer-events: none;
+      animation: prismatic-drift 15s ease-in-out infinite;
+    }
+
+    .prismatic-trail-2 {
+      width: 200px;
+      height: 800px;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 200, 255, 0.2) 0%,
+        rgba(128, 0, 255, 0.15) 50%,
+        rgba(255, 0, 128, 0.1) 100%
+      );
+      animation: prismatic-drift-reverse 20s ease-in-out infinite;
+    }
+
+    @keyframes prismatic-drift {
+      0%, 100% { transform: translateY(0) rotate(-15deg) scale(1); }
+      50% { transform: translateY(-100px) rotate(-10deg) scale(1.1); }
+    }
+
+    @keyframes prismatic-drift-reverse {
+      0%, 100% { transform: translateY(0) rotate(15deg) scale(1); }
+      50% { transform: translateY(100px) rotate(20deg) scale(0.9); }
+    }
+
+    /* ============================================ */
+    /* GLITCH / SCRAMBLE TEXT EFFECT               */
+    /* ============================================ */
+    .glitch-text {
+      position: relative;
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
+
+    .glitch-text:hover::before {
+      animation: glitch-1 0.3s ease-in-out;
+      color: #00ffff;
+      opacity: 0.8;
+    }
+
+    .glitch-text:hover::after {
+      animation: glitch-2 0.3s ease-in-out;
+      color: #ff00ff;
+      opacity: 0.8;
+    }
+
+    @keyframes glitch-1 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 3px); }
+      40% { clip-path: inset(40% 0 40% 0); transform: translate(3px, -3px); }
+      60% { clip-path: inset(60% 0 20% 0); transform: translate(-3px, 0); }
+      80% { clip-path: inset(80% 0 5% 0); transform: translate(3px, 3px); }
+    }
+
+    @keyframes glitch-2 {
+      0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+      20% { clip-path: inset(60% 0 20% 0); transform: translate(3px, -3px); }
+      40% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 3px); }
+      60% { clip-path: inset(40% 0 40% 0); transform: translate(3px, 0); }
+      80% { clip-path: inset(5% 0 80% 0); transform: translate(-3px, -3px); }
+    }
+
+    /* ============================================ */
+    /* BOLD STATEMENT TEXT                         */
+    /* ============================================ */
+    .statement-section {
+      padding: 8rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .statement-text {
+      font-size: clamp(3rem, 12vw, 10rem);
+      font-weight: 800;
+      line-height: 0.9;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 0%, #666 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0.15;
+      transition: opacity 0.5s ease;
+    }
+
+    .statement-text.is-active {
+      opacity: 1;
+      background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    /* ============================================ */
+    /* CARD LIGHT REFLECTION                       */
+    /* ============================================ */
+    .card-reflection {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      background: radial-gradient(
+        600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.1),
+        transparent 40%
+      );
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .tilt-card:hover .card-reflection {
+      opacity: 1;
+    }
+
+    /* ============================================ */
+    /* SCRAMBLE TEXT ON HOVER                      */
+    /* ============================================ */
+    .scramble-hover {
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    /* ============================================ */
+    /* MORPHING SHAPE ENTITY                       */
+    /* ============================================ */
+    .morph-shape {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.1s ease-out;
+    }
+
+    .morph-inner {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(59, 130, 246, 0.2) 0%,
+        rgba(139, 92, 246, 0.15) 50%,
+        rgba(236, 72, 153, 0.2) 100%
+      );
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      transition: border-radius 0.1s ease-out, transform 0.15s ease-out;
+      border-radius: var(--morph-r1, 60%) var(--morph-r2, 40%) var(--morph-r3, 30%) var(--morph-r4, 70%) / var(--morph-r5, 60%) var(--morph-r6, 30%) var(--morph-r7, 70%) var(--morph-r8, 40%);
+    }
+
+    .morph-glow {
+      position: absolute;
+      width: 90%;
+      height: 90%;
+      background: radial-gradient(
+        circle at center,
+        rgba(96, 165, 250, 0.5) 0%,
+        rgba(139, 92, 246, 0.3) 40%,
+        transparent 70%
+      );
+      filter: blur(40px);
+      transition: border-radius 0.1s ease-out;
+      border-radius: var(--morph-r1, 60%) var(--morph-r2, 40%) var(--morph-r3, 30%) var(--morph-r4, 70%) / var(--morph-r5, 60%) var(--morph-r6, 30%) var(--morph-r7, 70%) var(--morph-r8, 40%);
+      animation: morph-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes morph-pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    /* Shape presets that morph between based on scroll/mouse */
+    .morph-shape[data-shape="circle"] .morph-inner,
+    .morph-shape[data-shape="circle"] .morph-glow {
+      border-radius: 50%;
+    }
+
+    .morph-shape[data-shape="blob1"] .morph-inner,
+    .morph-shape[data-shape="blob1"] .morph-glow {
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    .morph-shape[data-shape="blob2"] .morph-inner,
+    .morph-shape[data-shape="blob2"] .morph-glow {
+      border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    }
+
+    .morph-shape[data-shape="star"] .morph-inner,
+    .morph-shape[data-shape="star"] .morph-glow {
+      border-radius: 50% 20% 50% 20% / 20% 50% 20% 50%;
+    }
+
+    .morph-shape[data-shape="diamond"] .morph-inner,
+    .morph-shape[data-shape="diamond"] .morph-glow {
+      border-radius: 10% 50% 10% 50% / 50% 10% 50% 10%;
+    }
+
+    .morph-shape[data-shape="heart"] .morph-inner,
+    .morph-shape[data-shape="heart"] .morph-glow {
+      border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    }
+
+    .morph-shape[data-shape="shield"] .morph-inner,
+    .morph-shape[data-shape="shield"] .morph-glow {
+      border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+    }
+
+    /* Typography & Utilities */
+    .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899, #60a5fa);
+      background-size: 300% 300%;
+      animation: gradient-shift 8s ease infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Aurora Background */
+    .aurora-bg {
+      background:
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.2) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.2) 0px, transparent 50%),
+        radial-gradient(at 0% 100%, rgba(168, 85, 247, 0.2) 0px, transparent 50%);
+      background-size: 300% 300%;
+      animation: aurora-drift 20s ease infinite;
+    }
+
+    @keyframes aurora-drift {
+      0%, 100% { background-position: 0% 0%; }
+      25% { background-position: 100% 0%; }
+      50% { background-position: 100% 100%; }
+      75% { background-position: 0% 100%; }
+    }
+
+    /* Card Styles */
+    .tilt-card {
+      position: relative;
+      transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+    }
+
+    .tilt-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .tilt-card:hover::before { opacity: 1; }
+
+    /* Pulsing Center Card */
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow:
+          0 0 20px rgba(59, 130, 246, 0.3),
+          0 0 40px rgba(168, 85, 247, 0.2),
+          0 0 60px rgba(59, 130, 246, 0.1);
+      }
+      50% {
+        box-shadow:
+          0 0 30px rgba(59, 130, 246, 0.5),
+          0 0 60px rgba(168, 85, 247, 0.3),
+          0 0 90px rgba(59, 130, 246, 0.2);
+      }
+    }
+
+    .pulse-card { animation: pulse-glow 3s ease-in-out infinite; }
+
+    /* Scroll Animations - GSAP handles these, CSS is fallback */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUpIn 0.8s ease forwards;
+    }
+    @keyframes fadeUpIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-up.delay-100 { animation-delay: 0.1s; }
+    .fade-up.delay-200 { animation-delay: 0.2s; }
+    .fade-up.delay-300 { animation-delay: 0.3s; }
+
+    /* Flying logo styles */
+    #flying-logo {
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s linear;
+      z-index: 20;
+    }
+    
+    /* Three.js 3D Canvas */
+    #three-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* Audio Player */
+    .audio-control {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .audio-control:hover {
+      border-color: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+    .audio-control.playing .audio-icon {
+      animation: audioPulse 1s ease-in-out infinite;
+    }
+    .audio-icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+    .audio-bar {
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to top, #60a5fa, #a855f7);
+      border-radius: 2px;
+      animation: audioBar 0.5s ease-in-out infinite alternate;
+    }
+    .audio-bar:nth-child(1) { animation-delay: 0s; height: 60%; }
+    .audio-bar:nth-child(2) { animation-delay: 0.1s; height: 100%; }
+    .audio-bar:nth-child(3) { animation-delay: 0.2s; height: 40%; }
+    .audio-bar:nth-child(4) { animation-delay: 0.3s; height: 80%; }
+    @keyframes audioBar {
+      to { height: 20%; }
+    }
+    .audio-control:not(.playing) .audio-bar {
+      animation: none;
+      height: 3px !important;
+    }
+    .speed-slider-container {
+      position: fixed;
+      bottom: 30px;
+      left: 100px;
+      z-index: 1000;
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      padding: 12px 16px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+    .speed-slider-container:hover {
+      opacity: 1;
+      background: rgba(0, 255, 255, 0.2);
+    }
+    .speed-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      min-width: 40px;
+    }
+    .speed-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100px;
+      height: 4px;
+      background: rgba(0, 255, 255, 0.3);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .speed-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .speed-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    .speed-slider::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+    }
+    .breathe {
+      animation: textBreathe var(--breath-duration, 1s) ease-in-out infinite;
+    }
+    @keyframes textBreathe {
+      0%, 100% { opacity: 0.85; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.02); }
+    }
+    .audio-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+    @keyframes audioPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Click Ripple Effect */
+    .ripple-effect {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99995;
+      border: 2px solid rgba(168, 85, 247, 0.6);
+      animation: rippleExpand 1s ease-out forwards;
+    }
+    @keyframes rippleExpand {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
+      100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+      }
+    }
+    
+    /* Mouse trail ripples */
+    .mouse-ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99994;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.3) 0%, transparent 70%);
+      animation: mouseRipple 0.8s ease-out forwards;
+    }
+    @keyframes mouseRipple {
+      0% {
+        width: 10px;
+        height: 10px;
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+    
+    /* Scroll ripple waves */
+    .scroll-ripple {
+      position: fixed;
+      left: 50%;
+      width: 100vw;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.5), transparent);
+      pointer-events: none;
+      z-index: 99993;
+      animation: scrollWave 0.6s ease-out forwards;
+    }
+    @keyframes scrollWave {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) scaleX(0.5);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) scaleX(1.5);
+      }
+    }
+
+    /* Smoke particles */
+    .smoke-particle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: smokeFade 1.5s ease-out forwards;
+    }
+    @keyframes smokeFade {
+      0% { 
+        opacity: 0.8; 
+        transform: scale(1) translate(0, 0);
+      }
+      100% { 
+        opacity: 0; 
+        transform: scale(3) translate(var(--smoke-x, 0), var(--smoke-y, 20px));
+      }
+    }
+
+    .reveal-text {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Staggered delays for elements GSAP doesn't catch */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+    .delay-400 { transition-delay: 0.4s; }
+    .delay-500 { transition-delay: 0.5s; }
+
+    /* Word Reveal Animation */
+    .word-reveal {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(20px);
+      animation: word-appear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes word-appear {
+      to {
+        opacity: 1;
+        filter: blur(0px);
+        transform: translateY(0);
+      }
+    }
+
+    /* Button Shimmer */
+    .btn-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+
+    .btn-shimmer:hover::after {
+      animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+
+    /* Cursor Trail */
+    #cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(96, 165, 250, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border-color 0.3s ease;
+      mix-blend-mode: screen;
+    }
+
+    #cursor-glow.hovered {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(96, 165, 250, 0.1);
+      border-color: rgba(168, 85, 247, 0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Cursor Trail Effect */
+    .cursor-trail {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.8), transparent);
+      pointer-events: none;
+      z-index: 9998;
+      animation: trail-fade 0.6s ease-out forwards;
+    }
+
+    @keyframes trail-fade {
+      to {
+        opacity: 0;
+        transform: scale(2);
+      }
+    }
+
+    /* Particle Canvas */
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    /* Floating Grid */
+    .floating-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.5;
+      animation: grid-drift 20s linear infinite;
+    }
+
+    @keyframes grid-drift {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    /* Marquee Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-content {
+      display: flex;
+      animation: marquee 30s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-container:hover .marquee-content {
+      animation-play-state: paused;
+    }
+
+    /* Stat Counter Glow */
+    .stat-glow {
+      animation: stat-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes stat-pulse {
+      0%, 100% { filter: drop-shadow(0 0 8px currentColor); opacity: 0.9; }
+      50% { filter: drop-shadow(0 0 16px currentColor); opacity: 1; }
+    }
+
+    /* Magnetic Button */
+    .magnetic {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Parallax Layers */
+    .parallax-layer {
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Micro Interactions */
+    .micro-lift {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .micro-lift:hover {
+      transform: translateY(-4px) scale(1.02);
+    }
+
+    /* Breathing Effect */
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.2); opacity: 0.5; }
+    }
+
+    /* Delay utilities */
+    .delay-100 { animation-delay: 0.1s; transition-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; transition-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; transition-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; transition-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; transition-delay: 0.5s; }
+
+    /* ============================================ */
+    /* MORPHING BACKGROUND SYSTEM                  */
+    /* ============================================ */
+    .morphing-background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      background: #000000;
+    }
+
+    /* Morphing Blob Animations */
+    @keyframes morph-blob-1 {
+      0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      25% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: translate(50px, 100px) rotate(90deg) scale(1.1);
+      }
+      50% {
+        border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+        transform: translate(-30px, -50px) rotate(180deg) scale(0.9);
+      }
+      75% {
+        border-radius: 40% 50% 60% 50% / 60% 40% 50% 50%;
+        transform: translate(80px, -80px) rotate(270deg) scale(1.05);
+      }
+    }
+
+    @keyframes morph-blob-2 {
+      0%, 100% {
+        border-radius: 40% 60% 60% 40% / 70% 30% 70% 30%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      33% {
+        border-radius: 70% 30% 50% 50% / 30% 70% 50% 50%;
+        transform: translate(-100px, 50px) rotate(120deg) scale(1.15);
+      }
+      66% {
+        border-radius: 50% 50% 30% 70% / 60% 40% 60% 40%;
+        transform: translate(50px, -100px) rotate(240deg) scale(0.85);
+      }
+    }
+
+    @keyframes morph-blob-3 {
+      0%, 100% {
+        border-radius: 30% 70% 70% 30% / 40% 50% 60% 50%;
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      20% {
+        border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+        transform: translate(60px, -60px) rotate(72deg) scale(1.1);
+      }
+      40% {
+        border-radius: 50% 50% 60% 40% / 30% 70% 40% 60%;
+        transform: translate(-40px, 80px) rotate(144deg) scale(0.95);
+      }
+      60% {
+        border-radius: 40% 60% 50% 50% / 60% 30% 50% 50%;
+        transform: translate(-80px, -40px) rotate(216deg) scale(1.05);
+      }
+      80% {
+        border-radius: 70% 30% 40% 60% / 50% 50% 60% 40%;
+        transform: translate(40px, 60px) rotate(288deg) scale(0.9);
+      }
+    }
+
+    /* Geometric Shape Rotations */
+    @keyframes rotate-shape {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    @keyframes float-shape {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-100px) rotate(180deg); }
+    }
+
+    @keyframes morph-square {
+      0%, 100% { border-radius: 10%; transform: rotate(0deg) scale(1); }
+      25% { border-radius: 40%; transform: rotate(90deg) scale(1.2); }
+      50% { border-radius: 50%; transform: rotate(180deg) scale(0.8); }
+      75% { border-radius: 30%; transform: rotate(270deg) scale(1.1); }
+    }
+
+    /* Blob Styles */
+    .blob {
+      position: absolute;
+      filter: blur(80px);
+      opacity: 0.3;
+      mix-blend-mode: screen;
+    }
+
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+      top: 20%;
+      left: 10%;
+      animation: morph-blob-1 25s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      width: 700px;
+      height: 700px;
+      background: linear-gradient(225deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      bottom: 15%;
+      right: 10%;
+      animation: morph-blob-2 30s ease-in-out infinite;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(315deg, #8b5cf6 0%, #ec4899 50%, #f97316 100%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: morph-blob-3 20s ease-in-out infinite;
+      animation-delay: -10s;
+    }
+
+    /* Geometric Shapes */
+    .geometric-shape {
+      position: absolute;
+      border: 2px solid rgba(96, 165, 250, 0.2);
+      backdrop-filter: blur(2px);
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      top: 15%;
+      right: 20%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+      animation: morph-square 15s ease-in-out infinite, rotate-shape 30s linear infinite;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      bottom: 20%;
+      left: 15%;
+      background: linear-gradient(225deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+      animation: morph-square 20s ease-in-out infinite reverse, float-shape 25s ease-in-out infinite;
+      animation-delay: -5s;
+    }
+
+    .shape-3 {
+      width: 100px;
+      height: 100px;
+      top: 40%;
+      left: 25%;
+      background: linear-gradient(315deg, rgba(99, 102, 241, 0.1), rgba(59, 130, 246, 0.1));
+      animation: rotate-shape 40s linear infinite reverse;
+    }
+
+    .shape-4 {
+      width: 120px;
+      height: 120px;
+      top: 60%;
+      right: 30%;
+      background: linear-gradient(45deg, rgba(236, 72, 153, 0.1), rgba(249, 115, 22, 0.1));
+      animation: morph-square 18s ease-in-out infinite, float-shape 20s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="selection:bg-blue-500/30 selection:text-white">
+  
+  <!-- LOADING SCREEN -->
+  <div class="loader" id="loader">
+    <img src="logos/logo-v15d-nowindow.svg" alt="Loading" class="loader-logo">
+    <div class="loader-text">
+      <span style="animation-delay: 0.1s">I</span>
+      <span style="animation-delay: 0.15s">N</span>
+      <span style="animation-delay: 0.2s">I</span>
+      <span style="animation-delay: 0.25s">T</span>
+      <span style="animation-delay: 0.3s">I</span>
+      <span style="animation-delay: 0.35s">A</span>
+      <span style="animation-delay: 0.4s">L</span>
+      <span style="animation-delay: 0.45s">I</span>
+      <span style="animation-delay: 0.5s">Z</span>
+      <span style="animation-delay: 0.55s">I</span>
+      <span style="animation-delay: 0.6s">N</span>
+      <span style="animation-delay: 0.65s">G</span>
+    </div>
+  </div>
+
+  <!-- CUSTOM CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-trail" id="trail1"></div>
+  <div class="cursor-trail" id="trail2"></div>
+  <div class="cursor-trail" id="trail3"></div>
+  <div class="cursor-trail" id="trail4"></div>
+  <div class="cursor-trail" id="trail5"></div>
+  <div class="cursor-trail" id="trail6"></div>
+  
+  <!-- HOVER IMAGE REVEAL (Locomotive style) -->
+  <div class="hover-image-reveal" id="hover-image">
+    <img src="" alt="" id="hover-image-src">
+  </div>
+  
+  <!-- THREE.JS 3D CANVAS -->
+  <canvas id="three-canvas"></canvas>
+  
+  <!-- AUDIO PLAYER -->
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+      <div class="audio-bar"></div>
+    </div>
+    <span class="audio-label">Sound</span>
+  </div>
+  
+  
+
+  <!-- Morphing Background -->
+  <div class="morphing-background">
+    <!-- Gradient Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Geometric Shapes -->
+    <div class="geometric-shape shape-1"></div>
+    <div class="geometric-shape shape-2"></div>
+    <div class="geometric-shape shape-3"></div>
+    <div class="geometric-shape shape-4"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-glow" class="hidden md:block"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 border-b border-white/5 bg-black/60 backdrop-blur-2xl transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2 group cursor-pointer hover-trigger micro-lift">
+        <img src="logos/logo-v15d-nowindow.svg" alt="Apex Sync" class="h-10 w-auto">
+        <span class="text-sm font-semibold tracking-tight text-white group-hover:tracking-wide transition-all duration-500">
+          Apex Sync
+        </span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#ecosystem" class="text-xs font-medium text-neutral-400 hover:text-white transition-all duration-300 hover-trigger magnetic relative group">
+          Ecosystem
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#about" class="text-xs font-medium text-neutral-400 hover:text-white transition-all duration-300 hover-trigger magnetic relative group">
+          Mission
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="text-xs font-medium text-neutral-400 hover:text-white transition-all duration-300 hover-trigger magnetic relative group">
+          Contact
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </div>
+
+      <div>
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-xs font-semibold text-white bg-white/5 hover:bg-white/10 border border-white/20 rounded-full transition-all duration-500 hover-trigger magnetic micro-lift">
+          Get Started
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden z-10 min-h-screen flex flex-col justify-center">
+    <!-- Floating Grid -->
+    <div class="floating-grid pointer-events-none"></div>
+
+    <!-- Aurora Background -->
+    <div class="absolute inset-0 aurora-bg opacity-40 pointer-events-none -z-10"></div>
+
+    <!-- Prismatic Light Trails -->
+    <div class="prismatic-trail absolute -left-20 top-1/4 pointer-events-none"></div>
+    <div class="prismatic-trail prismatic-trail-2 absolute -right-10 top-0 pointer-events-none"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- Ambient Glows with Breathing -->
+    <div class="absolute top-1/4 left-1/3 w-[800px] h-[800px] bg-blue-500/20 blur-[150px] rounded-full pointer-events-none" style="animation: breathe 6s ease-in-out infinite;"></div>
+    <div class="absolute bottom-1/4 right-1/3 w-[600px] h-[600px] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none" style="animation: breathe 8s ease-in-out infinite; animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-pink-500/10 blur-[100px] rounded-full pointer-events-none" style="animation: breathe 10s ease-in-out infinite; animation-delay: 2s;"></div>
+
+    <div class="relative max-w-6xl mx-auto px-6 text-center z-10">
+      <!-- Flying Logo with Smoke Trail -->
+      <div class="mb-8 relative h-48 md:h-56 lg:h-64">
+        <div id="flying-logo" class="absolute" style="left: 50%; top: 50%;">
+          <!-- Smoke particles -->
+          <div class="smoke-trail" id="smoke-container"></div>
+          <img src="logos/logo-v15d-nowindow.svg" alt="Apex Sync" class="h-32 md:h-40 lg:h-48 w-auto" style="filter: drop-shadow(0 0 30px rgba(34, 211, 238, 0.6));">
+        </div>
+      </div>
+      <!-- Headline with Scramble Effect -->
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white mb-8 leading-[1.05]" id="hero-text">
+        <div class="mb-2">
+          <span class="word-reveal inline-block" style="animation-delay: 0.1s;">Home</span>
+          <span class="word-reveal inline-block" style="animation-delay: 0.2s;">of</span>
+          <span class="word-reveal inline-block" style="animation-delay: 0.3s;">the</span>
+        </div>
+        <div>
+          <span class="word-reveal text-gradient inline-block scramble-text" style="animation-delay: 0.5s; background-size: 300% 300%;" data-final="Apex">Apex</span>
+          <span class="word-reveal text-gradient inline-block scramble-text" style="animation-delay: 0.6s; background-size: 300% 300%;" data-final="Platform">Platform</span>
+        </div>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="fade-up text-2xl md:text-3xl text-white font-semibold tracking-tight mb-6" style="animation-delay: 0.8s;">
+        Results, Not Retainers.
+      </p>
+
+      <!-- Subtext -->
+      <p class="fade-up max-w-2xl mx-auto text-base md:text-lg text-neutral-300 leading-relaxed mb-12 font-normal" style="animation-delay: 1s;">
+        Creator campaigns. UGC at scale. Celebrity partnerships. All powered by AI-driven outreach that never sleeps. <span class="text-blue-400 font-medium">You only pay when it works.</span>
+      </p>
+
+      <!-- CTAs -->
+      <div class="fade-up flex flex-col sm:flex-row items-center justify-center gap-5" style="animation-delay: 1.2s;">
+        <a href="#contact" class="btn-shimmer magnetic hover-trigger group relative px-10 py-4 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-bold overflow-hidden transition-all duration-500 hover:scale-110 hover:shadow-[0_0_40px_rgba(96,165,250,0.6)] active:scale-95 no-underline">
+          <span class="relative flex items-center gap-3 z-10">
+            Start Scaling
+            <iconify-icon icon="solar:arrow-right-linear" class="text-xl group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
+          </span>
+        </a>
+        <a href="#ecosystem" class="magnetic hover-trigger px-10 py-4 rounded-full text-sm font-bold text-white border-2 border-neutral-700 hover:bg-white/5 hover:border-neutral-500 transition-all duration-500 micro-lift no-underline">
+          See What We Do
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats Bar with Count-Up Animation -->
+  <section class="relative z-10 border-y border-white/5 bg-gradient-to-b from-black via-[#050505] to-black backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-6 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 divide-y md:divide-y-0 md:divide-x divide-white/10">
+
+        <!-- Stat 1 -->
+        <div class="flex flex-col items-center text-center px-4 pt-4 md:pt-0 fade-up micro-lift">
+          <div class="flex items-baseline gap-2 mb-3">
+            <span class="stat-counter stat-glow text-5xl md:text-6xl font-bold tracking-tight text-white" data-target="60" style="color: #60a5fa;">
+              0
+            </span>
+            <span class="text-3xl font-bold text-blue-400 stat-glow" style="color: #60a5fa;">B+</span>
+          </div>
+          <span class="text-xs text-neutral-400 font-semibold uppercase tracking-[0.15em]">
+            Impressions Delivered
+          </span>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="flex flex-col items-center text-center px-4 pt-8 md:pt-0 fade-up delay-100 micro-lift">
+          <div class="flex items-baseline gap-2 mb-3">
+            <span class="stat-counter stat-glow text-5xl md:text-6xl font-bold tracking-tight text-white" data-target="500" style="color: #a855f7;">
+              0
+            </span>
+            <span class="text-3xl font-bold text-purple-400 stat-glow" style="color: #a855f7;">+</span>
+          </div>
+          <span class="text-xs text-neutral-400 font-semibold uppercase tracking-[0.15em]">
+            Creator Partnerships
+          </span>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="flex flex-col items-center text-center px-4 pt-8 md:pt-0 fade-up delay-200 micro-lift">
+          <div class="flex items-baseline gap-2 mb-3">
+            <span class="stat-counter stat-glow text-5xl md:text-6xl font-bold tracking-tight text-white" data-target="0" style="color: #ec4899;">
+              0
+            </span>
+            <span class="text-3xl font-bold stat-glow" style="color: #ec4899;">%</span>
+          </div>
+          <span class="text-xs text-neutral-400 font-semibold uppercase tracking-[0.15em]">
+            Upfront Risk
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEGA MARQUEE - INFINITE SCROLL TEXT -->
+  <section class="mega-marquee relative z-10 border-y border-white/5 overflow-hidden">
+    <div class="mega-marquee-content">
+      <span class="mega-marquee-text">CREATORS</span>
+      <span class="mega-marquee-text filled">RESULTS</span>
+      <span class="mega-marquee-text">SCALE</span>
+      <span class="mega-marquee-text filled">AI-POWERED</span>
+      <span class="mega-marquee-text">CREATORS</span>
+      <span class="mega-marquee-text filled">RESULTS</span>
+      <span class="mega-marquee-text">SCALE</span>
+      <span class="mega-marquee-text filled">AI-POWERED</span>
+    </div>
+  </section>
+
+  <!-- Ecosystem Section -->
+  <section id="ecosystem" class="py-28 md:py-36 relative z-10 overflow-hidden ripple-section">
+    <!-- Parallax Background -->
+    <div class="absolute left-0 top-1/4 w-1/2 h-1/2 bg-gradient-to-r from-blue-900/5 to-transparent pointer-events-none parallax-layer" data-speed="0.03"></div>
+
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="mb-24">
+        <h2 class="fade-up text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+          The Ecosystem.
+        </h2>
+        <div class="fade-up delay-100 h-1.5 w-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" id="ecosystem-cards">
+        <!-- Creator Campaigns Card -->
+        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up backdrop-blur-sm transition-all duration-500 hover:border-white/20">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          </div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-blue-400 group-hover:text-blue-300 group-hover:scale-110 transition-all duration-500">
+              <iconify-icon icon="solar:users-group-rounded-linear" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-blue-100 transition-colors duration-300">
+              Creator Campaigns
+            </h3>
+            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+              Performance-based influencer partnerships across gaming, tech, and lifestyle. <span class="text-blue-400 font-medium">Pay for results.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- UGC at Scale Card -->
+        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up delay-100 backdrop-blur-sm transition-all duration-500 hover:border-white/20">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          </div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-purple-400 group-hover:text-purple-300 group-hover:scale-110 transition-all duration-500">
+              <iconify-icon icon="solar:video-frame-play-horizontal-linear" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-purple-100 transition-colors duration-300">
+              UGC at Scale
+            </h3>
+            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+              Micro-creator content production. Fast turnaround, authentic formats, <span class="text-purple-400 font-medium">volume that converts.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Talent & Celebrity Card -->
+        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up delay-200 backdrop-blur-sm transition-all duration-500 hover:border-white/20">
+          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          </div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-pink-400 group-hover:text-pink-300 group-hover:scale-110 transition-all duration-500">
+              <iconify-icon icon="solar:star-shine-linear" width="24"></iconify-icon>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-pink-100 transition-colors duration-300">
+              Talent & Celebrity
+            </h3>
+            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
+              High-budget brand partnerships with verified talent. <span class="text-pink-400 font-medium">Global reach, direct relationships.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Apex Platform Card (SPOTLIGHT) -->
+        <div class="tilt-card magnetic hover-trigger group pulse-card relative p-8 rounded-3xl bg-gradient-to-br from-[#0A0A0A] via-[#0f0f1a] to-[#0A0A0A] border-2 border-blue-500/30 overflow-hidden fade-up delay-300 backdrop-blur-md transition-all duration-500 hover:border-purple-500/50 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/5 opacity-60"></div>
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" style="animation: breathe 4s ease-in-out infinite;"></div>
+          <div class="relative z-10 h-full flex flex-col">
+            <div class="flex justify-between items-start mb-6">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center text-white shadow-[0_0_30px_rgba(96,165,250,0.5)] group-hover:shadow-[0_0_50px_rgba(168,85,247,0.7)] transition-all duration-500 group-hover:scale-110">
+                <iconify-icon icon="solar:cpu-bolt-linear" width="24"></iconify-icon>
+              </div>
+              <span class="px-2 py-1 rounded-full bg-white/10 text-[10px] font-bold text-white border border-white/20">
+                CORE
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+              The Apex Platform
+            </h3>
+            <p class="text-sm text-neutral-300 font-normal leading-relaxed mb-4 group-hover:text-white transition-colors duration-300">
+              AI-powered outreach engine. <span class="text-purple-400 font-medium">Prospecting at scale, zero leads lost.</span>
+            </p>
+            <div class="mt-auto flex items-center gap-2 text-xs text-blue-300 font-semibold">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+              </span>
+              Live
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="py-16 border-y border-white/5 bg-black z-10 relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-xs text-neutral-500 font-normal uppercase tracking-[0.2em]">
+          Worked with brands in
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 md:gap-10 opacity-50 hover:opacity-80 transition-all duration-500 fade-up delay-100">
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:gamepad-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">Gaming</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:smartphone-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">Consumer Tech</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:wallet-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">Fintech</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:bag-smile-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">E-Commerce</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:heart-pulse-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">Lifestyle</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <iconify-icon icon="solar:cpu-bolt-linear" width="20" class="text-neutral-400"></iconify-icon>
+          <span class="text-sm font-medium text-neutral-400">AI & SaaS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="py-24 md:py-32 bg-black relative z-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="mb-16">
+        <h2 class="fade-up text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+          Results.
+        </h2>
+        <div class="fade-up delay-100 h-1.5 w-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Result 1 -->
+        <div class="fade-up p-8 rounded-2xl border border-white/5 bg-neutral-900/30 hover:border-white/10 transition-all duration-500">
+          <div class="text-3xl font-bold text-gradient mb-3">$12M+</div>
+          <div class="text-sm font-medium text-white mb-2">Revenue Attributed</div>
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            8-figure gaming campaign. 200+ creators activated across YouTube, TikTok, and Twitch over 18 months.
+          </p>
+        </div>
+
+        <!-- Result 2 -->
+        <div class="fade-up delay-100 p-8 rounded-2xl border border-white/5 bg-neutral-900/30 hover:border-white/10 transition-all duration-500">
+          <div class="text-3xl font-bold text-gradient mb-3">47 Days</div>
+          <div class="text-sm font-medium text-white mb-2">Campaign to ROI</div>
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            Consumer fintech launch. 50 micro-creators, 2.3M impressions, 40K app installs in under 7 weeks.
+          </p>
+        </div>
+
+        <!-- Result 3 -->
+        <div class="fade-up delay-200 p-8 rounded-2xl border border-white/5 bg-neutral-900/30 hover:border-white/10 transition-all duration-500">
+          <div class="text-3xl font-bold text-gradient mb-3">6x</div>
+          <div class="text-sm font-medium text-white mb-2">ROAS on UGC</div>
+          <p class="text-xs text-neutral-500 leading-relaxed">
+            E-commerce brand. AI-assisted content production at scale. 300+ assets delivered in 30 days.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center fade-up delay-300">
+        <p class="text-xs text-neutral-600 italic">
+          Results vary by vertical and campaign structure. These represent top-performing engagements.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bold Statement Section -->
+  <!-- LOCOMOTIVE STYLE - GIANT SERVICES LIST -->
+  <section class="py-20 md:py-32 bg-black relative z-10 border-y border-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex justify-between items-end mb-16">
+        <div class="credibility-marker">
+          <span>Since</span>
+          <strong>2020</strong>
+        </div>
+        <h2 class="text-xs uppercase tracking-[0.3em] text-neutral-500">What We Do</h2>
+      </div>
+      
+      <!-- Giant hoverable service links -->
+      <div class="space-y-2">
+        <a href="#ecosystem" class="giant-link block" data-hover-image="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=600&q=80">
+          Creator Campaigns
+        </a>
+        <a href="#ecosystem" class="giant-link block" data-hover-image="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?w=600&q=80">
+          UGC at Scale
+        </a>
+        <a href="#ecosystem" class="giant-link block" data-hover-image="https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&q=80">
+          Celebrity Deals
+        </a>
+        <a href="#ecosystem" class="giant-link block" data-hover-image="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80">
+          AI Outreach
+        </a>
+      </div>
+      
+      <div class="mt-16 flex justify-end">
+        <a href="#contact" class="arrow-link">View all services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement-section relative z-10 border-y border-white/5 bg-black overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/5 via-purple-900/5 to-pink-900/5"></div>
+    <h2 class="statement-text relative z-10" data-statement>
+      We only win<br>when you win.
+    </h2>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 md:py-32 bg-[#050505] relative overflow-hidden z-10">
+    <!-- Parallax Background Element -->
+    <div class="parallax-layer absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-blue-900/5 to-transparent pointer-events-none" data-speed="0.05"></div>
+
+    <div class="max-w-4xl mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1">
+          <h2 class="fade-up text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">
+            Why We Exist.
+          </h2>
+          <div class="space-y-6 text-base text-neutral-400 font-normal leading-relaxed fade-up delay-100">
+            <p>
+              Traditional agencies bill hours while results suffer. We built Apex Sync to flip that model.
+            </p>
+            <p>
+              <span class="text-white font-medium">No retainers. No vanity metrics. Just outcomes.</span> We only win when you win.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative order-1 md:order-2 fade-up flex items-center justify-center" style="min-height: 400px; width: 100%;">
+          <!-- 3D Blob with Vertex Deformation (Mario 64 style) -->
+          <canvas id="blob-canvas" style="width: 400px; height: 400px; position: absolute;"></canvas>
+          <img id="morph-logo" src="logos/logo-v15d-nowindow.svg" alt="" class="absolute z-10 pointer-events-none" style="width: 80px; height: auto; filter: drop-shadow(0 0 20px rgba(34, 211, 238, 0.5));">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section id="contact" class="py-32 relative z-10 overflow-hidden aurora-bg">
+    <div class="absolute inset-0 bg-black/80"></div>
+    <!-- Overlay to darken aurora -->
+
+    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+      <h2 class="fade-up text-4xl md:text-5xl font-medium tracking-tight text-white mb-6">
+        Let's build something.
+      </h2>
+      <p class="fade-up delay-100 text-lg text-neutral-300 mb-10 font-normal">
+        Limited partnerships. Unlimited focus. Tell us what you're working on.
+      </p>
+      <form id="contact-form" action="https://formspree.io/f/xnjbaqkv" method="POST" class="fade-up delay-200 max-w-sm mx-auto space-y-4 text-left">
+        <input type="hidden" name="_subject" value="New Apex Sync Lead">
+        <div class="relative group">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none transition-colors group-focus-within:text-blue-400 text-neutral-500">
+            <iconify-icon icon="solar:letter-linear" width="20"></iconify-icon>
+          </div>
+          <input type="email" name="email" required class="block w-full pl-11 pr-4 py-3.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 transition-all text-sm" placeholder="Enter your work email">
+        </div>
+        <button type="submit" class="btn-shimmer hover-trigger w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium text-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all flex items-center justify-center gap-2 group">
+          Request Access
+          <iconify-icon icon="solar:arrow-right-up-linear" class="text-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></iconify-icon>
+        </button>
+        <p id="form-status" class="text-center text-sm hidden"></p>
+      </form>
+      <p class="fade-up delay-300 mt-6 text-[10px] text-neutral-500 uppercase tracking-wider opacity-60">
+        No credit card required for initial audit.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-white/5 bg-black z-10 relative">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-3 h-3 bg-neutral-800 rounded-full"></div>
+        <span class="text-xs font-medium text-neutral-500">
+          Apex Sync © 2026
+        </span>
+      </div>
+      <div class="flex gap-6">
+        <a href="#" class="text-xs text-neutral-600 hover:text-white transition-colors hover-trigger">
+          Privacy
+        </a>
+        <a href="#" class="text-xs text-neutral-600 hover:text-white transition-colors hover-trigger">
+          Terms
+        </a>
+        <a href="#" class="text-xs text-neutral-600 hover:text-white transition-colors hover-trigger">
+          Twitter
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // ============================================
+      // PROGRESSIVE ENHANCEMENT - Enable animations
+      // ============================================
+      document.documentElement.classList.add('js-enabled');
+
+      // ============================================
+      // GSAP SCROLL TRIGGER SETUP
+      // ============================================
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Statement section reveal
+      const statementText = document.querySelector('[data-statement]');
+      if (statementText) {
+        ScrollTrigger.create({
+          trigger: statementText,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          onEnter: () => statementText.classList.add('is-active'),
+          onLeave: () => statementText.classList.remove('is-active'),
+          onEnterBack: () => statementText.classList.add('is-active'),
+          onLeaveBack: () => statementText.classList.remove('is-active'),
+        });
+      }
+
+      // Parallax sections with GSAP
+      gsap.utils.toArray('.fade-up').forEach((elem, i) => {
+        // Check if element is already in viewport
+        const rect = elem.getBoundingClientRect();
+        const inViewport = rect.top < window.innerHeight;
+        
+        if (inViewport) {
+          // Animate immediately with stagger
+          gsap.fromTo(elem,
+            { y: 40, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.8,
+              delay: i * 0.05,
+              ease: 'power3.out'
+            }
+          );
+        } else {
+          // Animate on scroll
+          gsap.fromTo(elem, 
+            { y: 60, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: elem,
+                start: 'top 85%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        }
+      });
+
+      // ============================================
+      // TEXT SCRAMBLE EFFECT
+      // ============================================
+      class TextScramble {
+        constructor(el) {
+          this.el = el;
+          this.chars = '!<>-_\\/[]{}=+*^?#_____';
+          this.update = this.update.bind(this);
+        }
+        
+        setText(newText) {
+          const oldText = this.el.innerText;
+          const length = Math.max(oldText.length, newText.length);
+          const promise = new Promise((resolve) => this.resolve = resolve);
+          this.queue = [];
+          for (let i = 0; i < length; i++) {
+            const from = oldText[i] || '';
+            const to = newText[i] || '';
+            const start = Math.floor(Math.random() * 20);
+            const end = start + Math.floor(Math.random() * 20);
+            this.queue.push({ from, to, start, end });
+          }
+          cancelAnimationFrame(this.frameRequest);
+          this.frame = 0;
+          this.update();
+          return promise;
+        }
+        
+        update() {
+          let output = '';
+          let complete = 0;
+          for (let i = 0, n = this.queue.length; i < n; i++) {
+            let { from, to, start, end, char } = this.queue[i];
+            if (this.frame >= end) {
+              complete++;
+              output += to;
+            } else if (this.frame >= start) {
+              if (!char || Math.random() < 0.28) {
+                char = this.chars[Math.floor(Math.random() * this.chars.length)];
+                this.queue[i].char = char;
+              }
+              output += `<span class="text-purple-400">${char}</span>`;
+            } else {
+              output += from;
+            }
+          }
+          this.el.innerHTML = output;
+          if (complete === this.queue.length) {
+            this.resolve();
+          } else {
+            this.frameRequest = requestAnimationFrame(this.update);
+            this.frame++;
+          }
+        }
+      }
+
+      // Apply scramble effect on load
+      document.querySelectorAll('.scramble-text').forEach((el, i) => {
+        const fx = new TextScramble(el);
+        const finalText = el.dataset.final;
+        setTimeout(() => {
+          fx.setText(finalText);
+        }, 800 + (i * 200));
+      });
+
+      // ============================================
+      // FORM SUBMISSION WITH AJAX
+      // ============================================
+      const form = document.getElementById('contact-form');
+      const formStatus = document.getElementById('form-status');
+
+      if (form) {
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          const submitBtn = form.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerHTML;
+          submitBtn.innerHTML = '<span class="animate-pulse">Sending...</span>';
+          submitBtn.disabled = true;
+
+          try {
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { 'Accept': 'application/json' }
+            });
+
+            if (response.ok) {
+              formStatus.textContent = "Thanks! We'll be in touch soon.";
+              formStatus.className = 'text-center text-sm text-green-400 mt-2';
+              formStatus.classList.remove('hidden');
+              form.reset();
+              submitBtn.innerHTML = '✓ Sent!';
+              setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+              }, 3000);
+            } else {
+              throw new Error('Form submission failed');
+            }
+          } catch (error) {
+            formStatus.textContent = 'Something went wrong. Email us directly at lucas@apexsync.biz';
+            formStatus.className = 'text-center text-sm text-red-400 mt-2';
+            formStatus.classList.remove('hidden');
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+          }
+        });
+      }
+
+      // ============================================
+      // LENIS SMOOTH SCROLL
+      // ============================================
+      const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+        smoothTouch: false,
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Old cursor system removed - using new one below
+
+      // ============================================
+      // MAGNETIC EFFECT FOR BUTTONS
+      // ============================================
+      document.querySelectorAll('.magnetic').forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          el.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = 'translate(0, 0)';
+        });
+      });
+
+      // ============================================
+      // 3D TILT EFFECT FOR CARDS WITH LIGHT REFLECTION
+      // ============================================
+      document.querySelectorAll('.tilt-card').forEach(card => {
+        // Add reflection div if not exists
+        if (!card.querySelector('.card-reflection')) {
+          const reflection = document.createElement('div');
+          reflection.className = 'card-reflection';
+          card.appendChild(reflection);
+        }
+
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -10;
+          const rotateY = ((x - centerX) / centerX) * 10;
+
+          // Update card transform
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+          
+          // Update light reflection position
+          card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+          card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+      });
+
+      // ============================================
+      // NEURAL NETWORK PARTICLE SYSTEM
+      // ============================================
+      const canvas = document.getElementById('hero-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        const particles = [];
+        const particleCount = 80;
+        const connectionDistance = 120;
+        let mouse = { x: null, y: null, radius: 150 };
+
+        function resize() {
+          width = canvas.width = canvas.parentElement.offsetWidth;
+          height = canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        // Track mouse for particle interaction
+        canvas.addEventListener('mousemove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+          mouse.x = null;
+          mouse.y = null;
+        });
+
+        class Particle {
+          constructor() {
+            this.reset();
+            this.y = Math.random() * height;
+          }
+
+          reset() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.7;
+            this.vy = (Math.random() - 0.5) * 0.7;
+            this.size = Math.random() * 2.5 + 1;
+          }
+
+          update() {
+            // Mouse interaction
+            if (mouse.x !== null && mouse.y !== null) {
+              const dx = mouse.x - this.x;
+              const dy = mouse.y - this.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < mouse.radius) {
+                const force = (mouse.radius - distance) / mouse.radius;
+                const dirX = dx / distance;
+                const dirY = dy / distance;
+                this.vx += dirX * force * 0.5;
+                this.vy += dirY * force * 0.5;
+              }
+            }
+
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Damping
+            this.vx *= 0.99;
+            this.vy *= 0.99;
+
+            // Boundary check
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            // Keep in bounds
+            this.x = Math.max(0, Math.min(width, this.x));
+            this.y = Math.max(0, Math.min(height, this.y));
+          }
+
+          draw() {
+            ctx.fillStyle = `rgba(96, 165, 250, ${0.6 + Math.random() * 0.4})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Create particles
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+
+          particles.forEach((p, index) => {
+            p.update();
+            p.draw();
+
+            // Draw connections
+            for (let j = index + 1; j < particles.length; j++) {
+              const p2 = particles[j];
+              const dx = p.x - p2.x;
+              const dy = p.y - p2.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < connectionDistance) {
+                const opacity = (1 - dist / connectionDistance) * 0.3;
+                ctx.strokeStyle = `rgba(96, 165, 250, ${opacity})`;
+                ctx.lineWidth = 1.5;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+              }
+            }
+          });
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      }
+
+      // ============================================
+      // STAT COUNTER ANIMATION WITH GSAP
+      // ============================================
+      document.querySelectorAll('.stat-counter').forEach(counter => {
+        const target = parseInt(counter.dataset.target);
+        
+        ScrollTrigger.create({
+          trigger: counter,
+          start: 'top 80%',
+          onEnter: () => {
+            gsap.to(counter, {
+              duration: 2.5,
+              ease: 'power2.out',
+              onUpdate: function() {
+                const progress = this.progress();
+                // Add some overshoot for dramatic effect
+                const overshoot = progress < 0.8 ? progress * 1.15 : 1 - (1 - progress) * 0.5 + 0.5;
+                const current = Math.floor(target * Math.min(overshoot, 1));
+                counter.textContent = current;
+              },
+              onComplete: () => {
+                counter.textContent = target;
+              }
+            });
+          },
+          once: true
+        });
+      });
+
+      // ============================================
+      // SCROLL-TRIGGERED REVEALS (GSAP handles main animations)
+      // ============================================
+      // Reveal text elements that aren't .fade-up
+      document.querySelectorAll('.reveal-text').forEach(el => {
+        gsap.fromTo(el,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        );
+      });
+
+      // ============================================
+      // PARALLAX SCROLLING
+      // ============================================
+      const parallaxLayers = document.querySelectorAll('.parallax-layer, [data-speed]');
+
+      function updateParallax() {
+        const scrolled = window.scrollY;
+        parallaxLayers.forEach(layer => {
+          const speed = layer.dataset.speed || 0.05;
+          const yPos = -(scrolled * speed);
+          layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
+        });
+      }
+
+      window.addEventListener('scroll', updateParallax, { passive: true });
+      updateParallax();
+
+      // ============================================
+      // NAVIGATION SCROLL EFFECT
+      // ============================================
+      const nav = document.querySelector('nav');
+      let lastScroll = 0;
+
+      window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > 100) {
+          nav.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+          nav.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+        } else {
+          nav.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+          nav.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+        }
+
+        lastScroll = currentScroll;
+      }, { passive: true });
+
+      // ============================================
+      // SMOOTH ANCHOR SCROLLING
+      // ============================================
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            lenis.scrollTo(target, {
+              offset: -80,
+              duration: 1.5,
+            });
+          }
+        });
+      });
+
+      // ============================================
+      // 3D BLOB WITH VERTEX DEFORMATION (MARIO 64 STYLE)
+      // ============================================
+      const blobCanvas = document.getElementById('blob-canvas');
+      const morphLogo = document.getElementById('morph-logo');
+      
+      if (blobCanvas && typeof THREE !== 'undefined') {
+        try {
+        const blobScene = new THREE.Scene();
+        const blobCamera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+        const blobRenderer = new THREE.WebGLRenderer({ canvas: blobCanvas, alpha: true, antialias: true });
+        
+        // Set explicit size
+        blobRenderer.setSize(400, 400);
+        blobRenderer.setPixelRatio(window.devicePixelRatio);
+        
+        // Create blob geometry with lots of vertices for deformation
+        const blobGeo = new THREE.IcosahedronGeometry(2, 4);
+        const originalPositions = blobGeo.attributes.position.array.slice();
+        
+        // Gradient material
+        const blobMat = new THREE.MeshBasicMaterial({
+          color: 0xa855f7,
+          wireframe: false,
+          transparent: true,
+          opacity: 0.3,
+        });
+        
+        // Add glow layer
+        const glowMat = new THREE.MeshBasicMaterial({
+          color: 0x60a5fa,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.15,
+        });
+        
+        const blob = new THREE.Mesh(blobGeo, blobMat);
+        const blobGlow = new THREE.Mesh(blobGeo.clone(), glowMat);
+        blobGlow.scale.set(1.05, 1.05, 1.05);
+        
+        blobScene.add(blob);
+        blobScene.add(blobGlow);
+        
+        blobCamera.position.z = 5;
+        
+        // Mouse and scroll tracking
+        let blobMouseX = 0, blobMouseY = 0;
+        let blobTargetMouseX = 0, blobTargetMouseY = 0;
+        let blobScrollY = 0;
+        let blobTime = 0;
+        
+        // Track mouse globally
+        document.addEventListener('mousemove', (e) => {
+          blobTargetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          blobTargetMouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
+        });
+        
+        window.addEventListener('scroll', () => {
+          blobScrollY = window.scrollY * 0.001;
+        }, { passive: true });
+        
+        // Vertex deformation function - MARIO 64 STYLE
+        function deformVertices() {
+          const positions = blobGeo.attributes.position.array;
+          const count = positions.length / 3;
+          
+          for (let i = 0; i < count; i++) {
+            const ox = originalPositions[i * 3];
+            const oy = originalPositions[i * 3 + 1];
+            const oz = originalPositions[i * 3 + 2];
+            
+            // Base noise deformation
+            const noise1 = Math.sin(blobTime * 2 + ox * 3 + oy * 2) * 0.15;
+            const noise2 = Math.cos(blobTime * 1.5 + oy * 4 + oz * 2) * 0.12;
+            const noise3 = Math.sin(blobTime * 2.5 + oz * 3 + ox * 2) * 0.1;
+            
+            // Mouse pull effect - vertices near mouse get pulled toward it
+            const mouseInfluenceX = blobMouseX * 1.5;
+            const mouseInfluenceY = blobMouseY * 1.5;
+            
+            // Distance from vertex to mouse "pull point"
+            const pullX = mouseInfluenceX - ox;
+            const pullY = mouseInfluenceY - oy;
+            const pullDist = Math.sqrt(pullX * pullX + pullY * pullY);
+            const pullStrength = Math.max(0, 1 - pullDist / 3) * 0.8;
+            
+            // Scroll stretches the blob vertically
+            const scrollStretch = Math.sin(oy * 2 + blobScrollY * 5) * blobScrollY * 2;
+            
+            // Apply all deformations
+            const scale = 1 + noise1 + noise2 + noise3;
+            positions[i * 3] = ox * scale + pullX * pullStrength + Math.sin(blobTime + i * 0.1) * 0.05;
+            positions[i * 3 + 1] = oy * scale + pullY * pullStrength + scrollStretch + Math.cos(blobTime * 1.3 + i * 0.1) * 0.05;
+            positions[i * 3 + 2] = oz * scale + Math.sin(blobTime * 0.8 + i * 0.05) * 0.1;
+          }
+          
+          blobGeo.attributes.position.needsUpdate = true;
+          blobGeo.computeVertexNormals();
+          
+          // Also deform the glow layer slightly offset
+          const glowPositions = blobGlow.geometry.attributes.position.array;
+          for (let i = 0; i < count; i++) {
+            glowPositions[i * 3] = positions[i * 3] * 1.08;
+            glowPositions[i * 3 + 1] = positions[i * 3 + 1] * 1.08;
+            glowPositions[i * 3 + 2] = positions[i * 3 + 2] * 1.08;
+          }
+          blobGlow.geometry.attributes.position.needsUpdate = true;
+        }
+        
+        // Logo physics
+        let logoPosX = 0, logoPosY = 0;
+        let logoVelX = 0, logoVelY = 0;
+        
+        function animateBlob() {
+          requestAnimationFrame(animateBlob);
+          
+          blobTime += 0.02;
+          
+          // Smooth mouse follow
+          blobMouseX += (blobTargetMouseX - blobMouseX) * 0.08;
+          blobMouseY += (blobTargetMouseY - blobMouseY) * 0.08;
+          
+          // Deform vertices
+          deformVertices();
+          
+          // Rotate blob slowly
+          blob.rotation.x = Math.sin(blobTime * 0.3) * 0.3 + blobMouseY * 0.5;
+          blob.rotation.y = blobTime * 0.2 + blobMouseX * 0.5;
+          blobGlow.rotation.copy(blob.rotation);
+          
+          // Color shift based on mouse
+          const hue = (blobTime * 0.02 + blobMouseX * 0.2) % 1;
+          blob.material.color.setHSL(0.75 + hue * 0.15, 0.8, 0.5);
+          
+          blobRenderer.render(blobScene, blobCamera);
+          
+          // Animate logo to follow blob deformation
+          if (morphLogo) {
+            logoVelX += (blobMouseX * 30 - logoPosX) * 0.05;
+            logoVelY += (blobMouseY * 30 - logoPosY) * 0.05;
+            logoVelX *= 0.9;
+            logoVelY *= 0.9;
+            logoPosX += logoVelX;
+            logoPosY += logoVelY;
+            
+            const logoRotation = logoVelX * 2;
+            const logoScale = 1 + Math.abs(blobMouseX + blobMouseY) * 0.1;
+            
+            morphLogo.style.transform = `translate(calc(-50% + ${logoPosX}px), calc(-50% + ${logoPosY}px)) rotate(${logoRotation}deg) scale(${logoScale})`;
+          }
+        }
+        animateBlob();
+        } catch(e) { console.error('Blob error:', e); }
+      }
+
+      // ============================================
+      // LOADING SCREEN
+      // ============================================
+      const loader = document.getElementById('loader');
+      const loaderTextSpans = document.querySelectorAll('.loader-text span');
+      
+      // Animate loader text
+      loaderTextSpans.forEach((span, i) => {
+        span.style.animation = `loaderTextReveal 0.4s ease ${i * 0.05}s forwards`;
+      });
+      
+      // Hide loader function
+      function hideLoader() {
+        if (loader && !loader.classList.contains('loaded')) {
+          loader.classList.add('loaded');
+          setTimeout(() => {
+            loader.style.display = 'none';
+          }, 1200);
+        }
+      }
+      
+      // Hide loader after content loads OR after 3 seconds max
+      window.addEventListener('load', () => {
+        setTimeout(hideLoader, 1000);
+      });
+      
+      // Fallback - always hide after 2.5 seconds
+      setTimeout(hideLoader, 2500);
+      
+      // Also try on DOMContentLoaded
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(hideLoader, 1500);
+      });
+      
+      // Immediate fallback
+      if (document.readyState === 'complete') {
+        setTimeout(hideLoader, 1000);
+      }
+
+      // ============================================
+      // CUSTOM CURSOR WITH TRAIL
+      // ============================================
+      try {
+        const cursor = document.getElementById('cursor');
+        const trails = [
+          document.getElementById('trail1'),
+          document.getElementById('trail2'),
+          document.getElementById('trail3'),
+          document.getElementById('trail4'),
+          document.getElementById('trail5'),
+          document.getElementById('trail6')
+        ].filter(t => t !== null);
+        
+        if (cursor && trails.length > 0) {
+          let cursorX = 0, cursorY = 0;
+          let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2;
+          const trailPositions = trails.map(() => ({ x: targetX, y: targetY }));
+          
+          document.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+          });
+          
+          // Hover detection for interactive elements
+          const hoverTargets = document.querySelectorAll('a, button, .hover-trigger, input, textarea');
+          hoverTargets.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+          });
+          
+          function animateCursor() {
+            cursorX += (targetX - cursorX) * 0.15;
+            cursorY += (targetY - cursorY) * 0.15;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            
+            trails.forEach((trail, i) => {
+              if (trail) {
+                const delay = 0.08 + i * 0.04;
+                trailPositions[i].x += (targetX - trailPositions[i].x) * delay;
+                trailPositions[i].y += (targetY - trailPositions[i].y) * delay;
+                trail.style.left = trailPositions[i].x + 'px';
+                trail.style.top = trailPositions[i].y + 'px';
+              }
+            });
+            
+            requestAnimationFrame(animateCursor);
+          }
+          animateCursor();
+          console.log('✅ Cursor initialized');
+        }
+      } catch(e) { console.error('Cursor error:', e); }
+
+      // ============================================
+      // SCROLL VELOCITY TEXT DISTORTION
+      // ============================================
+      let lastScrollY = window.scrollY;
+      let scrollVelocity = 0;
+      
+      const velocityTexts = document.querySelectorAll('.velocity-text, h1, h2, h3');
+      
+      function updateScrollVelocity() {
+        const currentScrollY = window.scrollY;
+        scrollVelocity = (currentScrollY - lastScrollY) * 0.5;
+        lastScrollY = currentScrollY;
+        
+        // Apply stretch based on velocity
+        velocityTexts.forEach(el => {
+          const stretch = Math.min(Math.abs(scrollVelocity) * 0.02, 0.15);
+          const skew = scrollVelocity * 0.1;
+          el.style.transform = `scaleY(${1 + stretch}) skewX(${skew}deg)`;
+        });
+        
+        // Reset after a moment
+        setTimeout(() => {
+          velocityTexts.forEach(el => {
+            el.style.transform = '';
+          });
+        }, 50);
+      }
+      
+      window.addEventListener('scroll', updateScrollVelocity, { passive: true });
+
+      // ============================================
+      // GLITCH TEXT ON SCROLL INTO VIEW
+      // ============================================
+      const glitchTexts = document.querySelectorAll('.glitch-text, .text-gradient');
+      
+      const glitchObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            setTimeout(() => entry.target.classList.remove('active'), 300);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      glitchTexts.forEach(el => {
+        el.setAttribute('data-text', el.textContent);
+        glitchObserver.observe(el);
+      });
+
+      // ============================================
+      // CHARACTER REVEAL ANIMATION
+      // ============================================
+      const charRevealElements = document.querySelectorAll('.char-reveal');
+      charRevealElements.forEach(el => {
+        const text = el.textContent;
+        el.innerHTML = '';
+        text.split('').forEach((char, i) => {
+          const span = document.createElement('span');
+          span.textContent = char === ' ' ? '\u00A0' : char;
+          span.style.transitionDelay = `${i * 0.03}s`;
+          el.appendChild(span);
+        });
+      });
+      
+      const charRevealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.3 });
+      
+      charRevealElements.forEach(el => charRevealObserver.observe(el));
+
+      // ============================================
+      // LOCOMOTIVE-STYLE HOVER IMAGE REVEAL
+      // ============================================
+      const hoverImage = document.getElementById('hover-image');
+      const hoverImageSrc = document.getElementById('hover-image-src');
+      const imageRevealTriggers = document.querySelectorAll('[data-hover-image]');
+      
+      let hoverImageX = 0, hoverImageY = 0;
+      let hoverImageTargetX = 0, hoverImageTargetY = 0;
+      
+      imageRevealTriggers.forEach(trigger => {
+        trigger.addEventListener('mouseenter', () => {
+          const imgSrc = trigger.getAttribute('data-hover-image');
+          if (imgSrc) {
+            hoverImageSrc.src = imgSrc;
+            hoverImage.classList.add('active');
+          }
+        });
+        trigger.addEventListener('mouseleave', () => {
+          hoverImage.classList.remove('active');
+        });
+      });
+      
+      document.addEventListener('mousemove', (e) => {
+        hoverImageTargetX = e.clientX + 20;
+        hoverImageTargetY = e.clientY + 20;
+      });
+      
+      function animateHoverImage() {
+        hoverImageX += (hoverImageTargetX - hoverImageX) * 0.1;
+        hoverImageY += (hoverImageTargetY - hoverImageY) * 0.1;
+        hoverImage.style.left = hoverImageX + 'px';
+        hoverImage.style.top = hoverImageY + 'px';
+        requestAnimationFrame(animateHoverImage);
+      }
+      animateHoverImage();
+
+      // ============================================
+      // STAGGER REVEAL FOR CARDS
+      // ============================================
+      const staggerElements = document.querySelectorAll('.stagger-reveal');
+      const staggerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.2 });
+      
+      staggerElements.forEach(el => staggerObserver.observe(el));
+
+      // ============================================
+      // MAGNETIC BUTTONS - EXTREME MODE
+      // ============================================
+      const magneticElements = document.querySelectorAll('.magnetic, .magnetic-extreme');
+      magneticElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          const strength = el.classList.contains('magnetic-extreme') ? 0.5 : 0.3;
+          el.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = '';
+        });
+      });
+
+      // ============================================
+      // PERSPECTIVE TILT ON SCROLL
+      // ============================================
+      const perspectiveSections = document.querySelectorAll('.perspective-section');
+      window.addEventListener('scroll', () => {
+        perspectiveSections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          const center = window.innerHeight / 2;
+          const sectionCenter = rect.top + rect.height / 2;
+          const diff = (sectionCenter - center) / center;
+          const content = section.querySelector('.perspective-content');
+          if (content) {
+            content.style.transform = `rotateX(${diff * 5}deg)`;
+          }
+        });
+      }, { passive: true });
+
+      // ============================================
+      // THREE.JS 3D FLOATING PARTICLES
+      // ============================================
+      const threeCanvas = document.getElementById('three-canvas');
+      if (threeCanvas && typeof THREE !== 'undefined') {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: threeCanvas, alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        
+        // Create floating particles
+        const particleCount = 200;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
+        const sizes = new Float32Array(particleCount);
+        
+        const colorPalette = [
+          new THREE.Color(0x60a5fa), // blue
+          new THREE.Color(0xa855f7), // purple
+          new THREE.Color(0xec4899), // pink
+        ];
+        
+        for (let i = 0; i < particleCount; i++) {
+          positions[i * 3] = (Math.random() - 0.5) * 20;
+          positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
+          positions[i * 3 + 2] = (Math.random() - 0.5) * 20;
+          
+          const color = colorPalette[Math.floor(Math.random() * colorPalette.length)];
+          colors[i * 3] = color.r;
+          colors[i * 3 + 1] = color.g;
+          colors[i * 3 + 2] = color.b;
+          
+          sizes[i] = Math.random() * 0.1 + 0.02;
+        }
+        
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+        
+        const material = new THREE.PointsMaterial({
+          size: 0.05,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.6,
+          blending: THREE.AdditiveBlending,
+        });
+        
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+        
+        // Add a subtle wireframe sphere
+        const sphereGeo = new THREE.IcosahedronGeometry(3, 1);
+        const sphereMat = new THREE.MeshBasicMaterial({
+          color: 0xa855f7,
+          wireframe: true,
+          transparent: true,
+          opacity: 0.08,
+        });
+        const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+        scene.add(sphere);
+        
+        camera.position.z = 8;
+        
+        let threeMouseX = 0, threeMouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+          threeMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+          threeMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+        });
+        
+        function animateThree() {
+          requestAnimationFrame(animateThree);
+          
+          // Rotate based on scroll
+          const scrollY = window.scrollY;
+          particles.rotation.y = scrollY * 0.0003;
+          particles.rotation.x = scrollY * 0.0001;
+          sphere.rotation.y = scrollY * 0.0002;
+          sphere.rotation.x = scrollY * 0.0001;
+          
+          // Mouse influence
+          particles.rotation.y += (threeMouseX * 0.5 - particles.rotation.y) * 0.02;
+          particles.rotation.x += (threeMouseY * 0.3 - particles.rotation.x) * 0.02;
+          
+          // Animate particle positions subtly
+          const positions = particles.geometry.attributes.position.array;
+          for (let i = 0; i < particleCount; i++) {
+            positions[i * 3 + 1] += Math.sin(Date.now() * 0.001 + i) * 0.002;
+          }
+          particles.geometry.attributes.position.needsUpdate = true;
+          
+          renderer.render(scene, camera);
+        }
+        animateThree();
+        
+        // Resize handler
+        window.addEventListener('resize', () => {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+      }
+
+      // ============================================
+      // AUDIO CONTROL WITH REVERB
+      // ============================================
+      const audioControl = document.getElementById('audio-control');
+      const bgAudio = document.getElementById('bg-audio');
+      let isPlaying = false;
+      
+      // Single track
+      bgAudio.src = 'audio/beat1.m4a';
+      let audioCtx = null;
+      let reverbNode = null;
+      let reverbNodeSlowed = null; // Shorter reverb for SLOWED mode
+      let sourceNode = null;
+      let dryGain = null;
+      let wetGain = null;
+      let bassBoost = null;
+      let distortion = null;
+      let currentReverbNode = null;
+      
+      const speedSlider = document.getElementById('speed-slider');
+      const speedLabel = document.getElementById('speed-label');
+      
+      // Create reverb impulse response
+      function createReverbImpulse(ctx, duration, decay) {
+        const sampleRate = ctx.sampleRate;
+        const length = sampleRate * duration;
+        const impulse = ctx.createBuffer(2, length, sampleRate);
+        
+        for (let channel = 0; channel < 2; channel++) {
+          const channelData = impulse.getChannelData(channel);
+          for (let i = 0; i < length; i++) {
+            channelData[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, decay);
+          }
+        }
+        return impulse;
+      }
+      
+      // Create distortion curve
+      function makeDistortionCurve(amount) {
+        const samples = 44100;
+        const curve = new Float32Array(samples);
+        for (let i = 0; i < samples; i++) {
+          const x = (i * 2) / samples - 1;
+          curve[i] = (Math.PI + amount) * x / (Math.PI + amount * Math.abs(x));
+        }
+        return curve;
+      }
+      
+      function initAudioWithReverb() {
+        if (audioCtx) return;
+        
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        sourceNode = audioCtx.createMediaElementSource(bgAudio);
+        
+        // Create reverbs - normal and short for SLOWED mode
+        reverbNode = audioCtx.createConvolver();
+        reverbNode.buffer = createReverbImpulse(audioCtx, 2.5, 2); // 2.5 sec reverb tail
+        
+        reverbNodeSlowed = audioCtx.createConvolver();
+        reverbNodeSlowed.buffer = createReverbImpulse(audioCtx, 2, 2); // 2 sec tail for SLOWED
+        
+        currentReverbNode = reverbNode;
+        
+        // Bass boost (low shelf filter)
+        bassBoost = audioCtx.createBiquadFilter();
+        bassBoost.type = 'lowshelf';
+        bassBoost.frequency.value = 200;
+        bassBoost.gain.value = 0; // Off by default
+        
+        // Distortion
+        distortion = audioCtx.createWaveShaper();
+        distortion.curve = makeDistortionCurve(0); // Off by default
+        distortion.oversample = '4x';
+        
+        // Dry/wet mix
+        dryGain = audioCtx.createGain();
+        wetGain = audioCtx.createGain();
+        dryGain.gain.value = 0.5; // 50% dry
+        wetGain.gain.value = 0.5; // 50% wet
+        
+        // Connect: source -> bass -> distortion -> dry -> output
+        //          source -> bass -> distortion -> reverb -> wet -> output
+        sourceNode.connect(bassBoost);
+        bassBoost.connect(distortion);
+        distortion.connect(dryGain);
+        distortion.connect(reverbNode);
+        distortion.connect(reverbNodeSlowed);
+        reverbNode.connect(wetGain);
+        reverbNodeSlowed.connect(wetGain);
+        dryGain.connect(audioCtx.destination);
+        wetGain.connect(audioCtx.destination);
+        
+        // Initially mute the slowed reverb
+        reverbNodeSlowed.disconnect();
+      }
+      
+      function setSlowedMode(enabled) {
+        if (!audioCtx) return;
+        
+        if (enabled) {
+          // SLOWED mode: full bass boost, full distortion, -6dB, 2s reverb, 40% wet
+          bassBoost.gain.value = 12; // Full bass boost
+          distortion.curve = makeDistortionCurve(10); // Half distortion
+          dryGain.gain.value = 0.17; // 55% dry * 0.316 (-10dB)
+          wetGain.gain.value = 0.14; // 45% wet * 0.316 (-10dB)
+          
+          // Switch to short reverb
+          reverbNode.disconnect();
+          reverbNodeSlowed.connect(wetGain);
+        } else {
+          // Normal mode
+          bassBoost.gain.value = 0;
+          distortion.curve = makeDistortionCurve(0);
+          dryGain.gain.value = 0.5;
+          wetGain.gain.value = 0.5;
+          
+          // Switch to normal reverb
+          reverbNodeSlowed.disconnect();
+          reverbNode.connect(wetGain);
+        }
+      }
+      
+      if (audioControl && bgAudio) {
+        bgAudio.volume = 0.5; // Bump volume since reverb spreads it
+        bgAudio.playbackRate = 0.9;
+        bgAudio.preservesPitch = false;
+        bgAudio.mozPreservesPitch = false;
+        bgAudio.webkitPreservesPitch = false;
+        
+        audioControl.addEventListener('click', () => {
+          if (isPlaying) {
+            bgAudio.pause();
+            audioControl.classList.remove('playing');
+          } else {
+            initAudioWithReverb();
+            if (audioCtx && audioCtx.state === 'suspended') {
+              audioCtx.resume();
+            }
+            bgAudio.play().catch(e => console.log('Audio play prevented:', e));
+            audioControl.classList.add('playing');
+          }
+          isPlaying = !isPlaying;
+        });
+        
+        // Fade in function
+        function fadeInAudio(duration) {
+          bgAudio.volume = 0;
+          const targetVolume = 0.5;
+          const steps = 100;
+          const stepTime = duration / steps;
+          let currentStep = 0;
+          
+          const fadeInterval = setInterval(() => {
+            currentStep++;
+            bgAudio.volume = (currentStep / steps) * targetVolume;
+            if (currentStep >= steps) {
+              clearInterval(fadeInterval);
+            }
+          }, stepTime);
+        }
+        
+        // Auto-play on load (with user gesture workaround)
+        document.addEventListener('click', function autoPlay() {
+          initAudioWithReverb();
+          if (audioCtx && audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          bgAudio.volume = 0;
+          bgAudio.play().then(() => {
+            fadeInAudio(10000); // 10 second fade in
+            audioControl.classList.add('playing');
+            isPlaying = true;
+          }).catch(e => console.log('Auto-play prevented:', e));
+          document.removeEventListener('click', autoPlay);
+        }, { once: true });
+      }
+      
+      // Speed toggle with smooth glide (like slowing down a record)
+      let currentRate = 0.9;
+      let targetRate = 0.9;
+      let glideInterval = null;
+      
+      function glideToSpeed(target) {
+        targetRate = target;
+        if (glideInterval) cancelAnimationFrame(glideInterval);
+        
+        function step() {
+          const diff = targetRate - currentRate;
+          if (Math.abs(diff) < 0.005) {
+            currentRate = targetRate;
+            bgAudio.playbackRate = currentRate;
+            return;
+          }
+          // Smooth easing - adjust 0.08 for faster/slower glide
+          currentRate += diff * 0.08;
+          bgAudio.playbackRate = currentRate;
+          glideInterval = requestAnimationFrame(step);
+        }
+        step();
+      }
+      
+      if (speedSlider && bgAudio) {
+        speedSlider.addEventListener('input', (e) => {
+          const newSpeed = parseFloat(e.target.value);
+          glideToSpeed(newSpeed);
+          speedLabel.textContent = newSpeed.toFixed(2) + 'x';
+        });
+      }
+
+      // ============================================
+      // BREATHING TEXT (auto-synced)
+      // ============================================
+      const breatheElements = document.querySelectorAll('.hero-title, .section-title, .mega-text');
+      const breathDuration = 1.5; // seconds per breath cycle
+      document.documentElement.style.setProperty('--breath-duration', breathDuration + 's');
+      breatheElements.forEach(el => el.classList.add('breathe'));
+
+      // ============================================
+      // FLYING LOGO WITH SMOKE TRAIL
+      // ============================================
+      const flyingLogo = document.getElementById('flying-logo');
+      const smokeContainer = document.getElementById('smoke-container');
+      
+      if (flyingLogo) {
+        let logoTime = 0;
+        let lastX = 0, lastY = 0;
+        
+        function animateFlyingLogo() {
+          logoTime += 0.008; // Slow movement
+          
+          // Gentle figure-8 / lissajous curve movement
+          const x = Math.sin(logoTime * 0.7) * 80 + Math.sin(logoTime * 1.3) * 40;
+          const y = Math.cos(logoTime * 0.5) * 30 + Math.sin(logoTime * 0.9) * 20;
+          const rotation = Math.sin(logoTime * 0.6) * 10;
+          
+          flyingLogo.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${rotation}deg)`;
+          
+          // Spawn smoke particles based on movement
+          const dx = x - lastX;
+          const dy = y - lastY;
+          const speed = Math.sqrt(dx*dx + dy*dy);
+          
+          if (speed > 0.5 && Math.random() > 0.7) {
+            createSmokeParticle(x, y, -dx, -dy);
+          }
+          
+          lastX = x;
+          lastY = y;
+          
+          requestAnimationFrame(animateFlyingLogo);
+        }
+        
+        function createSmokeParticle(x, y, vx, vy) {
+          const particle = document.createElement('div');
+          particle.className = 'smoke-particle';
+          particle.style.left = '50%';
+          particle.style.top = '100%';
+          particle.style.setProperty('--smoke-x', (vx * 2 + (Math.random() - 0.5) * 20) + 'px');
+          particle.style.setProperty('--smoke-y', (20 + Math.random() * 30) + 'px');
+          particle.style.width = (15 + Math.random() * 15) + 'px';
+          particle.style.height = particle.style.width;
+          
+          flyingLogo.appendChild(particle);
+          
+          setTimeout(() => particle.remove(), 1500);
+        }
+        
+        animateFlyingLogo();
+      }
+
+      // ============================================
+      // VISIBLE RIPPLE EFFECTS 
+      // ============================================
+      // Click creates big ripple
+      document.body.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+          position: fixed;
+          left: ${e.clientX}px;
+          top: ${e.clientY}px;
+          width: 0;
+          height: 0;
+          border: 2px solid rgba(168, 85, 247, 0.8);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 99999;
+          transform: translate(-50%, -50%);
+          animation: clickRipple 0.8s ease-out forwards;
+        `;
+        document.body.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+      });
+      
+      // Add the animation
+      const rippleStyle = document.createElement('style');
+      rippleStyle.textContent = `
+        @keyframes clickRipple {
+          0% { width: 0; height: 0; opacity: 1; }
+          100% { width: 300px; height: 300px; opacity: 0; }
+        }
+        @keyframes trailRipple {
+          0% { width: 5px; height: 5px; opacity: 0.6; }
+          100% { width: 40px; height: 40px; opacity: 0; }
+        }
+      `;
+      document.head.appendChild(rippleStyle);
+      
+      // Mouse trail ripples
+      let trailThrottle = 0;
+      document.addEventListener('mousemove', function(e) {
+        if (Date.now() - trailThrottle < 50) return;
+        trailThrottle = Date.now();
+        
+        const trail = document.createElement('div');
+        trail.style.cssText = `
+          position: fixed;
+          left: ${e.clientX}px;
+          top: ${e.clientY}px;
+          width: 5px;
+          height: 5px;
+          background: radial-gradient(circle, rgba(96, 165, 250, 0.6) 0%, transparent 70%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 99998;
+          transform: translate(-50%, -50%);
+          animation: trailRipple 0.5s ease-out forwards;
+        `;
+        document.body.appendChild(trail);
+        setTimeout(() => trail.remove(), 500);
+      });
+
+      console.log('🚀 Apex Platform is ALIVE!');
+      console.log('Three.js loaded:', typeof THREE !== 'undefined');
+      console.log('Blob canvas:', document.getElementById('blob-canvas'));
+    });
+  </script>
+</body>
+</html>

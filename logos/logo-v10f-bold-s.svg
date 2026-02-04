@@ -1,0 +1,61 @@
+<svg viewBox="0 0 300 290" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad10f" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- APEX row -->
+  <g>
+    <!-- Rocket A -->
+    <path d="M 60 8
+             L 28 78
+             L 15 100
+             L 42 88
+             L 42 97
+             L 60 112
+             L 78 97
+             L 78 88
+             L 105 100
+             L 92 78
+             L 60 8
+             Z"
+          fill="url(#grad10f)"/>
+    
+    <!-- A crossbar cutout -->
+    <path d="M 42 58 L 78 58 L 74 72 L 46 72 Z" fill="#0a0a0a"/>
+    
+    <!-- "pex" -->
+    <text x="115" y="82" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="68" 
+          font-weight="700" 
+          fill="white">pex</text>
+  </g>
+  
+  <!-- UNMISTAKABLE S - proper letter shape from smoke -->
+  <!-- Top bar of S -->
+  <path d="M 130 125 L 60 125 C 25 125, 10 145, 25 165" 
+        fill="none" stroke="url(#grad10f)" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Middle diagonal of S -->
+  <path d="M 25 165 C 45 190, 90 195, 120 200 C 150 205, 165 220, 150 245" 
+        fill="none" stroke="url(#grad10f)" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Bottom bar of S -->
+  <path d="M 150 245 C 135 270, 90 280, 50 275 L 20 270" 
+        fill="none" stroke="url(#grad10f)" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Connection from rocket to S -->
+  <path d="M 60 112 C 70 118, 90 122, 100 125" 
+        fill="none" stroke="url(#grad10f)" stroke-width="14" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- "ync" -->
+  <text x="155" y="278" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="68" 
+        font-weight="700" 
+        fill="white">ync</text>
+</svg>

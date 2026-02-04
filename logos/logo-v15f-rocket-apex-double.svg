@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 280">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1e2e"/>
+      <stop offset="100%" style="stop-color:#2d2d44"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Rocket body -->
+  <path d="M60 8 Q90 60, 95 140 L95 200 L80 200 L75 250 L60 230 L45 250 L40 200 L25 200 L25 140 Q30 60, 60 8 Z" 
+        fill="url(#bodyGrad)" stroke="#4a4a6a" stroke-width="1.5"/>
+  
+  <!-- Fins -->
+  <path d="M25 180 L10 220 L25 200 Z" fill="#3d3d5c"/>
+  <path d="M95 180 L110 220 L95 200 Z" fill="#3d3d5c"/>
+  
+  <!-- Window -->
+  <ellipse cx="60" cy="70" rx="12" ry="14" fill="#0f172a" stroke="#60a5fa" stroke-width="1"/>
+  
+  <!-- APEX text - Double offset chromatic -->
+  <!-- Back layer (offset) -->
+  <text x="62" y="117" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#ec4899" stroke-width="1" text-anchor="middle">A</text>
+  <text x="62" y="140" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#ec4899" stroke-width="1" text-anchor="middle">P</text>
+  <text x="62" y="163" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#ec4899" stroke-width="1" text-anchor="middle">E</text>
+  <text x="62" y="186" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#ec4899" stroke-width="1" text-anchor="middle">X</text>
+  
+  <!-- Front layer -->
+  <text x="58" y="115" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#60a5fa" stroke-width="1" text-anchor="middle" filter="url(#glow)">A</text>
+  <text x="58" y="138" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#60a5fa" stroke-width="1" text-anchor="middle" filter="url(#glow)">P</text>
+  <text x="58" y="161" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#60a5fa" stroke-width="1" text-anchor="middle" filter="url(#glow)">E</text>
+  <text x="58" y="184" font-family="Arial Black, sans-serif" font-size="22" fill="none" stroke="#60a5fa" stroke-width="1" text-anchor="middle" filter="url(#glow)">X</text>
+</svg>

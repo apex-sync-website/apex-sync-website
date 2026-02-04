@@ -1,0 +1,59 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+  <defs>
+    <linearGradient id="sleekGrad7b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="sleekFlame7b" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Sleek rocket silhouette -->
+  <path d="M 100 5
+           C 140 20, 155 60, 155 100
+           L 155 190
+           L 175 220
+           L 155 210
+           L 155 230
+           L 100 250
+           L 45 230
+           L 45 210
+           L 25 220
+           L 45 190
+           L 45 100
+           C 45 60, 60 20, 100 5
+           Z"
+        fill="url(#sleekGrad7b)"/>
+  
+  <!-- Dark body panel -->
+  <path d="M 100 25
+           C 125 35, 135 60, 135 90
+           L 135 200
+           L 100 215
+           L 65 200
+           L 65 90
+           C 65 60, 75 35, 100 25
+           Z"
+        fill="#0a0a0a"/>
+  
+  <!-- THIN ELEGANT AS -->
+  <g transform="translate(100, 115) scale(0.55)">
+    <!-- Thin flowing S -->
+    <path d="M 40 -55
+             C 70 -55, 75 -35, 60 -15
+             C 45 5, 0 10, -20 20
+             C -40 30, -50 50, -35 65
+             C -20 80, 20 75, 50 60"
+          fill="none" stroke="url(#sleekGrad7b)" stroke-width="6" stroke-linecap="round"/>
+    <!-- Thin A with sharp serifs -->
+    <polygon points="0,-60 -32,65 -22,65 -12,35 22,35 32,65 42,65 12,-60" fill="white"/>
+    <polygon points="0,-25 -8,28 18,28" fill="#0a0a0a"/>
+  </g>
+  
+  <!-- Exhaust trail -->
+  <ellipse cx="100" cy="280" rx="30" ry="15" fill="url(#sleekFlame7b)"/>
+  <ellipse cx="100" cy="265" rx="20" ry="10" fill="#a855f7" opacity="0.5"/>
+</svg>

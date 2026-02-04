@@ -1,0 +1,20 @@
+<svg viewBox="0 0 120 340" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="neon14c" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <g filter="url(#neon14c)">
+    <text x="60" y="75" font-family="Impact, sans-serif" font-size="70" fill="none" stroke="#60a5fa" stroke-width="2" text-anchor="middle">A</text>
+    <text x="60" y="150" font-family="Impact, sans-serif" font-size="70" fill="none" stroke="#a855f7" stroke-width="2" text-anchor="middle">P</text>
+    <text x="60" y="225" font-family="Impact, sans-serif" font-size="70" fill="none" stroke="#ec4899" stroke-width="2" text-anchor="middle">E</text>
+    <text x="60" y="300" font-family="Impact, sans-serif" font-size="70" fill="none" stroke="#f472b6" stroke-width="2" text-anchor="middle">X</text>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="50%" style="stop-color:#a855f7"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Clean S curve behind -->
+  <path d="M 140 30
+           Q 180 30, 180 70
+           Q 180 100, 100 110
+           Q 20 120, 20 160
+           Q 20 195, 70 195
+           Q 110 195, 140 175"
+        fill="none" 
+        stroke="url(#grad5)" 
+        stroke-width="24" 
+        stroke-linecap="round"
+        opacity="0.7"/>
+  
+  <!-- Sharp A in front -->
+  <polygon points="100,25 55,175 78,175 88,148 136,148 146,175 169,175 124,25" 
+           fill="white"/>
+  <!-- A hole -->
+  <polygon points="100,75 88,130 124,130" 
+           fill="#000"/>
+</svg>
