@@ -1091,6 +1091,56 @@
       border-radius: 50%;
       box-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.5);
     }
+    .space-object.geo-square {
+      width: 40px;
+      height: 40px;
+      border: 2px solid rgba(96, 165, 250, 0.4);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+      backdrop-filter: blur(2px);
+    }
+    .space-object.geo-triangle {
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 45px solid rgba(168, 85, 247, 0.3);
+    }
+    .space-object.geo-circle {
+      width: 35px;
+      height: 35px;
+      border: 2px solid rgba(236, 72, 153, 0.4);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+    }
+    .space-object.geo-diamond {
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(99, 102, 241, 0.4);
+      background: linear-gradient(45deg, rgba(99, 102, 241, 0.15), rgba(59, 130, 246, 0.1));
+      transform: rotate(45deg);
+    }
+    .space-object.geo-hex {
+      width: 40px;
+      height: 23px;
+      background: rgba(96, 165, 250, 0.2);
+      position: relative;
+    }
+    .space-object.geo-hex::before,
+    .space-object.geo-hex::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+    }
+    .space-object.geo-hex::before {
+      bottom: 100%;
+      border-bottom: 12px solid rgba(96, 165, 250, 0.2);
+    }
+    .space-object.geo-hex::after {
+      top: 100%;
+      border-top: 12px solid rgba(96, 165, 250, 0.2);
+    }
     @keyframes flyPast {
       0% {
         opacity: 0;
@@ -1437,11 +1487,9 @@
       animation-delay: -10s;
     }
 
-    /* Geometric Shapes */
+    /* Geometric Shapes - now flying, hide static ones */
     .geometric-shape {
-      position: absolute;
-      border: 2px solid rgba(96, 165, 250, 0.2);
-      backdrop-filter: blur(2px);
+      display: none; /* Moved to flying space objects */
     }
 
     .shape-1 {
@@ -3212,7 +3260,15 @@
       // ============================================
       // SPACE OBJECTS FLYING PAST
       // ============================================
-      const spaceTypes = ['meteor', 'meteor', 'meteor', 'asteroid', 'asteroid', 'star', 'star', 'star', 'planet', 'planet blue', 'planet pink', 'ufo'];
+      const spaceTypes = [
+        'meteor', 'meteor', 'meteor', 'meteor',
+        'asteroid', 'asteroid', 
+        'star', 'star', 'star', 'star',
+        'planet', 'planet blue', 'planet pink', 
+        'ufo',
+        'geo-square', 'geo-square', 'geo-triangle', 'geo-triangle',
+        'geo-circle', 'geo-circle', 'geo-diamond', 'geo-diamond', 'geo-hex'
+      ];
       
       function spawnSpaceObject() {
         const obj = document.createElement('div');
