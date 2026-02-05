@@ -1020,6 +1020,35 @@
       }
     }
 
+    /* Ecosystem Interactive Blocks */
+    .eco-block:hover .eco-title {
+      -webkit-text-stroke: 0;
+      text-stroke: 0;
+    }
+    .eco-block[data-color="blue"]:hover .eco-title {
+      color: #60a5fa;
+      text-shadow: 0 0 40px rgba(96, 165, 250, 0.5);
+    }
+    .eco-block[data-color="purple"]:hover .eco-title {
+      color: #a855f7;
+      text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+    }
+    .eco-block[data-color="pink"]:hover .eco-title {
+      color: #ec4899;
+      text-shadow: 0 0 40px rgba(236, 72, 153, 0.5);
+    }
+    .eco-block[data-color="gradient"]:hover .eco-title {
+      background: linear-gradient(90deg, #60a5fa, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.5));
+    }
+    .eco-block:hover .eco-number {
+      color: #fff;
+    }
+
     /* Space objects flying past */
     .space-object {
       position: fixed;
@@ -1744,101 +1773,92 @@
     </h2>
   </section>
 
-  <!-- Ecosystem Section -->
-  <section id="ecosystem" class="py-28 md:py-36 relative z-10 overflow-hidden ripple-section">
-    <!-- Parallax Background -->
-    <div class="absolute left-0 top-1/4 w-1/2 h-1/2 bg-gradient-to-r from-blue-900/5 to-transparent pointer-events-none parallax-layer" data-speed="0.03"></div>
-
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- Ecosystem Section - INTERACTIVE ACCORDION STYLE -->
+  <section id="ecosystem" class="py-20 md:py-28 relative z-10 overflow-hidden bg-black">
+    <div class="max-w-6xl mx-auto px-6">
       <!-- Section Header -->
-      <div class="mb-24">
-        <h2 class="fade-up text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-          The Ecosystem.
-        </h2>
-        <div class="fade-up delay-100 h-1.5 w-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full">
+      <div class="mb-16 flex justify-between items-end">
+        <div>
+          <span class="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-2 block">The Ecosystem</span>
+          <h2 class="fade-up text-3xl md:text-4xl font-bold tracking-tight text-white">
+            Four Verticals.
+          </h2>
         </div>
+        <span class="text-xs uppercase tracking-[0.3em] text-neutral-500">Hover to explore</span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8" id="ecosystem-cards">
-        <!-- Creator Campaigns Card -->
-        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up backdrop-blur-sm transition-all duration-500 hover:border-white/20">
-          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          </div>
-          <div class="relative z-10 h-full flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-blue-400 group-hover:text-blue-300 group-hover:scale-110 transition-all duration-500">
-              <iconify-icon icon="solar:users-group-rounded-linear" width="24"></iconify-icon>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-blue-100 transition-colors duration-300">
+      <!-- Interactive Service Blocks - BIG EXPANDABLE TEXT -->
+      <div class="space-y-1" id="ecosystem-accordion">
+        
+        <!-- Creator Campaigns -->
+        <div class="eco-block group cursor-pointer border-b border-white/10 py-6 transition-all duration-500 hover:py-10" data-color="blue">
+          <div class="flex items-center justify-between">
+            <h3 class="eco-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent transition-all duration-500" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3); text-stroke: 1px rgba(255,255,255,0.3);">
               Creator Campaigns
             </h3>
-            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
-              Performance-based influencer partnerships across gaming, tech, and lifestyle. <span class="text-blue-400 font-medium">Pay for results.</span>
+            <span class="eco-number text-sm text-neutral-600 font-mono">01</span>
+          </div>
+          <div class="eco-details max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-40 group-hover:mt-6">
+            <p class="text-lg text-neutral-400 max-w-2xl">
+              Performance-based influencer partnerships across gaming, tech, and lifestyle. <span class="text-blue-400 font-semibold">Pay for results, not promises.</span>
             </p>
           </div>
         </div>
 
-        <!-- UGC at Scale Card -->
-        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up delay-100 backdrop-blur-sm transition-all duration-500 hover:border-white/20">
-          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          </div>
-          <div class="relative z-10 h-full flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-purple-400 group-hover:text-purple-300 group-hover:scale-110 transition-all duration-500">
-              <iconify-icon icon="solar:video-frame-play-horizontal-linear" width="24"></iconify-icon>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-purple-100 transition-colors duration-300">
+        <!-- UGC at Scale -->
+        <div class="eco-block group cursor-pointer border-b border-white/10 py-6 transition-all duration-500 hover:py-10" data-color="purple">
+          <div class="flex items-center justify-between">
+            <h3 class="eco-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent transition-all duration-500" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3); text-stroke: 1px rgba(255,255,255,0.3);">
               UGC at Scale
             </h3>
-            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
-              Micro-creator content production. Fast turnaround, authentic formats, <span class="text-purple-400 font-medium">volume that converts.</span>
+            <span class="eco-number text-sm text-neutral-600 font-mono">02</span>
+          </div>
+          <div class="eco-details max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-40 group-hover:mt-6">
+            <p class="text-lg text-neutral-400 max-w-2xl">
+              Micro-creator content production. Fast turnaround, authentic formats. <span class="text-purple-400 font-semibold">Volume that actually converts.</span>
             </p>
           </div>
         </div>
 
-        <!-- Talent & Celebrity Card -->
-        <div class="tilt-card magnetic hover-trigger group relative p-8 rounded-3xl bg-neutral-900/50 border border-white/10 overflow-hidden fade-up delay-200 backdrop-blur-sm transition-all duration-500 hover:border-white/20">
-          <div class="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-          </div>
-          <div class="relative z-10 h-full flex flex-col">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-black to-neutral-900 border border-white/20 flex items-center justify-center mb-6 text-pink-400 group-hover:text-pink-300 group-hover:scale-110 transition-all duration-500">
-              <iconify-icon icon="solar:star-shine-linear" width="24"></iconify-icon>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-pink-100 transition-colors duration-300">
-              Talent & Celebrity
+        <!-- Celebrity & Talent -->
+        <div class="eco-block group cursor-pointer border-b border-white/10 py-6 transition-all duration-500 hover:py-10" data-color="pink">
+          <div class="flex items-center justify-between">
+            <h3 class="eco-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent transition-all duration-500" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3); text-stroke: 1px rgba(255,255,255,0.3);">
+              Celebrity Deals
             </h3>
-            <p class="text-sm text-neutral-400 font-normal leading-relaxed group-hover:text-neutral-300 transition-colors duration-300">
-              High-budget brand partnerships with verified talent. <span class="text-pink-400 font-medium">Global reach, direct relationships.</span>
+            <span class="eco-number text-sm text-neutral-600 font-mono">03</span>
+          </div>
+          <div class="eco-details max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-40 group-hover:mt-6">
+            <p class="text-lg text-neutral-400 max-w-2xl">
+              High-budget brand partnerships with verified talent. <span class="text-pink-400 font-semibold">Global reach, direct relationships.</span>
             </p>
           </div>
         </div>
 
-        <!-- Apex Platform Card (SPOTLIGHT) -->
-        <div class="tilt-card magnetic hover-trigger group pulse-card relative p-8 rounded-3xl bg-gradient-to-br from-[#0A0A0A] via-[#0f0f1a] to-[#0A0A0A] border-2 border-blue-500/30 overflow-hidden fade-up delay-300 backdrop-blur-md transition-all duration-500 hover:border-purple-500/50 hover:scale-105">
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-pink-500/5 opacity-60"></div>
-          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10" style="animation: breathe 4s ease-in-out infinite;"></div>
-          <div class="relative z-10 h-full flex flex-col">
-            <div class="flex justify-between items-start mb-6">
-              <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 flex items-center justify-center text-white shadow-[0_0_30px_rgba(96,165,250,0.5)] group-hover:shadow-[0_0_50px_rgba(168,85,247,0.7)] transition-all duration-500 group-hover:scale-110">
-                <iconify-icon icon="solar:cpu-bolt-linear" width="24"></iconify-icon>
-              </div>
-              <span class="px-2 py-1 rounded-full bg-white/10 text-[10px] font-bold text-white border border-white/20">
-                CORE
-              </span>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
-              The Apex Platform
+        <!-- AI Outreach -->
+        <div class="eco-block group cursor-pointer border-b border-white/10 py-6 transition-all duration-500 hover:py-10" data-color="gradient">
+          <div class="flex items-center justify-between">
+            <h3 class="eco-title text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-transparent transition-all duration-500" style="-webkit-text-stroke: 1px rgba(255,255,255,0.3); text-stroke: 1px rgba(255,255,255,0.3);">
+              AI Outreach
             </h3>
-            <p class="text-sm text-neutral-300 font-normal leading-relaxed mb-4 group-hover:text-white transition-colors duration-300">
-              AI-powered outreach engine. <span class="text-purple-400 font-medium">Prospecting at scale, zero leads lost.</span>
-            </p>
-            <div class="mt-auto flex items-center gap-2 text-xs text-blue-300 font-semibold">
-              <span class="relative flex h-2 w-2">
-                <span class="absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75 animate-ping"></span>
-                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            <div class="flex items-center gap-3">
+              <span class="px-2 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-[10px] font-bold text-white border border-white/20 flex items-center gap-1">
+                <span class="relative flex h-1.5 w-1.5">
+                  <span class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+                </span>
+                LIVE
               </span>
-              Live
+              <span class="eco-number text-sm text-neutral-600 font-mono">04</span>
             </div>
           </div>
+          <div class="eco-details max-h-0 overflow-hidden transition-all duration-500 group-hover:max-h-40 group-hover:mt-6">
+            <p class="text-lg text-neutral-400 max-w-2xl">
+              The Apex Platform. AI-powered prospecting engine. <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400 font-semibold">Scale without limits, zero leads lost.</span>
+            </p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
