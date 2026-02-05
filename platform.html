@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Platform | Early Access</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Get early access to the Apex Platform - AI-powered creator outreach at scale.">
+  <meta property="og:title" content="Apex Platform | Early Access">
+  <meta property="og:description" content="The future of creator marketing. Request early access.">
+  <meta property="og:image" content="https://apexsync.biz/og-image.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* INVERTED UNIVERSE - Light void */
+    .inverted-universe {
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Inverted color scheme - warm spectrum */
+    :root {
+      --accent-1: #ff6b6b;
+      --accent-2: #ffd93d;
+      --accent-3: #6bcb77;
+      --glow: rgba(255, 107, 107, 0.5);
+    }
+
+    /* Pulling inward vortex effect */
+    .vortex {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200vmax;
+      height: 200vmax;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .vortex-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 1px solid rgba(255, 107, 107, 0.1);
+      animation: vortex-pull linear infinite;
+    }
+
+    .vortex-ring:nth-child(1) { width: 100%; height: 100%; animation-duration: 20s; }
+    .vortex-ring:nth-child(2) { width: 85%; height: 85%; animation-duration: 17s; border-color: rgba(255, 217, 61, 0.1); }
+    .vortex-ring:nth-child(3) { width: 70%; height: 70%; animation-duration: 14s; border-color: rgba(107, 203, 119, 0.1); }
+    .vortex-ring:nth-child(4) { width: 55%; height: 55%; animation-duration: 11s; }
+    .vortex-ring:nth-child(5) { width: 40%; height: 40%; animation-duration: 8s; border-color: rgba(255, 217, 61, 0.15); }
+    .vortex-ring:nth-child(6) { width: 25%; height: 25%; animation-duration: 5s; border-color: rgba(255, 107, 107, 0.2); }
+
+    @keyframes vortex-pull {
+      0% { transform: translate(-50%, -50%) scale(1.5) rotate(0deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translate(-50%, -50%) scale(0.1) rotate(360deg); opacity: 0; }
+    }
+
+    /* Inverted blobs - warm colors, pulling inward */
+    .inverted-blob {
+      position: fixed;
+      filter: blur(100px);
+      opacity: 0.4;
+      mix-blend-mode: screen;
+      animation: blob-implode 15s ease-in-out infinite;
+    }
+
+    .blob-1 {
+      width: 500px;
+      height: 500px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      top: 20%;
+      left: 20%;
+    }
+
+    .blob-2 {
+      width: 600px;
+      height: 600px;
+      background: linear-gradient(225deg, var(--accent-2), var(--accent-3));
+      bottom: 20%;
+      right: 20%;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(315deg, var(--accent-3), var(--accent-1));
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -10s;
+    }
+
+    @keyframes blob-implode {
+      0%, 100% {
+        transform: translate(0, 0) scale(1.2);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      }
+      25% {
+        transform: translate(-30px, 30px) scale(0.9);
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+      }
+      50% {
+        transform: translate(0, 0) scale(0.7);
+        border-radius: 50% 50% 50% 50%;
+      }
+      75% {
+        transform: translate(30px, -30px) scale(0.9);
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+      }
+    }
+
+    /* Particles pulling to center */
+    .particle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particle-pull linear infinite;
+    }
+
+    @keyframes particle-pull {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Central content */
+    .central-content {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    /* Glowing title */
+    .glow-title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-align: center;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow-pulse 3s ease-in-out infinite;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        filter: drop-shadow(0 0 20px var(--glow));
+      }
+      50% {
+        filter: drop-shadow(0 0 40px var(--glow)) drop-shadow(0 0 60px var(--glow));
+      }
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      color: rgba(255, 255, 255, 0.6);
+      text-align: center;
+      margin-bottom: 3rem;
+      max-width: 500px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    /* Mysterious tagline */
+    .tagline {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 2rem;
+    }
+
+    /* Form styling */
+    .access-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .form-input {
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent-1);
+      box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .submit-btn {
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      border: none;
+      border-radius: 12px;
+      color: #000;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+
+    .submit-btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+      transition: 0.5s;
+    }
+
+    .submit-btn:hover::after {
+      left: 100%;
+    }
+
+    /* Back link */
+    .back-link {
+      position: fixed;
+      top: 2rem;
+      left: 2rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .back-link:hover {
+      color: var(--accent-1);
+    }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid rgba(255, 107, 107, 0.3);
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: var(--accent-1);
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-1);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Form status */
+    #form-status {
+      text-align: center;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    #form-status.success {
+      color: var(--accent-3);
+    }
+
+    #form-status.error {
+      color: var(--accent-1);
+    }
+
+    /* Floating elements pulling inward */
+    .floater {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0.6;
+      animation: float-inward 20s linear infinite;
+    }
+
+    @keyframes float-inward {
+      0% {
+        transform: translate(var(--start-x), var(--start-y)) scale(1) rotate(0deg);
+        opacity: 0;
+      }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.6; }
+      100% {
+        transform: translate(0, 0) scale(0) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Scanlines overlay */
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 999;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      opacity: 0.5;
+    }
+
+    /* Noise texture */
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 998;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body>
+  <div class="inverted-universe">
+    <!-- Vortex rings pulling inward -->
+    <div class="vortex">
+      <div class="vortex-ring"></div>
+      <div class="vortex-ring"></div>
+      <div class="vortex-ring"></div>
+      <div class="vortex-ring"></div>
+      <div class="vortex-ring"></div>
+      <div class="vortex-ring"></div>
+    </div>
+
+    <!-- Inverted blobs -->
+    <div class="inverted-blob blob-1"></div>
+    <div class="inverted-blob blob-2"></div>
+    <div class="inverted-blob blob-3"></div>
+
+    <!-- Back link -->
+    <a href="/" class="back-link">
+      ← Back to Apex Sync
+    </a>
+
+    <!-- Central content -->
+    <div class="central-content">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        In Development
+      </div>
+
+      <p class="tagline">The future of creator outreach</p>
+
+      <h1 class="glow-title">Apex Platform</h1>
+
+      <p class="subtitle">
+        AI-powered prospecting. Infinite scale. Zero leads lost.
+      </p>
+
+      <form class="access-form" id="early-access-form" action="https://formspree.io/f/xnjbaqkv" method="POST">
+        <input type="hidden" name="_subject" value="🚀 Apex Platform Early Access Request">
+        <input type="hidden" name="form_type" value="early_access">
+        
+        <input 
+          type="email" 
+          name="email" 
+          class="form-input" 
+          placeholder="Enter your email"
+          required
+        >
+        
+        <input 
+          type="text" 
+          name="company" 
+          class="form-input" 
+          placeholder="Company (optional)"
+        >
+
+        <button type="submit" class="submit-btn">
+          Request Early Access
+        </button>
+
+        <p id="form-status"></p>
+      </form>
+    </div>
+
+    <!-- Scanlines and noise -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+  </div>
+
+  <script>
+    // Create particles pulling to center
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random starting position on edges
+      const side = Math.floor(Math.random() * 4);
+      let startX, startY;
+      
+      switch(side) {
+        case 0: // top
+          startX = Math.random() * window.innerWidth;
+          startY = -20;
+          break;
+        case 1: // right
+          startX = window.innerWidth + 20;
+          startY = Math.random() * window.innerHeight;
+          break;
+        case 2: // bottom
+          startX = Math.random() * window.innerWidth;
+          startY = window.innerHeight + 20;
+          break;
+        case 3: // left
+          startX = -20;
+          startY = Math.random() * window.innerHeight;
+          break;
+      }
+      
+      // Calculate pull toward center
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const tx = centerX - startX;
+      const ty = centerY - startY;
+      
+      particle.style.left = startX + 'px';
+      particle.style.top = startY + 'px';
+      particle.style.setProperty('--tx', tx + 'px');
+      particle.style.setProperty('--ty', ty + 'px');
+      
+      // Random color
+      const colors = ['#ff6b6b', '#ffd93d', '#6bcb77'];
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
+      
+      // Random duration
+      particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+      
+      document.body.appendChild(particle);
+      
+      // Remove after animation
+      setTimeout(() => particle.remove(), 16000);
+    }
+
+    // Spawn particles
+    setInterval(createParticle, 200);
+
+    // Form handling
+    const form = document.getElementById('early-access-form');
+    const status = document.getElementById('form-status');
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+        
+        if (response.ok) {
+          status.textContent = "You're on the list. We'll be in touch.";
+          status.className = 'success';
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        status.textContent = 'Something went wrong. Try again.';
+        status.className = 'error';
+      }
+    });
+  </script>
+</body>
+</html>
