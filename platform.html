@@ -358,11 +358,26 @@
         </div>
       </div>
       
-      <!-- CTA Button -->
-      <a href="#access" class="btn-cyber inline-flex items-center gap-3 px-8 py-4 border-2 border-cyan-400 text-cyan-400 font-bold tracking-wider hover:bg-cyan-400 hover:text-black transition-all">
-        <span>REQUEST_ACCESS</span>
-        <span class="text-xl">→</span>
-      </a>
+      <!-- CTA Button - Bait & Switch -->
+      <div id="demo-btn-container">
+        <button id="demo-btn" onclick="triggerDemo()" class="btn-cyber inline-flex items-center gap-3 px-8 py-4 border-2 border-green-400 text-green-400 font-bold tracking-wider hover:bg-green-400 hover:text-black transition-all">
+          <span id="demo-btn-text">LIVE_DEMO</span>
+          <span class="text-xl" id="demo-btn-arrow">▶</span>
+        </button>
+      </div>
+      
+      <!-- Hidden form that appears after "demo" -->
+      <div id="quick-access-form" class="hidden max-w-sm mx-auto mt-8">
+        <div class="text-xs text-cyan-400 text-center mb-4 animate-pulse">// ACCESS REQUIRED TO VIEW DEMO</div>
+        <form action="https://formspree.io/f/xnjbaqkv" method="POST" class="space-y-3" id="hero-form">
+          <input type="hidden" name="_subject" value="🎬 LIVE DEMO Request">
+          <input type="hidden" name="form_type" value="demo_request">
+          <input type="email" name="email" required placeholder="Work email" class="w-full px-4 py-3 bg-black border border-cyan-500/50 text-cyan-400 text-sm placeholder-neutral-600 focus:border-cyan-400">
+          <button type="submit" class="btn-cyber w-full py-3 border-2 border-cyan-400 text-cyan-400 font-bold tracking-wider hover:bg-cyan-400 hover:text-black transition-all">
+            UNLOCK_DEMO →
+          </button>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -636,6 +651,77 @@
       setTimeout(typeEffect, speed);
     }
     typeEffect();
+    
+    // LIVE_DEMO bait and switch
+    function triggerDemo() {
+      const btn = document.getElementById('demo-btn');
+      const btnText = document.getElementById('demo-btn-text');
+      const btnArrow = document.getElementById('demo-btn-arrow');
+      const form = document.getElementById('quick-access-form');
+      
+      // Phase 1: Loading animation
+      btn.disabled = true;
+      btn.classList.remove('border-green-400', 'text-green-400', 'hover:bg-green-400');
+      btn.classList.add('border-yellow-400', 'text-yellow-400');
+      btnText.textContent = 'LOADING';
+      btnArrow.textContent = '';
+      btnArrow.innerHTML = '<span class="inline-block animate-spin">◌</span>';
+      
+      // Phase 2: "Initializing"
+      setTimeout(() => {
+        btnText.textContent = 'INITIALIZING';
+      }, 800);
+      
+      // Phase 3: "Access Required" - reveal form
+      setTimeout(() => {
+        btnText.textContent = 'ACCESS_REQUIRED';
+        btn.classList.remove('border-yellow-400', 'text-yellow-400');
+        btn.classList.add('border-red-400', 'text-red-400');
+        btnArrow.innerHTML = '✕';
+      }, 1600);
+      
+      // Phase 4: Show the form
+      setTimeout(() => {
+        btn.style.display = 'none';
+        form.classList.remove('hidden');
+        form.classList.add('animate-pulse');
+        setTimeout(() => form.classList.remove('animate-pulse'), 1000);
+      }, 2200);
+    }
+    
+    // Hero form submission
+    const heroForm = document.getElementById('hero-form');
+    if (heroForm) {
+      heroForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = heroForm.querySelector('button');
+        btn.textContent = 'PROCESSING...';
+        btn.disabled = true;
+        
+        try {
+          const res = await fetch(heroForm.action, {
+            method: 'POST',
+            body: new FormData(heroForm),
+            headers: { 'Accept': 'application/json' }
+          });
+          if (res.ok) {
+            btn.textContent = '✓ ACCESS_GRANTED';
+            btn.classList.remove('border-cyan-400', 'text-cyan-400');
+            btn.classList.add('border-green-400', 'text-green-400');
+            heroForm.reset();
+            // Scroll to full form
+            setTimeout(() => {
+              document.getElementById('access').scrollIntoView({ behavior: 'smooth' });
+            }, 1500);
+          } else {
+            throw new Error();
+          }
+        } catch {
+          btn.textContent = 'ERROR - TRY BELOW ↓';
+          btn.classList.add('border-red-400', 'text-red-400');
+        }
+      });
+    }
     
     // Animate stats
     function animateStat(id, end, suffix = '') {
