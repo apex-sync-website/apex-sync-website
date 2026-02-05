@@ -1094,17 +1094,17 @@
     @keyframes flyPast {
       0% {
         opacity: 0;
-        transform: translate(0, 0) scale(0.5) rotate(0deg);
+        transform: translate(0, 0) scale(0.1);
       }
-      10% {
+      15% {
         opacity: 1;
       }
-      90% {
+      85% {
         opacity: 1;
       }
       100% {
         opacity: 0;
-        transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(var(--rot));
+        transform: translate(var(--tx), var(--ty)) scale(var(--scale));
       }
     }
 
@@ -3219,23 +3219,25 @@
         const type = spaceTypes[Math.floor(Math.random() * spaceTypes.length)];
         obj.className = 'space-object ' + type;
         
-        // Start from right side, random Y position
-        const startX = window.innerWidth + 100;
-        const startY = Math.random() * window.innerHeight;
+        // Start from center of screen (far away in space)
+        const startX = window.innerWidth / 2;
+        const startY = window.innerHeight / 2;
         
-        // Travel distance and direction (going left and slightly up or down)
-        const tx = -(window.innerWidth + 300 + Math.random() * 200);
-        const ty = (Math.random() - 0.5) * 400;
-        const scale = 0.5 + Math.random() * 1.5;
-        const rot = Math.random() * 360;
-        const duration = type.includes('meteor') ? (2 + Math.random() * 2) : (8 + Math.random() * 12);
+        // Random angle for direction (flying outward in all directions)
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.max(window.innerWidth, window.innerHeight) * 1.2;
+        
+        // Calculate end position (flying past the edges)
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        const scale = 2 + Math.random() * 3; // Get bigger as they approach
+        const duration = type.includes('meteor') ? (1.5 + Math.random() * 1.5) : (4 + Math.random() * 6);
         
         obj.style.left = startX + 'px';
         obj.style.top = startY + 'px';
         obj.style.setProperty('--tx', tx + 'px');
         obj.style.setProperty('--ty', ty + 'px');
         obj.style.setProperty('--scale', scale);
-        obj.style.setProperty('--rot', rot + 'deg');
         obj.style.animationDuration = duration + 's';
         
         document.body.appendChild(obj);
