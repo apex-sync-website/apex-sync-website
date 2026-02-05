@@ -2902,14 +2902,14 @@
       }
 
       // ============================================
-      // AUDIO CONTROL WITH REVERB
+      // AUDIO CONTROL WITH REVERB (disabled when elements hidden)
       // ============================================
       const audioControl = document.getElementById('audio-control');
       const bgAudio = document.getElementById('bg-audio');
       let isPlaying = false;
       
-      // Single track
-      bgAudio.src = 'audio/beat1.m4a';
+      // Single track - only if audio element exists
+      if (bgAudio) bgAudio.src = 'audio/beat1.m4a';
       let audioCtx = null;
       let reverbNode = null;
       let reverbNodeSlowed = null; // Shorter reverb for SLOWED mode
@@ -3084,6 +3084,7 @@
       let glideInterval = null;
       
       function glideToSpeed(target) {
+        if (!bgAudio) return;
         targetRate = target;
         if (glideInterval) cancelAnimationFrame(glideInterval);
         
@@ -3091,12 +3092,12 @@
           const diff = targetRate - currentRate;
           if (Math.abs(diff) < 0.005) {
             currentRate = targetRate;
-            bgAudio.playbackRate = currentRate;
+            if (bgAudio) bgAudio.playbackRate = currentRate;
             return;
           }
           // Smooth easing - adjust 0.08 for faster/slower glide
           currentRate += diff * 0.08;
-          bgAudio.playbackRate = currentRate;
+          if (bgAudio) bgAudio.playbackRate = currentRate;
           glideInterval = requestAnimationFrame(step);
         }
         step();
