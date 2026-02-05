@@ -4,551 +4,623 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Apex Platform | Early Access</title>
-
-  <!-- SEO -->
-  <meta name="description" content="Get early access to the Apex Platform - AI-powered creator outreach at scale.">
+  
+  <meta name="description" content="The AI-powered creator matching engine behind Apex Sync. Request early access to see what's under the hood.">
   <meta property="og:title" content="Apex Platform | Early Access">
-  <meta property="og:description" content="The future of creator marketing. Request early access.">
+  <meta property="og:description" content="The AI engine that powers next-gen creator campaigns.">
   <meta property="og:image" content="https://apexsync.biz/og-image.png">
   
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png">
-
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+    
     * { box-sizing: border-box; }
-
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #000;
+      color: #e5e5e5;
       overflow-x: hidden;
-      min-height: 100vh;
     }
-
-    /* INVERTED UNIVERSE - Light void */
-    .inverted-universe {
-      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
-      min-height: 100vh;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Inverted color scheme - warm spectrum */
-    :root {
-      --accent-1: #ff6b6b;
-      --accent-2: #ffd93d;
-      --accent-3: #6bcb77;
-      --glow: rgba(255, 107, 107, 0.5);
-    }
-
-    /* Pulling inward vortex effect */
-    .vortex {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 200vmax;
-      height: 200vmax;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .vortex-ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      border: 1px solid rgba(255, 107, 107, 0.1);
-      animation: vortex-pull linear infinite;
-    }
-
-    .vortex-ring:nth-child(1) { width: 100%; height: 100%; animation-duration: 20s; }
-    .vortex-ring:nth-child(2) { width: 85%; height: 85%; animation-duration: 17s; border-color: rgba(255, 217, 61, 0.1); }
-    .vortex-ring:nth-child(3) { width: 70%; height: 70%; animation-duration: 14s; border-color: rgba(107, 203, 119, 0.1); }
-    .vortex-ring:nth-child(4) { width: 55%; height: 55%; animation-duration: 11s; }
-    .vortex-ring:nth-child(5) { width: 40%; height: 40%; animation-duration: 8s; border-color: rgba(255, 217, 61, 0.15); }
-    .vortex-ring:nth-child(6) { width: 25%; height: 25%; animation-duration: 5s; border-color: rgba(255, 107, 107, 0.2); }
-
-    @keyframes vortex-pull {
-      0% { transform: translate(-50%, -50%) scale(1.5) rotate(0deg); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(0.1) rotate(360deg); opacity: 0; }
-    }
-
-    /* Inverted blobs - warm colors, pulling inward */
-    .inverted-blob {
-      position: fixed;
-      filter: blur(100px);
-      opacity: 0.4;
-      mix-blend-mode: screen;
-      animation: blob-implode 15s ease-in-out infinite;
-    }
-
-    .blob-1 {
-      width: 500px;
-      height: 500px;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-      top: 20%;
-      left: 20%;
-    }
-
-    .blob-2 {
-      width: 600px;
-      height: 600px;
-      background: linear-gradient(225deg, var(--accent-2), var(--accent-3));
-      bottom: 20%;
-      right: 20%;
-      animation-delay: -5s;
-    }
-
-    .blob-3 {
-      width: 400px;
-      height: 400px;
-      background: linear-gradient(315deg, var(--accent-3), var(--accent-1));
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation-delay: -10s;
-    }
-
-    @keyframes blob-implode {
-      0%, 100% {
-        transform: translate(0, 0) scale(1.2);
-        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      }
-      25% {
-        transform: translate(-30px, 30px) scale(0.9);
-        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-      }
-      50% {
-        transform: translate(0, 0) scale(0.7);
-        border-radius: 50% 50% 50% 50%;
-      }
-      75% {
-        transform: translate(30px, -30px) scale(0.9);
-        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
-      }
-    }
-
-    /* Particles pulling to center */
-    .particle {
-      position: fixed;
-      width: 4px;
-      height: 4px;
-      background: var(--accent-1);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: particle-pull linear infinite;
-    }
-
-    @keyframes particle-pull {
-      0% {
-        transform: translate(0, 0) scale(1);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translate(var(--tx), var(--ty)) scale(0);
-        opacity: 0;
-      }
-    }
-
-    /* Central content */
-    .central-content {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    /* Glowing title */
-    .glow-title {
-      font-size: clamp(2.5rem, 8vw, 6rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: -0.02em;
-      text-align: center;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3));
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glow-pulse 3s ease-in-out infinite;
-      margin-bottom: 0.5rem;
-    }
-
-    @keyframes glow-pulse {
-      0%, 100% {
-        filter: drop-shadow(0 0 20px var(--glow));
-      }
-      50% {
-        filter: drop-shadow(0 0 40px var(--glow)) drop-shadow(0 0 60px var(--glow));
-      }
-    }
-
-    .subtitle {
-      font-size: clamp(1rem, 3vw, 1.5rem);
-      color: rgba(255, 255, 255, 0.6);
-      text-align: center;
-      margin-bottom: 3rem;
-      max-width: 500px;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-    }
-
-    /* Mysterious tagline */
-    .tagline {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.4);
-      margin-bottom: 2rem;
-    }
-
-    /* Form styling */
-    .access-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .form-input {
-      padding: 1rem 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      color: white;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-
-    .form-input:focus {
-      outline: none;
-      border-color: var(--accent-1);
-      box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .form-input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    .submit-btn {
-      padding: 1rem 2rem;
-      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-      border: none;
-      border-radius: 12px;
-      color: #000;
-      font-size: 1rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-    }
-
-    .submit-btn::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-      transition: 0.5s;
-    }
-
-    .submit-btn:hover::after {
-      left: 100%;
-    }
-
-    /* Back link */
-    .back-link {
-      position: fixed;
-      top: 2rem;
-      left: 2rem;
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-      font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      z-index: 100;
-    }
-
-    .back-link:hover {
-      color: var(--accent-1);
-    }
-
-    /* Status badge */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(255, 107, 107, 0.1);
-      border: 1px solid rgba(255, 107, 107, 0.3);
-      border-radius: 50px;
-      font-size: 0.75rem;
-      color: var(--accent-1);
-      margin-bottom: 2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--accent-1);
-      border-radius: 50%;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(1.2); }
-    }
-
-    /* Form status */
-    #form-status {
-      text-align: center;
-      font-size: 0.875rem;
-      margin-top: 0.5rem;
-    }
-
-    #form-status.success {
-      color: var(--accent-3);
-    }
-
-    #form-status.error {
-      color: var(--accent-1);
-    }
-
-    /* Floating elements pulling inward */
-    .floater {
-      position: fixed;
-      pointer-events: none;
-      opacity: 0.6;
-      animation: float-inward 20s linear infinite;
-    }
-
-    @keyframes float-inward {
-      0% {
-        transform: translate(var(--start-x), var(--start-y)) scale(1) rotate(0deg);
-        opacity: 0;
-      }
-      10% { opacity: 0.6; }
-      90% { opacity: 0.6; }
-      100% {
-        transform: translate(0, 0) scale(0) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Scanlines overlay */
+    
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Scan line effect */
     .scanlines {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999;
+      z-index: 9999;
       background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03),
         rgba(0, 0, 0, 0.03) 1px,
         transparent 1px,
         transparent 2px
       );
-      opacity: 0.5;
     }
-
-    /* Noise texture */
-    .noise {
-      position: fixed;
+    
+    /* Glowing border */
+    .glow-border {
+      position: relative;
+    }
+    .glow-border::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(45deg, #06b6d4, #8b5cf6, #06b6d4);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0.6;
+      filter: blur(8px);
+      animation: borderGlow 3s ease-in-out infinite;
+    }
+    @keyframes borderGlow {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    
+    /* Terminal typing effect */
+    .terminal-text {
+      overflow: hidden;
+      border-right: 2px solid #06b6d4;
+      white-space: nowrap;
+      animation: typing 2s steps(40) forwards, blink 0.7s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+    
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #06b6d4;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      25% { transform: translateY(-20px) translateX(10px); opacity: 0.3; }
+      50% { transform: translateY(-10px) translateX(-10px); opacity: 0.8; }
+      75% { transform: translateY(-30px) translateX(5px); opacity: 0.4; }
+    }
+    
+    /* Grid background */
+    .grid-bg {
+      background-image: 
+        linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    /* Pulse ring */
+    .pulse-ring {
+      animation: pulseRing 2s ease-out infinite;
+    }
+    @keyframes pulseRing {
+      0% { transform: scale(0.8); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
+    }
+    
+    /* Data stream */
+    .data-stream {
+      background: linear-gradient(180deg, transparent, #06b6d4, transparent);
+      animation: streamDown 2s linear infinite;
+    }
+    @keyframes streamDown {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    
+    /* Metric counter */
+    .metric-value {
+      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    /* Feature card hover */
+    .feature-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid rgba(6, 182, 212, 0.1);
+    }
+    .feature-card:hover {
+      border-color: rgba(6, 182, 212, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -20px rgba(6, 182, 212, 0.3);
+    }
+    
+    /* CTA button */
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn::before {
+      content: '';
+      position: absolute;
       inset: 0;
-      pointer-events: none;
-      z-index: 998;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
     }
+    .cta-btn:hover::before {
+      transform: translateX(100%);
+    }
+    
+    /* Status indicator */
+    .status-dot {
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+      50% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    }
+    
+    /* Scroll fade in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    
+    /* Live demo animation */
+    .demo-card {
+      animation: demoFloat 6s ease-in-out infinite;
+    }
+    @keyframes demoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(1deg); }
+    }
+    
+    .demo-card:nth-child(2) { animation-delay: -2s; }
+    .demo-card:nth-child(3) { animation-delay: -4s; }
   </style>
 </head>
-<body>
-  <div class="inverted-universe">
-    <!-- Vortex rings pulling inward -->
-    <div class="vortex">
-      <div class="vortex-ring"></div>
-      <div class="vortex-ring"></div>
-      <div class="vortex-ring"></div>
-      <div class="vortex-ring"></div>
-      <div class="vortex-ring"></div>
-      <div class="vortex-ring"></div>
-    </div>
-
-    <!-- Inverted blobs -->
-    <div class="inverted-blob blob-1"></div>
-    <div class="inverted-blob blob-2"></div>
-    <div class="inverted-blob blob-3"></div>
-
-    <!-- Back link -->
-    <a href="/" class="back-link">
-      ← Back to Apex Sync
-    </a>
-
-    <!-- Central content -->
-    <div class="central-content">
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        In Development
+<body class="grid-bg">
+  <!-- Scan lines overlay -->
+  <div class="scanlines"></div>
+  
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-cyan-500/10">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="w-2 h-2 bg-cyan-400 rounded-full status-dot"></div>
+        <span class="font-mono text-sm text-neutral-400 group-hover:text-white transition-colors">APEX_SYNC</span>
+      </a>
+      <div class="flex items-center gap-6">
+        <span class="font-mono text-xs text-cyan-400/60">v2.0.26</span>
+        <a href="/" class="font-mono text-xs text-neutral-500 hover:text-white transition-colors">← Back to main</a>
       </div>
-
-      <p class="tagline">The future of creator outreach</p>
-
-      <h1 class="glow-title">Apex Platform</h1>
-
-      <p class="subtitle">
-        AI-powered prospecting. Infinite scale. Zero leads lost.
-      </p>
-
-      <form class="access-form" id="early-access-form" action="https://formspree.io/f/xnjbaqkv" method="POST">
-        <input type="hidden" name="_subject" value="🚀 Apex Platform Early Access Request">
-        <input type="hidden" name="form_type" value="early_access">
-        
-        <input 
-          type="email" 
-          name="email" 
-          class="form-input" 
-          placeholder="Enter your email"
-          required
-        >
-        
-        <input 
-          type="text" 
-          name="company" 
-          class="form-input" 
-          placeholder="Company (optional)"
-        >
-
-        <button type="submit" class="submit-btn">
-          Request Early Access
-        </button>
-
-        <p id="form-status"></p>
-      </form>
     </div>
+  </nav>
 
-    <!-- Scanlines and noise -->
-    <div class="scanlines"></div>
-    <div class="noise"></div>
-  </div>
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center relative pt-20">
+    <!-- Background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl"></div>
+      <!-- Floating particles -->
+      <div class="particle" style="top: 20%; left: 10%;"></div>
+      <div class="particle" style="top: 60%; left: 80%; animation-delay: -2s;"></div>
+      <div class="particle" style="top: 80%; left: 30%; animation-delay: -4s;"></div>
+      <div class="particle" style="top: 30%; left: 70%; animation-delay: -6s;"></div>
+    </div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+      <!-- Status badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-8">
+        <div class="w-2 h-2 bg-green-400 rounded-full status-dot"></div>
+        <span class="font-mono text-xs text-cyan-400">SYSTEM ONLINE</span>
+      </div>
+      
+      <!-- Main title -->
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+        <span class="text-white">The</span>
+        <span class="metric-value"> Engine</span>
+      </h1>
+      
+      <!-- Terminal style subtitle -->
+      <div class="font-mono text-sm md:text-base text-neutral-400 mb-8 max-w-2xl mx-auto">
+        <span class="text-cyan-400">$</span> AI-powered creator matching that finds, vets, and contacts
+        <span class="text-cyan-400">the right talent</span> before your competitors know they exist.
+      </div>
+      
+      <!-- Stats row -->
+      <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-12">
+        <div class="text-center">
+          <div class="font-mono text-3xl md:text-4xl font-bold metric-value" id="stat1">0</div>
+          <div class="font-mono text-xs text-neutral-500 mt-1">CREATORS INDEXED</div>
+        </div>
+        <div class="text-center">
+          <div class="font-mono text-3xl md:text-4xl font-bold metric-value" id="stat2">0</div>
+          <div class="font-mono text-xs text-neutral-500 mt-1">AVG MATCH TIME</div>
+        </div>
+        <div class="text-center">
+          <div class="font-mono text-3xl md:text-4xl font-bold metric-value" id="stat3">0</div>
+          <div class="font-mono text-xs text-neutral-500 mt-1">RESPONSE RATE</div>
+        </div>
+      </div>
+      
+      <!-- CTA -->
+      <a href="#access" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-lg font-semibold text-white hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all">
+        Request Early Access
+        <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon>
+      </a>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-32 relative">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <p class="font-mono text-xs text-cyan-400 tracking-widest mb-4">// HOW IT WORKS</p>
+        <h2 class="text-3xl md:text-4xl font-bold text-white">Three Steps. Zero Guesswork.</h2>
+      </div>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="feature-card bg-neutral-900/50 backdrop-blur-sm rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="font-mono text-6xl font-bold text-cyan-500/20 mb-4">01</div>
+            <h3 class="text-xl font-semibold text-white mb-3">Define Campaign</h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Input your brief - audience, budget, timeline, vibe. The system learns what you're looking for.
+            </p>
+            <div class="mt-6 font-mono text-xs text-cyan-400/60">
+              → Brand safety filters<br>
+              → Audience overlap analysis<br>
+              → Budget optimization
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="feature-card bg-neutral-900/50 backdrop-blur-sm rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="font-mono text-6xl font-bold text-purple-500/20 mb-4">02</div>
+            <h3 class="text-xl font-semibold text-white mb-3">AI Matching</h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Our engine scans thousands of creators, scores them on 40+ signals, and surfaces the perfect matches.
+            </p>
+            <div class="mt-6 font-mono text-xs text-purple-400/60">
+              → Engagement authenticity<br>
+              → Content style analysis<br>
+              → Rate intelligence
+            </div>
+          </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="feature-card bg-neutral-900/50 backdrop-blur-sm rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-green-500/5 rounded-full blur-2xl"></div>
+          <div class="relative z-10">
+            <div class="font-mono text-6xl font-bold text-green-500/20 mb-4">03</div>
+            <h3 class="text-xl font-semibold text-white mb-3">Auto Outreach</h3>
+            <p class="text-neutral-400 text-sm leading-relaxed">
+              Personalized outreach at scale. Real conversations, not spam. We handle follow-ups until they're booked.
+            </p>
+            <div class="mt-6 font-mono text-xs text-green-400/60">
+              → Personalized messaging<br>
+              → Smart follow-up sequences<br>
+              → Response tracking
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Demo Section -->
+  <section class="py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-950/10 to-transparent"></div>
+    
+    <div class="max-w-6xl mx-auto px-6 relative z-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="font-mono text-xs text-cyan-400 tracking-widest mb-4">// LIVE SYSTEM</p>
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Watch It Work</h2>
+          <p class="text-neutral-400 mb-8 leading-relaxed">
+            This isn't a mockup. The Apex engine is running campaigns right now - sourcing creators, sending outreach, closing deals while you read this.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:radar-2-linear" width="20" class="text-cyan-400"></iconify-icon>
+              </div>
+              <div>
+                <div class="text-white font-medium">Real-time Sourcing</div>
+                <div class="text-sm text-neutral-500">New creators added every hour</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:chat-round-dots-linear" width="20" class="text-purple-400"></iconify-icon>
+              </div>
+              <div>
+                <div class="text-white font-medium">Intelligent Outreach</div>
+                <div class="text-sm text-neutral-500">Personalized at scale</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center">
+                <iconify-icon icon="solar:graph-up-linear" width="20" class="text-green-400"></iconify-icon>
+              </div>
+              <div>
+                <div class="text-white font-medium">Learning Loop</div>
+                <div class="text-sm text-neutral-500">Gets smarter with every campaign</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Animated demo cards -->
+        <div class="relative h-96">
+          <!-- Creator card 1 -->
+          <div class="demo-card absolute top-0 left-0 w-64 bg-neutral-900/80 backdrop-blur border border-cyan-500/20 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 to-purple-500"></div>
+              <div>
+                <div class="text-white text-sm font-medium">@lifestyle.maven</div>
+                <div class="text-xs text-neutral-500">247K followers</div>
+              </div>
+              <div class="ml-auto">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded font-mono">98%</span>
+              </div>
+            </div>
+            <div class="text-xs text-neutral-400">Lifestyle • Beauty • Travel</div>
+            <div class="mt-3 pt-3 border-t border-white/5 flex justify-between text-xs">
+              <span class="text-neutral-500">Est. rate</span>
+              <span class="text-cyan-400 font-mono">$450</span>
+            </div>
+          </div>
+          
+          <!-- Creator card 2 -->
+          <div class="demo-card absolute top-20 right-0 w-64 bg-neutral-900/80 backdrop-blur border border-purple-500/20 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-500"></div>
+              <div>
+                <div class="text-white text-sm font-medium">@techreviews</div>
+                <div class="text-xs text-neutral-500">89K followers</div>
+              </div>
+              <div class="ml-auto">
+                <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded font-mono">94%</span>
+              </div>
+            </div>
+            <div class="text-xs text-neutral-400">Tech • Gaming • Reviews</div>
+            <div class="mt-3 pt-3 border-t border-white/5 flex justify-between text-xs">
+              <span class="text-neutral-500">Est. rate</span>
+              <span class="text-cyan-400 font-mono">$280</span>
+            </div>
+          </div>
+          
+          <!-- Status card -->
+          <div class="demo-card absolute bottom-0 left-8 w-72 bg-black/90 backdrop-blur border border-green-500/20 rounded-xl p-4 shadow-xl">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-2 h-2 bg-green-400 rounded-full status-dot"></div>
+              <span class="font-mono text-xs text-green-400">OUTREACH SENT</span>
+            </div>
+            <div class="font-mono text-xs text-neutral-400 space-y-1">
+              <div><span class="text-neutral-600">to:</span> @lifestyle.maven</div>
+              <div><span class="text-neutral-600">subject:</span> Quick collab opportunity</div>
+              <div><span class="text-neutral-600">status:</span> <span class="text-cyan-400">opened</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Different -->
+  <section class="py-32 relative">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <p class="font-mono text-xs text-cyan-400 tracking-widest mb-4">// THE DIFFERENCE</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-8">Traditional Agency vs. Apex</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 text-left">
+        <!-- Traditional -->
+        <div class="bg-neutral-900/30 border border-neutral-800 rounded-2xl p-8">
+          <div class="text-neutral-500 font-mono text-xs mb-6">TRADITIONAL AGENCY</div>
+          <ul class="space-y-4 text-neutral-400">
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:close-circle-linear" width="20" class="text-red-400 mt-0.5"></iconify-icon>
+              <span>Manual spreadsheet sourcing</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:close-circle-linear" width="20" class="text-red-400 mt-0.5"></iconify-icon>
+              <span>Days to find creators</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:close-circle-linear" width="20" class="text-red-400 mt-0.5"></iconify-icon>
+              <span>Generic outreach templates</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:close-circle-linear" width="20" class="text-red-400 mt-0.5"></iconify-icon>
+              <span>Pay retainer regardless of results</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Apex -->
+        <div class="glow-border bg-neutral-900/50 border border-cyan-500/20 rounded-2xl p-8">
+          <div class="text-cyan-400 font-mono text-xs mb-6">APEX PLATFORM</div>
+          <ul class="space-y-4 text-neutral-300">
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:check-circle-linear" width="20" class="text-cyan-400 mt-0.5"></iconify-icon>
+              <span>AI-powered discovery</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:check-circle-linear" width="20" class="text-cyan-400 mt-0.5"></iconify-icon>
+              <span>Matches in minutes</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:check-circle-linear" width="20" class="text-cyan-400 mt-0.5"></iconify-icon>
+              <span>Personalized at scale</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <iconify-icon icon="solar:check-circle-linear" width="20" class="text-cyan-400 mt-0.5"></iconify-icon>
+              <span>Pay for results only</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Early Access CTA -->
+  <section id="access" class="py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-t from-cyan-950/20 to-transparent"></div>
+    
+    <div class="max-w-xl mx-auto px-6 relative z-10">
+      <div class="glow-border bg-neutral-900/80 backdrop-blur-xl rounded-3xl p-10 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 rounded-full mb-6">
+          <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full"></div>
+          <span class="font-mono text-xs text-cyan-400">LIMITED ACCESS</span>
+        </div>
+        
+        <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Request Early Access</h2>
+        <p class="text-neutral-400 mb-8">
+          We're onboarding select brands and agencies. Tell us about your campaigns.
+        </p>
+        
+        <form id="access-form" action="https://formspree.io/f/xnjbaqkv" method="POST" class="space-y-4">
+          <input type="hidden" name="_subject" value="🚀 Platform Early Access Request">
+          <input type="hidden" name="form_type" value="platform_early_access">
+          
+          <input type="text" name="company" required placeholder="Company name" 
+            class="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500/50 transition-all font-mono text-sm">
+          
+          <input type="email" name="email" required placeholder="Work email" 
+            class="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white placeholder-neutral-500 focus:outline-none focus:border-cyan-500/50 transition-all font-mono text-sm">
+          
+          <select name="monthly_spend" required 
+            class="w-full px-5 py-4 bg-black/50 border border-white/10 rounded-xl text-white focus:outline-none focus:border-cyan-500/50 transition-all font-mono text-sm appearance-none cursor-pointer">
+            <option value="" disabled selected class="text-neutral-500">Monthly creator spend</option>
+            <option value="<5k">Less than $5K</option>
+            <option value="5k-20k">$5K - $20K</option>
+            <option value="20k-50k">$20K - $50K</option>
+            <option value="50k+">$50K+</option>
+          </select>
+          
+          <button type="submit" class="cta-btn w-full py-4 bg-gradient-to-r from-cyan-600 to-purple-600 rounded-xl font-semibold text-white hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] transition-all flex items-center justify-center gap-2">
+            Get Access
+            <iconify-icon icon="solar:arrow-right-linear" width="18"></iconify-icon>
+          </button>
+          
+          <p id="form-status" class="text-sm hidden"></p>
+        </form>
+        
+        <p class="mt-6 text-xs text-neutral-600">
+          No commitment. We'll reach out within 24 hours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="font-mono text-xs text-neutral-600">
+        APEX_SYNC © 2026 // All systems operational
+      </div>
+      <a href="/" class="font-mono text-xs text-neutral-500 hover:text-cyan-400 transition-colors">
+        ← Return to main site
+      </a>
+    </div>
+  </footer>
 
   <script>
-    // Create particles pulling to center
-    function createParticle() {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
+    // Animate stats on load
+    function animateValue(id, end, suffix = '', duration = 2000) {
+      const el = document.getElementById(id);
+      const start = 0;
+      const startTime = performance.now();
       
-      // Random starting position on edges
-      const side = Math.floor(Math.random() * 4);
-      let startX, startY;
-      
-      switch(side) {
-        case 0: // top
-          startX = Math.random() * window.innerWidth;
-          startY = -20;
-          break;
-        case 1: // right
-          startX = window.innerWidth + 20;
-          startY = Math.random() * window.innerHeight;
-          break;
-        case 2: // bottom
-          startX = Math.random() * window.innerWidth;
-          startY = window.innerHeight + 20;
-          break;
-        case 3: // left
-          startX = -20;
-          startY = Math.random() * window.innerHeight;
-          break;
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * end);
+        el.textContent = current.toLocaleString() + suffix;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
       }
-      
-      // Calculate pull toward center
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const tx = centerX - startX;
-      const ty = centerY - startY;
-      
-      particle.style.left = startX + 'px';
-      particle.style.top = startY + 'px';
-      particle.style.setProperty('--tx', tx + 'px');
-      particle.style.setProperty('--ty', ty + 'px');
-      
-      // Random color
-      const colors = ['#ff6b6b', '#ffd93d', '#6bcb77'];
-      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-      particle.style.boxShadow = `0 0 10px ${particle.style.background}`;
-      
-      // Random duration
-      particle.style.animationDuration = (8 + Math.random() * 8) + 's';
-      
-      document.body.appendChild(particle);
-      
-      // Remove after animation
-      setTimeout(() => particle.remove(), 16000);
+      requestAnimationFrame(update);
     }
-
-    // Spawn particles
-    setInterval(createParticle, 200);
-
-    // Form handling
-    const form = document.getElementById('early-access-form');
+    
+    // Start animations when page loads
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        animateValue('stat1', 12847, '+');
+        animateValue('stat2', 4.2, 's', 1500);
+        animateValue('stat3', 34, '%', 1500);
+      }, 500);
+    });
+    
+    // Form submission
+    const form = document.getElementById('access-form');
     const status = document.getElementById('form-status');
     
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(form);
-      
-      try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        });
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button');
+        btn.innerHTML = '<span class="animate-pulse">Processing...</span>';
+        btn.disabled = true;
         
-        if (response.ok) {
-          status.textContent = "You're on the list. We'll be in touch.";
-          status.className = 'success';
-          form.reset();
-        } else {
-          throw new Error('Form submission failed');
+        try {
+          const res = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          
+          if (res.ok) {
+            status.textContent = "You're on the list. We'll be in touch soon.";
+            status.className = 'text-sm text-cyan-400 mt-4';
+            status.classList.remove('hidden');
+            form.reset();
+            btn.innerHTML = '✓ Request Sent';
+          } else {
+            throw new Error();
+          }
+        } catch {
+          status.textContent = 'Error - email lucas@apexsync.biz directly';
+          status.className = 'text-sm text-red-400 mt-4';
+          status.classList.remove('hidden');
+          btn.innerHTML = 'Get Access';
+          btn.disabled = false;
         }
-      } catch (error) {
-        status.textContent = 'Something went wrong. Try again.';
-        status.className = 'error';
-      }
-    });
+      });
+    }
+    
+    // Fade in on scroll
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          gsap.to(entry.target, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    fadeEls.forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
