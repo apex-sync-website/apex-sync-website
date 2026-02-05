@@ -1020,6 +1020,94 @@
       }
     }
 
+    /* Space objects flying past */
+    .space-object {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      animation: flyPast linear forwards;
+    }
+    .space-object.meteor {
+      width: 4px;
+      height: 4px;
+      background: linear-gradient(135deg, #fff 0%, #60a5fa 50%, transparent 100%);
+      border-radius: 50%;
+      box-shadow: 
+        0 0 10px #60a5fa,
+        -20px 10px 20px rgba(96, 165, 250, 0.5),
+        -40px 20px 30px rgba(96, 165, 250, 0.3);
+    }
+    .space-object.asteroid {
+      width: 20px;
+      height: 18px;
+      background: radial-gradient(ellipse at 30% 30%, #666 0%, #333 50%, #1a1a1a 100%);
+      border-radius: 40% 60% 50% 50%;
+      box-shadow: inset -3px -3px 8px rgba(0,0,0,0.8);
+    }
+    .space-object.planet {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 30% 30%, #a855f7 0%, #6b21a8 50%, #2d1b4e 100%);
+      border-radius: 50%;
+      box-shadow: 
+        inset -10px -10px 30px rgba(0,0,0,0.5),
+        0 0 30px rgba(168, 85, 247, 0.3);
+    }
+    .space-object.planet.blue {
+      background: radial-gradient(circle at 30% 30%, #60a5fa 0%, #1e40af 50%, #0c1929 100%);
+      box-shadow: 
+        inset -10px -10px 30px rgba(0,0,0,0.5),
+        0 0 30px rgba(96, 165, 250, 0.3);
+    }
+    .space-object.planet.pink {
+      background: radial-gradient(circle at 30% 30%, #ec4899 0%, #9d174d 50%, #2d0a1e 100%);
+      box-shadow: 
+        inset -10px -10px 30px rgba(0,0,0,0.5),
+        0 0 30px rgba(236, 72, 153, 0.3);
+    }
+    .space-object.ufo {
+      width: 30px;
+      height: 12px;
+      background: linear-gradient(180deg, #c0c0c0 0%, #666 100%);
+      border-radius: 50%;
+      position: relative;
+    }
+    .space-object.ufo::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 10px;
+      background: linear-gradient(180deg, rgba(96, 255, 200, 0.8) 0%, rgba(96, 255, 200, 0.3) 100%);
+      border-radius: 50% 50% 0 0;
+    }
+    .space-object.star {
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #fff, 0 0 12px rgba(255,255,255,0.5);
+    }
+    @keyframes flyPast {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5) rotate(0deg);
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(var(--scale)) rotate(var(--rot));
+      }
+    }
+
     /* Smoke particles */
     .smoke-particle {
       position: absolute;
@@ -3120,6 +3208,51 @@
       const breathDuration = 1.5; // seconds per breath cycle
       document.documentElement.style.setProperty('--breath-duration', breathDuration + 's');
       breatheElements.forEach(el => el.classList.add('breathe'));
+
+      // ============================================
+      // SPACE OBJECTS FLYING PAST
+      // ============================================
+      const spaceTypes = ['meteor', 'meteor', 'meteor', 'asteroid', 'asteroid', 'star', 'star', 'star', 'planet', 'planet blue', 'planet pink', 'ufo'];
+      
+      function spawnSpaceObject() {
+        const obj = document.createElement('div');
+        const type = spaceTypes[Math.floor(Math.random() * spaceTypes.length)];
+        obj.className = 'space-object ' + type;
+        
+        // Start from right side, random Y position
+        const startX = window.innerWidth + 100;
+        const startY = Math.random() * window.innerHeight;
+        
+        // Travel distance and direction (going left and slightly up or down)
+        const tx = -(window.innerWidth + 300 + Math.random() * 200);
+        const ty = (Math.random() - 0.5) * 400;
+        const scale = 0.5 + Math.random() * 1.5;
+        const rot = Math.random() * 360;
+        const duration = type.includes('meteor') ? (2 + Math.random() * 2) : (8 + Math.random() * 12);
+        
+        obj.style.left = startX + 'px';
+        obj.style.top = startY + 'px';
+        obj.style.setProperty('--tx', tx + 'px');
+        obj.style.setProperty('--ty', ty + 'px');
+        obj.style.setProperty('--scale', scale);
+        obj.style.setProperty('--rot', rot + 'deg');
+        obj.style.animationDuration = duration + 's';
+        
+        document.body.appendChild(obj);
+        
+        // Remove after animation
+        setTimeout(() => obj.remove(), duration * 1000);
+      }
+      
+      // Spawn objects periodically
+      setInterval(() => {
+        if (Math.random() > 0.3) spawnSpaceObject(); // 70% chance each interval
+      }, 800);
+      
+      // Initial burst
+      for (let i = 0; i < 5; i++) {
+        setTimeout(() => spawnSpaceObject(), i * 300);
+      }
 
       // ============================================
       // FLYING LOGO WITH SMOKE TRAIL
