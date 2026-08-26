@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Protection Options for Creators | Apex Sync</title>
+  <meta name="description" content="Learn about content-protection options for eligible creators and request an eligibility review through Apex Sync. Technology and services are provided by independent third parties.">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#05050a">
+  <link rel="canonical" href="https://apexsync.biz/creator-protection/">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Apex Sync">
+  <meta property="og:url" content="https://apexsync.biz/creator-protection/">
+  <meta property="og:title" content="Content Protection Options for Creators | Apex Sync">
+  <meta property="og:description" content="Get your original content protected. Request an eligibility review for independent rights-management services.">
+  <meta property="og:image" content="https://apexsync.biz/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Content Protection Options for Creators | Apex Sync">
+  <meta name="twitter:description" content="Get your original content protected. Request an eligibility review for independent rights-management services.">
+  <meta name="twitter:image" content="https://apexsync.biz/og-image.png">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink:#05050a; --surface:#0c0c13; --surface-2:#11111a;
+      --text:#f6f7fb; --muted:#a4a6b2; --faint:#717480;
+      --blue:#60a5fa; --violet:#a855f7; --pink:#ec4899; --cyan:#22d3ee;
+      --line:rgba(255,255,255,.11); --line-strong:rgba(255,255,255,.21);
+      --success:#6ee7b7; --danger:#fda4af; --radius:24px;
+      --max:1180px; --nav:72px;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; background:var(--ink); }
+    body { margin:0; overflow-x:hidden; background:var(--ink); color:var(--text); font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.55; }
+    body::before { content:""; position:fixed; inset:0; z-index:90; pointer-events:none; opacity:.025; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    a { color:inherit; }
+    button,input,select,textarea { font:inherit; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    :focus-visible { outline:2px solid var(--cyan); outline-offset:4px; }
+    .skip { position:fixed; z-index:200; top:10px; left:12px; transform:translateY(-150%); padding:10px 14px; border-radius:10px; color:#000; background:#fff; font-weight:800; }
+    .skip:focus { transform:none; }
+    .wrap { width:min(calc(100% - 40px),var(--max)); margin-inline:auto; }
+    .eyebrow { display:flex; align-items:center; gap:10px; margin:0 0 18px; color:#c7c8d0; font-size:.72rem; font-weight:800; letter-spacing:.18em; text-transform:uppercase; }
+    .eyebrow::before { content:""; width:28px; height:1px; background:linear-gradient(90deg,var(--blue),var(--pink)); }
+    .gradient-text { color:transparent; background:linear-gradient(110deg,var(--blue),#c084fc 50%,var(--pink)); background-clip:text; -webkit-background-clip:text; }
+    .section { position:relative; padding:clamp(88px,11vw,148px) 0; }
+    .section-head { max-width:760px; margin-bottom:56px; }
+    .section h2 { margin:0 0 20px; font-size:clamp(2.35rem,6vw,5.25rem); line-height:.96; letter-spacing:-.055em; }
+    .section-lede { max-width:690px; margin:0; color:var(--muted); font-size:clamp(1rem,1.7vw,1.2rem); }
+    .glass { background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)); border:1px solid var(--line); box-shadow:inset 0 1px rgba(255,255,255,.08),0 22px 80px rgba(0,0,0,.32); backdrop-filter:blur(18px); }
+    .button { min-height:50px; display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:0 22px; border:1px solid var(--line-strong); border-radius:999px; color:#fff; background:rgba(255,255,255,.055); text-decoration:none; font-size:.84rem; font-weight:800; letter-spacing:.015em; cursor:pointer; transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease; }
+    .button:hover { transform:translateY(-2px); border-color:rgba(255,255,255,.35); background:rgba(255,255,255,.09); }
+    .button.primary { border:0; background:linear-gradient(110deg,#2563eb,#7c3aed 58%,#db2777); box-shadow:0 12px 45px rgba(124,58,237,.3); }
+    .button.primary:hover { box-shadow:0 16px 58px rgba(124,58,237,.47); }
+    .button svg { width:18px; height:18px; }
+
+    /* Navigation */
+    .nav { position:fixed; inset:0 0 auto; z-index:100; height:var(--nav); border-bottom:1px solid rgba(255,255,255,.07); background:rgba(3,3,8,.68); backdrop-filter:blur(22px); }
+    .nav-inner { width:min(calc(100% - 40px),1280px); height:100%; margin:auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:760; font-size:.9rem; }
+    .brand img { width:auto; height:42px; filter:drop-shadow(0 0 14px rgba(34,211,238,.24)); }
+    .nav-links { display:flex; align-items:center; gap:30px; }
+    .nav-links a { color:#b7b8c1; font-size:.78rem; font-weight:700; text-decoration:none; transition:color .2s ease; }
+    .nav-links a:hover,.nav-links a[aria-current="page"] { color:#fff; }
+    .nav-links a[aria-current="page"] { position:relative; }
+    .nav-links a[aria-current="page"]::after { content:""; position:absolute; left:0; right:0; bottom:-11px; height:2px; background:linear-gradient(90deg,var(--blue),var(--pink)); }
+    .nav-toggle { display:none; width:46px; height:46px; padding:0; border:1px solid var(--line); border-radius:50%; color:white; background:rgba(255,255,255,.055); cursor:pointer; }
+    .menu-icon { width:19px; height:14px; position:relative; display:block; margin:auto; }
+    .menu-icon i { position:absolute; left:0; width:19px; height:1.5px; border-radius:2px; background:currentColor; transition:top .2s ease,transform .2s ease; }
+    .menu-icon i:first-child { top:3px; }
+    .menu-icon i:last-child { top:10px; }
+    .nav-toggle[aria-expanded="true"] .menu-icon i:first-child { top:6px; transform:rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .menu-icon i:last-child { top:6px; transform:rotate(-45deg); }
+
+    /* Hero */
+    .hero { min-height:100svh; position:relative; display:grid; align-items:center; padding:calc(var(--nav) + 64px) 0 62px; isolation:isolate; overflow:hidden; }
+    .hero::before { content:""; position:absolute; inset:-25%; z-index:-3; background:radial-gradient(circle at 23% 32%,rgba(37,99,235,.2),transparent 30%),radial-gradient(circle at 77% 28%,rgba(168,85,247,.19),transparent 28%),radial-gradient(circle at 68% 80%,rgba(236,72,153,.11),transparent 25%); }
+    .hero::after { content:""; position:absolute; inset:0; z-index:-2; opacity:.35; background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:56px 56px; mask-image:linear-gradient(to bottom,black,transparent 88%); }
+    .hero-grid { display:grid; grid-template-columns:minmax(0,1.02fr) minmax(440px,.98fr); gap:clamp(50px,7vw,100px); align-items:center; }
+    .hero-copy h1 { max-width:750px; margin:0 0 28px; font-size:clamp(3.55rem,7.6vw,7.2rem); line-height:.86; letter-spacing:-.07em; }
+    .hero-copy .lede { max-width:640px; margin:0 0 30px; color:#b8bac5; font-size:clamp(1.05rem,1.8vw,1.3rem); }
+    .hero-copy .lede strong { color:#fff; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; }
+    .hero-note { margin:20px 0 0; color:#777a88; font-size:.78rem; }
+    .hero-note strong { color:#b9bbc5; }
+
+    .signal-stage { position:relative; min-height:540px; display:grid; place-items:center; perspective:1000px; }
+    .signal-stage::before { content:""; position:absolute; width:82%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle,rgba(96,165,250,.15),rgba(168,85,247,.06) 40%,transparent 68%); filter:blur(10px); }
+    .orbit { position:absolute; width:92%; aspect-ratio:1; border:1px solid rgba(255,255,255,.1); border-radius:50%; transform:rotateX(65deg) rotateZ(-12deg); }
+    .orbit.two { width:68%; border-color:rgba(168,85,247,.2); transform:rotateX(65deg) rotateZ(26deg); }
+    .scan { position:absolute; width:82%; aspect-ratio:1; border-radius:50%; background:conic-gradient(from 0deg,transparent 0 75%,rgba(96,165,250,.11) 89%,rgba(236,72,153,.55) 98%,transparent); animation:scan 7s linear infinite; mask:radial-gradient(circle,transparent 0 48%,#000 49% 51%,transparent 52%); }
+    @keyframes scan { to { transform:rotate(360deg); } }
+    .original-card { position:relative; z-index:3; width:min(68%,310px); aspect-ratio:.78; display:flex; flex-direction:column; justify-content:flex-end; padding:24px; border-radius:28px; overflow:hidden; transform:rotateY(-8deg) rotateX(2deg); background:linear-gradient(155deg,rgba(96,165,250,.36),rgba(82,24,166,.42) 56%,rgba(236,72,153,.29)),#0c0c14; border:1px solid rgba(255,255,255,.26); box-shadow:0 38px 100px rgba(0,0,0,.55),0 0 70px rgba(124,58,237,.22); }
+    .original-card::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 58% 30%,rgba(255,255,255,.25),transparent 6%),radial-gradient(circle at 45% 38%,rgba(34,211,238,.35),transparent 22%),linear-gradient(135deg,transparent,rgba(255,255,255,.08)); }
+    .original-card .play { position:absolute; inset:0; display:grid; place-items:center; }
+    .play i { width:72px; height:72px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.35); border-radius:50%; background:rgba(0,0,0,.25); backdrop-filter:blur(8px); }
+    .play i::after { content:""; margin-left:5px; border-left:16px solid #fff; border-block:10px solid transparent; }
+    .card-label { position:relative; z-index:1; display:flex; justify-content:space-between; gap:12px; align-items:end; }
+    .card-label b { font-size:.83rem; letter-spacing:.03em; }
+    .card-label small { color:#c6c8d3; font-size:.68rem; }
+    .fingerprint { width:54px; height:7px; border-radius:99px; background:repeating-linear-gradient(90deg,var(--cyan) 0 4px,transparent 4px 7px,var(--pink) 7px 10px,transparent 10px 13px); }
+    .echo { position:absolute; z-index:2; width:104px; aspect-ratio:.78; padding:10px; border:1px solid rgba(255,255,255,.14); border-radius:15px; background:rgba(16,16,24,.72); box-shadow:0 20px 50px rgba(0,0,0,.38); backdrop-filter:blur(10px); animation:float 6s ease-in-out infinite; }
+    .echo::before { content:""; display:block; height:70%; border-radius:9px; background:linear-gradient(135deg,rgba(96,165,250,.22),rgba(236,72,153,.12)); }
+    .echo::after { content:"MATCH"; display:block; margin-top:8px; color:#9da0ae; font-size:.52rem; font-weight:900; letter-spacing:.15em; }
+    .echo.e1 { top:12%; left:1%; transform:rotate(-10deg); }
+    .echo.e2 { top:20%; right:-1%; animation-delay:-2s; transform:rotate(11deg); }
+    .echo.e3 { right:9%; bottom:8%; animation-delay:-4s; transform:rotate(5deg); }
+    .echo.e4 { left:7%; bottom:10%; animation-delay:-1s; transform:rotate(-7deg); }
+    @keyframes float { 0%,100% { translate:0 0; } 50% { translate:0 -13px; } }
+    .detected { position:absolute; z-index:5; right:3%; top:52%; display:flex; align-items:center; gap:8px; padding:8px 11px; border:1px solid rgba(110,231,183,.25); border-radius:999px; color:#c8ffea; background:rgba(5,35,29,.76); font-size:.64rem; font-weight:900; letter-spacing:.11em; }
+    .detected i { width:7px; height:7px; border-radius:50%; background:var(--success); box-shadow:0 0 12px var(--success); }
+
+    .trust-strip { border-block:1px solid var(--line); background:rgba(255,255,255,.02); }
+    .trust-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+    .trust-item { min-height:112px; display:flex; align-items:center; gap:16px; padding:25px 30px; border-right:1px solid var(--line); }
+    .trust-item:last-child { border-right:0; }
+    .trust-number { color:transparent; -webkit-text-stroke:1px rgba(255,255,255,.3); font-size:2rem; font-weight:900; }
+    .trust-item b { display:block; font-size:.86rem; }
+    .trust-item span { display:block; color:var(--faint); font-size:.74rem; }
+
+    /* Narrative */
+    .problem-grid { display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(38px,8vw,110px); align-items:start; }
+    .sticky-copy { position:sticky; top:calc(var(--nav) + 34px); }
+    .story-list { display:grid; gap:16px; }
+    .story-card { min-height:225px; position:relative; padding:36px; border-radius:var(--radius); overflow:hidden; }
+    .story-card .index { position:absolute; top:22px; right:24px; color:rgba(255,255,255,.18); font-size:.72rem; font-weight:900; letter-spacing:.14em; }
+    .story-card h3 { margin:34px 0 10px; font-size:1.55rem; letter-spacing:-.025em; }
+    .story-card p { max-width:530px; margin:0; color:var(--muted); }
+    .story-icon { width:45px; height:45px; display:grid; place-items:center; border-radius:14px; background:linear-gradient(145deg,rgba(96,165,250,.2),rgba(168,85,247,.16)); border:1px solid var(--line); }
+    .story-icon svg { width:22px; }
+
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; counter-reset:step; }
+    .step { min-height:320px; position:relative; padding:32px; border-radius:var(--radius); overflow:hidden; counter-increment:step; }
+    .step::after { content:"0" counter(step); position:absolute; right:20px; bottom:-32px; color:rgba(255,255,255,.035); font-size:9rem; font-weight:950; letter-spacing:-.08em; }
+    .step-marker { width:12px; height:12px; margin-bottom:88px; border-radius:50%; background:var(--blue); box-shadow:0 0 22px var(--blue); }
+    .step:nth-child(2) .step-marker { background:var(--violet); box-shadow:0 0 22px var(--violet); }
+    .step:nth-child(3) .step-marker { background:var(--pink); box-shadow:0 0 22px var(--pink); }
+    .step h3 { margin:0 0 12px; font-size:1.45rem; }
+    .step p { position:relative; z-index:1; margin:0; color:var(--muted); }
+
+    /* Eligibility */
+    .eligibility { background:linear-gradient(180deg,#05050a,#090910 50%,#05050a); }
+    .fit-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .fit-card { padding:clamp(28px,4vw,48px); border-radius:30px; }
+    .fit-card h3 { margin:0 0 28px; font-size:1.45rem; }
+    .fit-card ul { list-style:none; margin:0; padding:0; display:grid; gap:18px; }
+    .fit-card li { position:relative; padding-left:30px; color:#c0c2cc; }
+    .fit-card li::before { content:""; position:absolute; left:0; top:.58em; width:10px; height:10px; border:1px solid var(--success); border-radius:50%; box-shadow:0 0 12px rgba(110,231,183,.35); }
+    .fit-card.nonfit li::before { border-color:#8b8d98; box-shadow:none; }
+    .fit-note { margin:24px 0 0; color:var(--faint); font-size:.82rem; }
+
+    .role-panel { display:grid; grid-template-columns:1fr 1fr; border-radius:30px; overflow:hidden; }
+    .role { min-height:310px; padding:clamp(32px,5vw,60px); }
+    .role + .role { border-left:1px solid var(--line); background:rgba(255,255,255,.018); }
+    .role-tag { display:inline-flex; padding:6px 9px; border:1px solid var(--line); border-radius:99px; color:#b8bac6; font-size:.64rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .role h3 { margin:44px 0 14px; font-size:clamp(1.75rem,3vw,2.5rem); letter-spacing:-.04em; }
+    .role p { margin:0; color:var(--muted); }
+
+    /* FAQ */
+    .faq { max-width:900px; margin-inline:auto; }
+    details { border-bottom:1px solid var(--line); }
+    summary { min-height:84px; display:flex; align-items:center; justify-content:space-between; gap:30px; cursor:pointer; list-style:none; font-size:clamp(1rem,2vw,1.25rem); font-weight:760; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"+"; flex:0 0 auto; color:#aeb0bd; font-size:1.5rem; font-weight:300; transition:transform .2s ease; }
+    details[open] summary::after { transform:rotate(45deg); }
+    .answer { max-width:730px; padding:0 50px 28px 0; color:var(--muted); }
+
+    /* Form */
+    .apply { background:radial-gradient(circle at 15% 25%,rgba(37,99,235,.12),transparent 28%),radial-gradient(circle at 85% 40%,rgba(168,85,247,.12),transparent 30%),#06060b; }
+    .apply-grid { display:grid; grid-template-columns:.72fr 1.28fr; gap:clamp(38px,7vw,90px); align-items:start; }
+    .apply-copy { position:sticky; top:calc(var(--nav) + 34px); }
+    .apply-copy h2 { font-size:clamp(2.8rem,6vw,5.3rem); }
+    .apply-copy .privacy-note { margin-top:30px; padding-top:22px; border-top:1px solid var(--line); color:var(--faint); font-size:.78rem; }
+    .form-shell { padding:clamp(24px,4vw,46px); border-radius:30px; }
+    .form-intro { margin-bottom:36px; }
+    .form-intro h3 { margin:0 0 8px; font-size:1.55rem; }
+    .form-intro p { margin:0; color:var(--muted); font-size:.9rem; }
+    .form-section { margin:0; padding:32px 0; border:0; border-top:1px solid var(--line); }
+    .form-section:first-of-type { padding-top:0; border-top:0; }
+    .form-section legend { width:100%; margin-bottom:22px; color:#fff; font-size:.75rem; font-weight:900; letter-spacing:.14em; text-transform:uppercase; }
+    .fields { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .field.full { grid-column:1/-1; }
+    label,.label { display:block; margin-bottom:8px; color:#d9dae1; font-size:.78rem; font-weight:750; }
+    .optional { color:#757885; font-weight:500; }
+    input,select,textarea { width:100%; min-height:50px; padding:13px 14px; border:1px solid rgba(255,255,255,.14); border-radius:12px; color:#fff; background:rgba(0,0,0,.25); outline:0; transition:border-color .18s ease,box-shadow .18s ease,background .18s ease; }
+    textarea { min-height:110px; resize:vertical; }
+    input::placeholder,textarea::placeholder { color:#656874; }
+    input:hover,select:hover,textarea:hover { border-color:rgba(255,255,255,.24); }
+    input:focus,select:focus,textarea:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(96,165,250,.13); background:rgba(0,0,0,.36); }
+    [aria-invalid="true"] { border-color:var(--danger)!important; box-shadow:0 0 0 3px rgba(253,164,175,.1)!important; }
+    .help,.error { display:block; margin-top:7px; font-size:.71rem; }
+    .help { color:#757885; }
+    .error { color:var(--danger); }
+    .choice-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .choice { min-height:50px; display:flex; align-items:center; gap:10px; margin:0; padding:11px 13px; border:1px solid rgba(255,255,255,.13); border-radius:12px; color:#c8cad4; background:rgba(0,0,0,.2); cursor:pointer; }
+    .choice:hover { border-color:rgba(255,255,255,.25); }
+    .choice input { width:17px; min-height:17px; margin:0; accent-color:var(--violet); }
+    .optional-fields { display:none; margin-top:20px; }
+    .optional-fields[data-open="true"] { display:grid; }
+    .text-button { min-height:44px; padding:0; border:0; color:#c5c7d2; background:transparent; font-size:.78rem; font-weight:750; cursor:pointer; text-decoration:underline; text-decoration-color:#565966; text-underline-offset:5px; }
+    .consent { display:flex; align-items:flex-start; gap:12px; margin:0; color:#afb1bc; font-size:.76rem; }
+    .consent input { flex:0 0 auto; width:18px; min-height:18px; margin-top:3px; accent-color:var(--violet); }
+    .form-actions { display:flex; align-items:center; flex-wrap:wrap; gap:18px; padding-top:26px; }
+    .form-actions .button { border:0; }
+    .form-actions small { max-width:290px; color:#737683; }
+    .form-status { display:none; margin:22px 0 0; padding:15px 17px; border:1px solid var(--line); border-radius:13px; color:#d6d7df; background:rgba(255,255,255,.035); font-size:.8rem; }
+    .form-status[data-visible="true"] { display:block; }
+    .form-status[data-kind="error"] { border-color:rgba(253,164,175,.25); color:#ffd5da; background:rgba(127,29,29,.12); }
+    .form-status[data-kind="success"] { border-color:rgba(110,231,183,.25); color:#ccffec; background:rgba(6,78,59,.14); }
+    .error-summary { display:none; margin-bottom:24px; padding:16px 18px; border:1px solid rgba(253,164,175,.26); border-radius:13px; color:#ffd5da; background:rgba(127,29,29,.12); font-size:.8rem; }
+    .error-summary[data-visible="true"] { display:block; }
+    .error-summary strong { display:block; margin-bottom:5px; }
+    .error-summary ul { margin:6px 0 0; padding-left:18px; }
+    .honeypot { position:absolute!important; left:-9999px!important; width:1px!important; height:1px!important; overflow:hidden!important; }
+
+    footer { padding:34px 0; border-top:1px solid var(--line); background:#030306; }
+    .footer-inner { display:flex; align-items:center; justify-content:space-between; gap:24px; color:#777986; font-size:.74rem; }
+    .footer-links { display:flex; gap:22px; }
+    .footer-links a { text-decoration:none; }
+    .footer-links a:hover { color:#fff; }
+
+    /* Content is visible by default; motion is a non-blocking enhancement. */
+    [data-reveal] { opacity:1; transform:none; }
+    [data-reveal].visible { animation:rise-in .7s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes rise-in { from { opacity:.72; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+    @media (max-width:980px) {
+      .hero-grid,.problem-grid,.apply-grid { grid-template-columns:1fr; }
+      .hero { padding-top:calc(var(--nav) + 72px); }
+      .hero-copy { text-align:center; }
+      .hero-copy .lede { margin-inline:auto; }
+      .hero-actions { justify-content:center; }
+      .signal-stage { min-height:500px; width:min(100%,620px); margin:auto; }
+      .sticky-copy,.apply-copy { position:static; }
+      .steps { grid-template-columns:1fr; }
+      .step { min-height:230px; }
+      .step-marker { margin-bottom:50px; }
+      .apply-copy { max-width:700px; }
+    }
+    @media (max-width:760px) {
+      :root { --nav:64px; }
+      .wrap,.nav-inner { width:min(calc(100% - 28px),var(--max)); }
+      .nav-toggle { display:block; }
+      .nav-links { position:absolute; top:var(--nav); left:0; right:0; display:none; padding:12px 20px 22px; border-bottom:1px solid var(--line); background:rgba(3,3,8,.97); }
+      .nav-links[data-open="true"] { display:grid; }
+      .nav-links a { min-height:46px; display:flex; align-items:center; font-size:.9rem; }
+      .nav-links .button { margin-top:8px; }
+      .nav-links a[aria-current="page"]::after { display:none; }
+      .hero { min-height:auto; padding-bottom:40px; }
+      .hero-copy h1 { font-size:clamp(3.3rem,17vw,5.4rem); }
+      .hero-actions { display:grid; }
+      .hero-actions .button { width:100%; }
+      .signal-stage { min-height:390px; transform:scale(.92); }
+      .echo { width:80px; }
+      .trust-grid { grid-template-columns:1fr; }
+      .trust-item { min-height:90px; border-right:0; border-bottom:1px solid var(--line); padding:20px 14px; }
+      .trust-item:last-child { border-bottom:0; }
+      .fit-grid,.role-panel { grid-template-columns:1fr; }
+      .role + .role { border-left:0; border-top:1px solid var(--line); }
+      .fields,.choice-grid { grid-template-columns:1fr; }
+      .field.full { grid-column:auto; }
+      .form-shell { padding:22px 18px; }
+      .footer-inner { align-items:flex-start; flex-direction:column; }
+    }
+    @media (max-width:430px) {
+      .hero-copy h1 { font-size:3.65rem; }
+      .section { padding:82px 0; }
+      .signal-stage { min-height:340px; transform:scale(.86); margin-inline:-20px; }
+      .story-card { padding:27px; }
+      .footer-links { flex-wrap:wrap; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      html { scroll-behavior:auto; }
+      *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
+      [data-reveal] { opacity:1; transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../" aria-label="Apex Sync home">
+        <img src="../logos/logo-v15d-nowindow.svg" alt="">
+        <span>Apex Sync</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation menu"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span></button>
+      <div class="nav-links" id="nav-links" data-open="false">
+        <a href="../#ecosystem">Ecosystem</a>
+        <a href="./" aria-current="page">Creator Protection</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#eligibility">Eligibility</a>
+        <a class="button" href="#apply">Check eligibility</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow">Apex Sync · Creator Protection Access</p>
+          <h1>Your content travels. <span class="gradient-text">Your protection should follow.</span></h1>
+          <p class="lede">Get your <strong>original content protected</strong>. Apex provides intake, eligibility screening, and coordination with independent third-party rights-management providers. Apex does not operate the underlying protection technology.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#apply">Check my eligibility <span aria-hidden="true">→</span></a>
+            <a class="button" href="#how-it-works">See how it works</a>
+          </div>
+          <p class="hero-note"><strong>Creator-first intake.</strong> Applying does not guarantee approval, detection, removal, or monetization.</p>
+        </div>
+
+        <div class="signal-stage" role="img" aria-label="Conceptual illustration of an original video surrounded by potential reused copies" data-reveal>
+          <div class="orbit"></div><div class="orbit two"></div><div class="scan"></div>
+          <div class="echo e1"></div><div class="echo e2"></div><div class="echo e3"></div><div class="echo e4"></div>
+          <div class="original-card">
+            <div class="play" aria-hidden="true"><i></i></div>
+            <div class="card-label"><div><b>ORIGINAL / 001</b><small>Creator-owned source</small></div><span class="fingerprint"></span></div>
+          </div>
+          <div class="detected"><i></i> REUPLOAD RISK</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="trust-strip" aria-label="Program principles">
+      <div class="wrap trust-grid">
+        <div class="trust-item"><span class="trust-number">01</span><div><b>Original work first</b><span>Built for creators who own or control their content.</span></div></div>
+        <div class="trust-item"><span class="trust-number">02</span><div><b>Human eligibility review</b><span>Every application is checked before any provider referral.</span></div></div>
+        <div class="trust-item"><span class="trust-number">03</span><div><b>Independent technology</b><span>Protection services are delivered by third-party providers.</span></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="why">
+      <div class="wrap problem-grid">
+        <div class="sticky-copy section-head" data-reveal>
+          <p class="eyebrow">The problem</p>
+          <h2>One upload can become <span class="gradient-text">a thousand echoes.</span></h2>
+          <p class="section-lede">Discovery is difficult. Ownership is nuanced. And the right response depends on the platform, the match, and the rights you actually control.</p>
+        </div>
+        <div class="story-list">
+          <article class="story-card glass" data-reveal><span class="index">VULNERABILITY</span><div class="story-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="7"/></svg></div><h3>Your work moves faster than manual search.</h3><p>Reuploads, edits, compilations, and mirrors can spread across accounts before a creator ever encounters them.</p></article>
+          <article class="story-card glass" data-reveal><span class="index">VISIBILITY</span><div class="story-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></svg></div><h3>Matches need context, not panic.</h3><p>Platform rights tools can help identify matching or reused content. The available action depends on ownership, eligibility, and platform policy.</p></article>
+          <article class="story-card glass" data-reveal><span class="index">ACCESS</span><div class="story-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="m5 12 4 4L19 6"/></svg></div><h3>A clear process creates a path forward.</h3><p>Apex organizes intake, screens initial eligibility, and coordinates introductions. Any protection service is provided separately by an independent rights-management provider.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="wrap">
+        <div class="section-head" data-reveal><p class="eyebrow">How it works</p><h2>From original work to <span class="gradient-text">organized protection.</span></h2><p class="section-lede">A short creator-facing process, with the important distinctions left intact.</p></div>
+        <div class="steps">
+          <article class="step glass" data-reveal><div class="step-marker"></div><h3>Share your channels</h3><p>Submit the creator accounts you own or control, your content category, and an optional example of reused content.</p></article>
+          <article class="step glass" data-reveal><div class="step-marker"></div><h3>We review eligibility</h3><p>Apex reviews ownership signals, originality, content type, and any existing Content ID or DRM relationship.</p></article>
+          <article class="step glass" data-reveal><div class="step-marker"></div><h3>Eligible creators are introduced</h3><p>Creators who appear eligible receive next steps for independent third-party rights-management services. The provider—not Apex—determines acceptance, available tools, and outcomes.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section eligibility" id="eligibility">
+      <div class="wrap">
+        <div class="section-head" data-reveal><p class="eyebrow">Eligibility</p><h2>Built for creators with <span class="gradient-text">original ownership.</span></h2><p class="section-lede">You do not need to diagnose your channel before applying. These signals simply help set accurate expectations.</p></div>
+        <div class="fit-grid">
+          <article class="fit-card glass" data-reveal><h3>Often a stronger fit</h3><ul><li>You create and publish primarily original videos.</li><li>You own or control the rights to the submitted content.</li><li>Your channel has a consistent body of original work.</li><li>You are not already bound to another rights-management provider for the same content.</li><li>You can identify your official creator accounts.</li></ul></article>
+          <article class="fit-card nonfit glass" data-reveal><h3>May require closer review</h3><ul><li>Reaction, compilation, or commentary formats using substantial third-party footage.</li><li>Gameplay or music where underlying rights are unclear.</li><li>Fan pages, repost accounts, or licensed clips without clear documentation.</li><li>Content already administered through another Content ID or DRM relationship.</li><li>Individual disputed clips without a broader eligible creator account.</li></ul><p class="fit-note">A closer-review signal is not an automatic rejection. Final eligibility depends on the actual accounts and rights involved.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="roles">
+      <div class="wrap">
+        <div class="section-head" data-reveal><p class="eyebrow">Clear by design</p><h2>One simple intake. <span class="gradient-text">Distinct responsibilities.</span></h2></div>
+        <div class="role-panel glass" data-reveal>
+          <article class="role"><span class="role-tag">Apex Sync</span><h3>Intake and coordination</h3><p>Apex collects applications, screens initial fit, communicates status, and coordinates introductions. Apex does not provide detection, claiming, removal, monetization, Content ID, or DRM technology.</p></article>
+          <article class="role"><span class="role-tag">Independent providers</span><h3>Protection technology and services</h3><p>Independent third-party providers supply any available detection and rights-management services. Their eligibility criteria, terms, platform coverage, tools, and results apply.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq">
+        <div class="section-head" data-reveal><p class="eyebrow">Questions, answered plainly</p><h2>No black box.</h2></div>
+        <details data-reveal><summary>Does Apex provide the protection technology?</summary><div class="answer">No. Apex provides intake, initial eligibility screening, communication, and coordination. Any detection or rights-management technology and related services are provided by independent third parties under their own terms.</div></details>
+        <details data-reveal><summary>Does applying mean my channel is approved?</summary><div class="answer">No. Application begins an eligibility review. Originality, ownership, content type, account history, existing rights relationships, and partner criteria can all affect the decision.</div></details>
+        <details data-reveal><summary>Does this scan the entire internet?</summary><div class="answer">No service should make that promise. Matching and rights-management capabilities depend on participating platforms, the available tools, and the content involved.</div></details>
+        <details data-reveal><summary>Can I submit a video I believe was stolen?</summary><div class="answer">Yes. You can include an optional example link in the application. That helps with context, but submitting a link does not guarantee detection, removal, blocking, or monetization.</div></details>
+        <details data-reveal><summary>What content is most likely to qualify?</summary><div class="answer">Creators with a consistent library of original work and clear ownership are generally the strongest fit. Reaction, compilation, gameplay, music, and licensed-footage formats may require closer review.</div></details>
+        <details data-reveal><summary>Will Apex ask for my password or payment details?</summary><div class="answer">Not in this eligibility form. Do not submit passwords, channel credentials, government identification, banking information, or tax details here.</div></details>
+      </div>
+    </section>
+
+    <section class="section apply" id="apply">
+      <div class="wrap apply-grid">
+        <div class="apply-copy" data-reveal>
+          <p class="eyebrow">Creator intake</p>
+          <h2>Check your <span class="gradient-text">eligibility.</span></h2>
+          <p class="section-lede">Tell us what you create and where it lives. Apex will use this information to assess fit and contact you about next steps.</p>
+          <p class="privacy-note">Do not include passwords, banking information, government identification, tax details, or private channel credentials. This form is only for initial qualification.</p>
+        </div>
+
+        <form class="form-shell glass" id="creator-intake" novalidate data-reveal>
+          <div class="form-intro"><h3>Creator Protection application</h3><p>Required fields are marked with an asterisk. Your answers stay in place if a submission needs correction.</p></div>
+          <div class="error-summary" id="error-summary" role="alert" tabindex="-1" data-visible="false"></div>
+          <div class="honeypot" aria-hidden="true"><label for="company_website">Leave this field empty</label><input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" name="submission_id" id="submission_id">
+          <input type="hidden" name="submitted_at_pt" id="submitted_at_pt">
+          <input type="hidden" name="referrer" id="referrer">
+          <input type="hidden" name="utm_source" id="utm_source"><input type="hidden" name="utm_medium" id="utm_medium"><input type="hidden" name="utm_campaign" id="utm_campaign">
+          <input type="hidden" name="consent_version" value="creator-protection-intake-v1-2026-08-25">
+
+          <fieldset class="form-section"><legend>01 · About you</legend><div class="fields">
+            <div class="field"><label for="creator_name">Creator or channel name *</label><input type="text" id="creator_name" name="creator_name" autocomplete="organization" required aria-describedby="creator_name_error"><span class="error" id="creator_name_error"></span></div>
+            <div class="field"><label for="contact_name">Your name *</label><input type="text" id="contact_name" name="contact_name" autocomplete="name" required aria-describedby="contact_name_error"><span class="error" id="contact_name_error"></span></div>
+            <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" autocomplete="email" inputmode="email" required aria-describedby="email_error"><span class="error" id="email_error"></span></div>
+            <div class="field"><label for="country">Country or region *</label><input type="text" id="country" name="country" autocomplete="country-name" required aria-describedby="country_error"><span class="error" id="country_error"></span></div>
+          </div></fieldset>
+
+          <fieldset class="form-section"><legend>02 · Your channels</legend><div class="fields">
+            <div class="field full"><label for="primary_channel">Primary creator profile URL *</label><input type="url" id="primary_channel" name="primary_channel" inputmode="url" placeholder="https://youtube.com/@yourchannel" required aria-describedby="primary_channel_help primary_channel_error"><span class="help" id="primary_channel_help">Use the official profile that best represents your original work.</span><span class="error" id="primary_channel_error"></span></div>
+            <div class="field"><label for="primary_platform">Primary platform *</label><select id="primary_platform" name="primary_platform" required aria-describedby="primary_platform_error"><option value="">Select one</option><option>YouTube</option><option>TikTok</option><option>Instagram</option><option>Facebook</option><option>Other</option></select><span class="error" id="primary_platform_error"></span></div>
+            <div class="field"><label for="content_category">Main content category *</label><select id="content_category" name="content_category" required aria-describedby="content_category_error"><option value="">Select one</option><option>Comedy / entertainment</option><option>Education / how-to</option><option>Lifestyle</option><option>Gaming</option><option>Reaction / commentary</option><option>Music / performance</option><option>Animation / original characters</option><option>News / documentary</option><option>Other</option></select><span class="error" id="content_category_error"></span></div>
+            <div class="field full"><button class="text-button" type="button" id="extra-toggle" aria-expanded="false" aria-controls="optional-profiles">+ Add additional creator profiles</button><div class="fields optional-fields" id="optional-profiles" data-open="false"><div class="field"><label for="youtube_url">YouTube <span class="optional">Optional</span></label><input type="url" id="youtube_url" name="youtube_url" inputmode="url"></div><div class="field"><label for="tiktok_url">TikTok <span class="optional">Optional</span></label><input type="url" id="tiktok_url" name="tiktok_url" inputmode="url"></div><div class="field"><label for="instagram_url">Instagram <span class="optional">Optional</span></label><input type="url" id="instagram_url" name="instagram_url" inputmode="url"></div><div class="field"><label for="facebook_url">Facebook <span class="optional">Optional</span></label><input type="url" id="facebook_url" name="facebook_url" inputmode="url"></div></div></div>
+          </div></fieldset>
+
+          <fieldset class="form-section"><legend>03 · Rights and context</legend><div class="fields">
+            <div class="field full"><span class="label">Do you own or control the rights to most content on the submitted channel? *</span><div class="choice-grid" role="group" aria-describedby="rights_control_error"><label class="choice"><input type="radio" name="rights_control" value="Yes" required> Yes</label><label class="choice"><input type="radio" name="rights_control" value="No or unsure"> No or unsure</label></div><span class="error" id="rights_control_error"></span></div>
+            <div class="field full"><span class="label">Is this content currently managed by another Content ID or DRM provider? *</span><div class="choice-grid" role="group" aria-describedby="existing_provider_error"><label class="choice"><input type="radio" name="existing_provider" value="No" required> No</label><label class="choice"><input type="radio" name="existing_provider" value="Yes or unsure"> Yes or unsure</label></div><span class="error" id="existing_provider_error"></span></div>
+            <div class="field full"><label for="infringement_url">Example of reused or stolen content <span class="optional">Optional</span></label><input type="url" id="infringement_url" name="infringement_url" inputmode="url" placeholder="https://..."><span class="help">One public example is enough. This does not guarantee a particular action or outcome.</span></div>
+            <div class="field full"><label for="notes">Anything we should know? <span class="optional">Optional</span></label><textarea id="notes" name="notes" maxlength="1200" placeholder="Briefly describe your content, ownership, or concern."></textarea></div>
+          </div></fieldset>
+
+          <fieldset class="form-section"><legend>04 · Permission to review</legend><label class="consent"><input type="checkbox" id="consent" name="consent" value="yes" required aria-describedby="consent_error"><span>I confirm that the information is accurate, I have authority to submit these accounts, and Apex Sync may use it to assess eligibility and contact me about available creator-protection options. *</span></label><span class="error" id="consent_error"></span></fieldset>
+
+          <div class="form-actions"><button class="button primary" id="submit-button" type="submit">Submit for review <span aria-hidden="true">→</span></button><small>Submitting begins a review. It does not create a contract or guarantee approval.</small></div>
+          <div class="form-status" id="form-status" role="status" aria-live="polite" data-visible="false"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><div>© 2026 Apex Sync LLC · Creator Protection Access · Apex provides intake and coordination, not rights-management technology.</div><div class="footer-links"><a href="../">Home</a><a href="#roles">How roles work</a><a href="#apply">Eligibility form</a></div></div></footer>
+
+  <script>
+    (() => {
+      'use strict';
+      // Production launch gate: set this to the approved server-side intake endpoint.
+      // Never place Google credentials or private tokens in this file.
+      const INTAKE_ENDPOINT = '';
+      const CONSENT_VERSION = 'creator-protection-intake-v1-2026-08-25';
+      const localTestMode = ['localhost','127.0.0.1'].includes(location.hostname) && new URLSearchParams(location.search).get('test_mode') === '1';
+
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const closeNav = (restoreFocus = false) => { navToggle.setAttribute('aria-expanded','false'); navToggle.setAttribute('aria-label','Open navigation menu'); navLinks.dataset.open='false'; if (restoreFocus) navToggle.focus(); };
+      navToggle.addEventListener('click', () => { const open = navToggle.getAttribute('aria-expanded') !== 'true'; navToggle.setAttribute('aria-expanded',String(open)); navToggle.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu'); navLinks.dataset.open=String(open); });
+      navLinks.addEventListener('click', e => { if (e.target.closest('a')) closeNav(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') closeNav(true); });
+
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const revealItems = document.querySelectorAll('[data-reveal]');
+      if (reduceMotion || !('IntersectionObserver' in window)) revealItems.forEach(el => el.classList.add('visible'));
+      else {
+        const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } }), { threshold:.12, rootMargin:'0px 0px -5% 0px' });
+        revealItems.forEach(el => revealObserver.observe(el));
+      }
+
+      const extraToggle = document.getElementById('extra-toggle');
+      const optionalProfiles = document.getElementById('optional-profiles');
+      extraToggle.addEventListener('click', () => { const open = extraToggle.getAttribute('aria-expanded') !== 'true'; extraToggle.setAttribute('aria-expanded',String(open)); optionalProfiles.dataset.open=String(open); extraToggle.textContent=open?'− Hide additional profiles':'+ Add additional creator profiles'; });
+
+      const form = document.getElementById('creator-intake');
+      const status = document.getElementById('form-status');
+      const summary = document.getElementById('error-summary');
+      const submitButton = document.getElementById('submit-button');
+      const fields = [...form.querySelectorAll('input,select,textarea')].filter(el => !['hidden','submit'].includes(el.type) && el.name !== 'company_website');
+      const params = new URLSearchParams(location.search);
+
+      const makeSubmissionId = () => `CP-${Date.now().toString(36).toUpperCase()}-${crypto.getRandomValues(new Uint32Array(1))[0].toString(36).slice(0,5).toUpperCase()}`;
+      const ptTimestamp = () => new Intl.DateTimeFormat('en-CA',{timeZone:'America/Los_Angeles',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false,timeZoneName:'short'}).format(new Date());
+      const setMetadata = () => { document.getElementById('submission_id').value=makeSubmissionId(); document.getElementById('submitted_at_pt').value=ptTimestamp(); document.getElementById('referrer').value=document.referrer||'direct'; ['source','medium','campaign'].forEach(k => document.getElementById(`utm_${k}`).value=params.get(`utm_${k}`)||''); };
+      setMetadata();
+
+      const fieldMessage = el => {
+        if (el.validity.valueMissing) return el.type === 'checkbox' ? 'Please confirm before submitting.' : 'This field is required.';
+        if (el.validity.typeMismatch) return el.type === 'email' ? 'Enter a valid email address.' : 'Enter a complete public URL, including https://';
+        return '';
+      };
+      const getErrorTarget = el => {
+        if (el.type === 'radio') return document.getElementById(`${el.name}_error`);
+        return document.getElementById(`${el.id}_error`);
+      };
+      const validateControl = el => {
+        if (el.type === 'radio') { const group=form.querySelectorAll(`input[name="${el.name}"]`); const valid=[...group].some(r=>r.checked); group.forEach(r=>r.setAttribute('aria-invalid',String(!valid))); const out=getErrorTarget(el); if(out) out.textContent=valid?'':'Select one option.'; return valid; }
+        const valid=el.checkValidity(); el.setAttribute('aria-invalid',String(!valid)); const out=getErrorTarget(el); if(out) out.textContent=valid?'':fieldMessage(el); return valid;
+      };
+      const validateForm = () => {
+        const checkedRadioNames=new Set(); const invalid=[];
+        fields.forEach(el => { if (el.type === 'radio') { if (checkedRadioNames.has(el.name)) return; checkedRadioNames.add(el.name); } if(!validateControl(el)) invalid.push(el); });
+        if (invalid.length) { const names=invalid.map(el => el.type==='radio' ? (el.name==='rights_control'?'Rights ownership':'Existing provider relationship') : form.querySelector(`label[for="${el.id}"]`)?.textContent.replace('*','').trim() || 'Required field'); summary.innerHTML=`<strong>Please correct ${invalid.length} ${invalid.length===1?'item':'items'}:</strong><ul>${names.map(n=>`<li>${n}</li>`).join('')}</ul>`; summary.dataset.visible='true'; summary.focus(); }
+        else { summary.dataset.visible='false'; summary.innerHTML=''; }
+        return invalid.length===0;
+      };
+      fields.forEach(el => { el.addEventListener('blur',()=>{ if(el.value || el.getAttribute('aria-invalid')==='true') validateControl(el); }); el.addEventListener(el.type==='radio'||el.type==='checkbox'||el.tagName==='SELECT'?'change':'input',()=>{ if(el.getAttribute('aria-invalid')==='true' || el.type==='radio' || el.type==='checkbox') validateControl(el); }); });
+
+      const showStatus = (message,kind) => { status.textContent=message; status.dataset.kind=kind; status.dataset.visible='true'; };
+      form.addEventListener('submit', async e => {
+        e.preventDefault(); status.dataset.visible='false';
+        if (!validateForm()) return;
+        if (form.company_website.value) return;
+        setMetadata();
+        submitButton.disabled=true; submitButton.textContent='Submitting…';
+        try {
+          if (localTestMode) { await new Promise(resolve=>setTimeout(resolve,450)); showStatus(`Test submission accepted locally. Receipt: ${document.getElementById('submission_id').value}. No data was sent.`, 'success'); return; }
+          if (!INTAKE_ENDPOINT) { showStatus('The secure intake connection is being finalized. Your information has not been sent or stored. Please return shortly or contact your Apex representative.', 'error'); return; }
+          const payload=Object.fromEntries(new FormData(form).entries()); payload.consent_version=CONSENT_VERSION;
+          const response=await fetch(INTAKE_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(payload)});
+          if(!response.ok) throw new Error(`Request failed (${response.status})`);
+          const result=await response.json().catch(()=>({}));
+          showStatus(`Application received. Receipt: ${result.submission_id||payload.submission_id}. Apex will review your information and contact you about next steps.`, 'success');
+          form.reset(); optionalProfiles.dataset.open='false'; extraToggle.setAttribute('aria-expanded','false'); extraToggle.textContent='+ Add additional creator profiles'; setMetadata();
+        } catch(error) { showStatus('We could not securely submit your application. Your answers remain on this page. Please try again after checking your connection.', 'error'); }
+        finally { submitButton.disabled=false; submitButton.innerHTML='Submit for review <span aria-hidden="true">→</span>'; }
+      });
+    })();
+  </script>
+</body>
+</html>
